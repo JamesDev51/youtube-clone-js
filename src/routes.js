@@ -1,20 +1,20 @@
-//GLOBAL
+//GLOBAL O
 const HOME = "/";
 const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
 
-//RESULT - SEARCH
+//RESULT - SEARCH  o
 const RESULT = "/result"
 const SEARCH = "/SEARCH";
 
-//VIDEO
+//VIDEO  O
 const VIDEO = "/video";
 const VIDEO_DETAIL = "/:id"
 
-//STUDIO
+//STUDIO   o
 const STUDIO = "/studio"
-const STUDIO_CN ="/channel"
+const SD_CHANNEL ="/channel"
 const SD_UPLOAD ="/:id/upload"
 const SD_MYVIDEOS = "/:id/my_videos"
 const SD_EDIT_VIDEO ="/:id/edit_video"
@@ -22,32 +22,30 @@ const SD_DELETE_VIDEO = "/:id/delete"
 const SD_COMMENTS = "/:id/comments"
 const SD_CN_EDIT = "/:id/cn_edit"
 
-//PLAYLIST
+//PLAYLIST o
 const PLAYLIST = "/playlist"
 const LIKELIST = "/LL"
 const WATCHLIST = "/WL"
 
-//FEED
+//FEED o
 const FEED = "/feed";
 const MYVIDEOS = "/my_videos"
 const TRENDING = "/trending";
 const SUBSCRIPTIONS= "/subscriptions";
 const LIBRARY = "/library";
 
-//USERS
+//USERS o
 const USERS = "/users";
 const EDIT_PROFILE = "/profile";
 const CHANGE_PASSWORD = "/change-password"
 
-//CHANNEL
+//CHANNEL o
 const CHANNEL = "/channel"
 const CN_DETAIL = "/:id";
 const CN_FEATURE = "/:id/feature";
 const CN_VIDEOS = "/:id/videos";
 const CN_COMMUNITY = "/:id/community"
 const CN_ABOUT = ":/id/about"
-
-
 
 
 const routes = {
@@ -58,7 +56,7 @@ const routes = {
     result:RESULT,
     search:SEARCH,
     studio:STUDIO,
-    studioCN:STUDIO_CN,
+    sdChannel:SD_CHANNEL,
     sdUpload:SD_UPLOAD,
     sdMyVideos:SD_MYVIDEOS,
     sdEditVideo :SD_EDIT_VIDEO,

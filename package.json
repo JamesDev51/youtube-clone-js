@@ -2,7 +2,7 @@
   "name": "jamestube_project",
   "version": "1.0.0",
   "description": "cloning youtube with using javascript skills",
-  "main": "index.js",
+  "main": "init.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/init.js --delay 2"
   },

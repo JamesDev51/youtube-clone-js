@@ -19,3 +19,11 @@ export const postLogin = (req,res) => {
 export const logout = (req,res)=> {
     res.send("logout")
 }
+
+export const editProfile = (req,res) => { 
+    res.send("edit Profile")
+}
+
+export const changePassword = (req,res)=> {
+    res.send("change Password")
+}

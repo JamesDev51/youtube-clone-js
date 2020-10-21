@@ -1,0 +1,10 @@
+extends ../layouts/main
+include ../mixins/libraryVideoBlock
+
+block content
+    .libraryVideo
+        each video in videos
+            +libraryVideoBlock({
+                title:video.title,
+                views:video.views
+            })

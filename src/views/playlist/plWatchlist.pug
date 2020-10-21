@@ -1,10 +1,10 @@
-extends layouts/main
-include mixins/videoBlock
+extends ../layouts/main
+include ../mixins/watchlistVideoBlock
 
 block content
-    .videos
+    .watchlistVideo
         each video in videos
-            +videoBlock({
+            +watchlistVideoBlock({
                 title:video.title,
                 views:video.views
             })

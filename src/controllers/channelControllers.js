@@ -1,17 +1,18 @@
 import routes from "../routes"
+import {channels,videos} from "../db"
 
 export const cnDetail = (req,res)=>{
-    res.send("cn_detail")
+    res.render("channel/cnDetail",{channels, videos})
 }
 export const cnFeature = (req,res)=>{
-    res.send("cn_feature")
+    res.render("channel/cnFeature",{channels, videos})
 }
 export const cnVideos = (req,res)=>{
-    res.send("cn_videos")
+    res.render("channel/cnVideos",{channels, videos})
 }
 export const cnCommunity = (req,res)=>{
-    res.send("cn_community")
+    res.render("channel/cnCommunity",{channels, videos})
 }
 export const cnAbout = (req,res)=>{
-    res.send("cn_about")
+    res.render("channel/cnAbout",{channels, videos})
 }

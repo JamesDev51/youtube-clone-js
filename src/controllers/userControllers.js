@@ -1,15 +1,30 @@
 import routes from "../routes"
+import {channels} from "../db"
 
-export const getJoin = (req,res)=>{
-    res.send("join");
+export const join = (req,res)=>{
+    res.render("join",{channels});
 }
 
 export const postJoin = (req,res)=> {
     res.send("join");
 }
+export const getNewJoin = (req,res)=> {
+    res.render("newJoin",{channels});
+}
+export const postNewJoin = (req,res)=> {
+    res.send("newJoin");
+}
+export const getSocialJoin = (req,res)=> {
+    res.render("socialJoin",{channels});
+}
+export const postSocialJoin = (req,res)=> {
+    res.send("socialJoin");
+}
+
+
 
 export const getLogin = (req,res) => {
-    res.send("login")
+    res.render("login", {channels})
 }
 
 export const postLogin = (req,res) => {

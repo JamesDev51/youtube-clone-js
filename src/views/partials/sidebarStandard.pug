@@ -1,0 +1,67 @@
+include ../mixins/subscriptionList
+
+.sidebar
+    .sidebar__button
+        i.fas.fa-bars
+    //- .sidebar__wrapper-mini
+    //-     .sidebar__element
+    //-         a(href=routes.home class="home-container") 
+    //-             i.fas.fa-home
+    //-             |홈
+    //-     .sidebar__element
+    //-         a(href='http://localhost:2000/feed/trending' class="trending-container")  
+    //-             i.fas.fa-fire
+    //-             |인기
+    //-     .sidebar__element
+    //-         a(href='http://localhost:2000/feed/subscriptions' class="subscriptions-container")
+    //-             i.fas.fa-archive 
+    //-             |구독
+    //-     .sidebar__element
+    //-         a(href='http://localhost:2000/feed/library' class="library-container")
+    //-             i.fas.fa-box
+    //-             |보관함
+    .sidebar__wrapper-big
+        .sidebar__element
+            ul.feed-list
+                li.home
+                    a(href=routes.home class="home-container")
+                        i.fas.fa-home
+                        |홈
+                li.trending
+                    a(href=`${domain}/feed/trending` class="trending-container")  
+                        i.fas.fa-fire
+                        |인기
+                li.subscriptions
+                    a(href=`${domain}/feed/subscriptions` class="subscriptions-container")
+                        i.fas.fa-archive 
+                        |구독
+                li.library
+                    a(href=`${domain}/feed/library` class="library-container")
+                        i.fas.fa-box
+                        |보관함
+        .sidebar__element
+            ul.playlist-list
+                li.myvideos
+                    a(href=`${domain}/feed/my_videos` class="subscriptions-container")
+                        i.fas.fa-film
+                        |내 동영상
+                li.watchlist
+                    a(href=`${domain}/playlist/WL` class="subscriptions-container")
+                        i.fas.fa-clock
+                        |나중에 볼 동영상
+                li.likelist
+                    a(href=`${domain}/playlist/LL` class="subscriptions-container")
+                        i.fas.fa-thumbs-up
+                        |좋아요 표시한 동영상
+        .sidebar__element
+            ul.subscriptions-list
+                each channel in channels
+                    +subscriptionList({
+                        channelName : channel.channelName,
+                        subscriber:channel.subscriber
+                    })
+                
+
+
+
+        

@@ -1,0 +1,12 @@
+.channelHeader
+    img.cnHeader__cover(src=channel.coverUrl)
+    .cnHeader__wrapper
+        .cnHeader__info
+            .info__column
+                img.cnHeader__avatar(src=channel.avatarUrl)
+            .info__column
+                h3.cnHeader__cnName=channel.name
+                h5.cnHeader__cnSubscribers=channel.subscribers
+            .info__column
+                span.cnHeader__subscribeBtn 구독
+                

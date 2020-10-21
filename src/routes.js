@@ -1,68 +1,121 @@
-//GLOBAL O
+import { videoDetail } from "./controllers/videoControllers";
+
+//GLOBAL 
+const REMAIN=""
 const HOME = "/";
-const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
 
-//RESULT - SEARCH  o
+// JOIN
+const JOIN = "/join";
+const NEWJOIN = "/newjoin"
+const SOCIALJOIN= "/socialjoin"
+
+//RESULT - SEARCH  
 const RESULT = "/result"
 const SEARCH = "/SEARCH";
 
-//VIDEO  O
-const VIDEO = "/video";
+//VIDEO  
+const VIDEOS = "/videos";
 const VIDEO_DETAIL = "/:id"
 
-//STUDIO   o
+//STUDIO   
 const STUDIO = "/studio"
 const SD_CHANNEL ="/channel"
-const SD_UPLOAD ="/:id/upload"
+const SD_DASH = "/:id"
 const SD_MYVIDEOS = "/:id/my_videos"
-const SD_EDIT_VIDEO ="/:id/edit_video"
-const SD_DELETE_VIDEO = "/:id/delete"
 const SD_COMMENTS = "/:id/comments"
 const SD_CN_EDIT = "/:id/cn_edit"
+const SD_UPLOAD ="/:id/upload"
+const SD_EDIT_VIDEO ="/:id/edit_video"
+const SD_DELETE_VIDEO = "/:id/delete"
 
-//PLAYLIST o
+//PLAYLIST 
 const PLAYLIST = "/playlist"
 const LIKELIST = "/LL"
 const WATCHLIST = "/WL"
 
-//FEED o
+//FEED 
 const FEED = "/feed";
 const MYVIDEOS = "/my_videos"
 const TRENDING = "/trending";
 const SUBSCRIPTIONS= "/subscriptions";
 const LIBRARY = "/library";
 
-//USERS o
+//USERS 
 const USERS = "/users";
 const EDIT_PROFILE = "/profile";
 const CHANGE_PASSWORD = "/change-password"
 
-//CHANNEL o
+//CHANNEL 
 const CHANNEL = "/channel"
 const CN_DETAIL = "/:id";
 const CN_FEATURE = "/:id/feature";
 const CN_VIDEOS = "/:id/videos";
 const CN_COMMUNITY = "/:id/community"
-const CN_ABOUT = ":/id/about"
+const CN_ABOUT = "/:id/about"
 
 
 const routes = {
+    remain:REMAIN,
     home:HOME,
-    join:JOIN,
     login:LOGIN,
     logout:LOGOUT,
+    join:JOIN,
+    newJoin:NEWJOIN,
+    socialJoin:SOCIALJOIN,
     result:RESULT,
     search:SEARCH,
     studio:STUDIO,
     sdChannel:SD_CHANNEL,
-    sdUpload:SD_UPLOAD,
-    sdMyVideos:SD_MYVIDEOS,
-    sdEditVideo :SD_EDIT_VIDEO,
-    sdDeleteVideo : SD_DELETE_VIDEO,
-    sdComments : SD_COMMENTS,
-    sdCnEdit : SD_CN_EDIT,
+    sdDash:(id)=> {
+        if(id){
+            return `studio/channel/${id}`;
+        }else{
+            return SD_DASH
+        }}
+    ,
+    sdMyVideos:(id)=> {
+        if(id){
+            return `studio/channel/${id}/my_videos`;
+        }else{
+            return SD_MYVIDEOS
+        }}
+    ,
+    sdComments : (id)=> {
+        if(id){
+            return `studio/channel/${id}/comments`;
+        }else{
+            return SD_COMMENTS
+        }},
+    sdCnEdit :(id)=> {
+        if(id){
+            return `studio/channel/${id}/cn_edit`;
+        }else{
+            return SD_CN_EDIT
+        }}
+    ,
+    sdUpload: (id)=> {
+        if(id){
+            return `studio/channel/${id}/upload`;
+        }else{
+            return SD_UPLOAD
+        }}
+    ,
+    sdEditVideo : (id)=> {
+        if(id){
+            return `studio/channel/${id}/edit_video`;
+        }else{
+            return SD_EDIT_VIDEO
+        }}
+    ,
+    sdDeleteVideo : (id)=> {
+        if(id){
+            return `studio/channel/${id}/delete`;
+        }else{
+            return SD_DELETE_VIDEO
+        }} 
+    ,
     playlist : PLAYLIST,
     likelist : LIKELIST,
     watchlist : WATCHLIST,
@@ -75,15 +128,46 @@ const routes = {
     editProfile : EDIT_PROFILE,
     changePassword : CHANGE_PASSWORD,
     channel : CHANNEL,
-    cnDetail : CN_DETAIL,
-    cnFeature : CN_FEATURE,
-    cnVideos : CN_VIDEOS,
-    cnCommunity : CN_COMMUNITY,
-    cnAbout : CN_ABOUT,
-    video : VIDEO,
-    videoDetail : VIDEO_DETAIL
-    
-
+    cnDetail : (id)=> {
+        if(id){
+            return `/channel/${id}`;
+        }else{
+            return CN_DETAIL
+        }},
+    cnFeature :(id)=> {
+        if(id){
+            return `/channel/${id}/feature`;
+        }else{
+            return CN_FEATURE
+        }}, 
+    cnVideos : (id)=> {
+        if(id){
+            return `/channel/${id}/videos`;
+        }else{
+            return  CN_VIDEOS
+        }},
+    cnCommunity : (id)=> {
+        if(id){
+            return `/channel/${id}/community`;
+        }else{
+            return  CN_COMMUNITY
+        }}
+    ,
+    cnAbout : (id)=> {
+        if(id){
+            return `/channel/${id}/about`;
+        }else{
+            return  CN_ABOUT
+        }}
+    ,
+    videos : VIDEOS,
+    videoDetail : (id)=> {
+        if(id){
+            return `/videos/${id}`;
+        }else{
+            return VIDEO_DETAIL;
+        }
+    }
 }
 
 export default routes;

@@ -1,39 +1,39 @@
 import routes from "../routes"
-import {channels} from "../db"
+import {channels,videos} from "../db"
 
 
 
 export const search = (req,res) => {
-    res.send("search")
+    res.render("search")
 }
 
 export const home = (req,res) => {
-    res.render("home",{channels})
+    res.render("home",{channels, videos})
 }
 export const videoDetail = (req,res) => {
-    res.send("videoDetail")
+    res.render("videoDetail",{channels,videos})
 }
 
 export const myVideos = (req,res) => {
-    res.send("my videos")
+    res.render("feed/fdMyvideos",{channels, videos})
 }
 
 export const trending = (req,res) => {
-    res.send("trending")
+    res.render("feed/fdTrending",{channels, videos})
 }
 
 export const subscriptions = (req,res) => {
-    res.send("subscriptions")
+    res.render("feed/fdSubscriptions",{channels, videos})
 }
 
 export const library = (req,res) => {
-    res.send("library")
+    res.render("feed/fdLibrary",{channels, videos})
 }
 
 export const likelist = (req,res) => {
-    res.send("likelist")
+    res.render("playlist/plLikelist",{channels, videos})
 }
 
 export const watchlist = (req,res) => {
-    res.send("watchlist")
+    res.render("playlist/plWatchlist",{channels, videos})
 }

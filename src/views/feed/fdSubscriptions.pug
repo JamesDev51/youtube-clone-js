@@ -1,0 +1,10 @@
+extends ../layouts/main
+include ../mixins/trendingVideoBlock
+
+block content
+    .trendingVideo
+        each video in videos
+            +trendingVideoBlock({
+                title:video.title,
+                views:video.views
+            })

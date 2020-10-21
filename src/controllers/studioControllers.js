@@ -1,29 +1,24 @@
 import routes from "../routes"
 
-export const studio = (req,res)=>{
-    res.send("studio")
+export const sdDash = (req,res)=>{
+    res.render("studio/sdDash")
 }
-
-export const sdChannel = (req,res)=>{
-    res.send("sd_channel")
-}
-
-export const sdUpload = (req,res)=>{
-    res.send("sd_upload")
-}
-
 export const sdMyvideos = (req,res)=>{
-    res.send("sd_myvideos")
+    res.render("studio/sdMyvideos")
 }
-export const sdEditVideo = (req,res)=>{
-    res.send("sd_Edit_Video")
-}
-export const sdDeleteVideo = (req,res)=>{
-    res.send("sd_Delete_Video")
-}
+
 export const sdComments = (req,res)=>{
-    res.send("sd_Comments")
+    res.render("studio/sdComments")
 }
 export const sdCnEdit = (req,res)=>{
-    res.send("sd_Channel_Edit")
+    res.render("studio/sdCnEdit")
+}
+export const sdUpload = (req,res)=>{
+    res.render("studio/sdUpload")
+}
+export const sdEditVideo = (req,res)=>{
+    res.render("studio/sdEditVideo")
+}
+export const sdDeleteVideo = (req,res)=>{
+    res.render("studio/sdDeleteVideo")
 }

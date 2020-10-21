@@ -1,0 +1,30 @@
+header.header
+    .header__wrapper
+        .header__column
+            a(href=routes.home)
+                span.jamesTube-logo
+                    i.fab.fa-youtube
+                span.jamesTube-Title JamesTube
+                span.jamesTube-language KR
+        .header__column
+            .search__wrapper
+                .search__wrapper-column
+                    form(action=routes.search, method="get")
+                        input(type="text", placeholder="검색", name="term")
+                    span.search-keyboard-logo
+                        i.fas.fa-keyboard
+                .search__wrapper-column
+                    span.search-button-logo
+                        i.fas.fa-search
+        .header__column
+            .function__wrapper
+                span.function-upload
+                    i.fas.fa-plus-square
+                span.header__function-apps
+                    i.fas.fa-th
+                span.header__function-alarms
+                    i.fas.fa-bell
+        .header__column
+            .user
+                span.user__title m
+                

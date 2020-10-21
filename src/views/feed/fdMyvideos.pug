@@ -1,0 +1,10 @@
+extends ../layouts/main
+include ../mixins/myvideosVideoBlock
+
+block content
+    .myvideosVideo
+        each video in videos
+            +myvideosVideoBlock({
+                title:video.title,
+                views:video.views
+            })

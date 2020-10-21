@@ -1,0 +1,26 @@
+header.header
+    .header__wrapper
+        .header__column
+            .sidebar__button
+                i.fas.fa-bars
+        .header__column
+            a(href=`${domain}/studio/channel/${channel.id}`)
+                span.jamesTube-logo
+                    i.fab.fa-youtube
+                span.jamesTube-Title Studio
+        .header__column
+            .search__wrapper
+                .search__wrapper-column
+                    span.search-button-logo
+                        i.fas.fa-search
+                    form(action=routes.search, method="get")
+                        input(type="text", placeholder="채널에서 검색하기", name="term")
+        .header__column
+            .upload__wrapper
+                span.video-plus__icon
+                    i.fas.fa-video
+                span.video-plus__title 만들기
+        .header__column
+            .user
+                span.user__title m
+                

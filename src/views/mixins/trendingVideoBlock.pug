@@ -1,0 +1,5 @@
+mixin trendingVideoBlock(trendingVideo = {})
+    .trendingVideoBlock
+        a(href=routes.videoDetail) 
+            h4.video__title=trendingVideo.title
+            h6.video__views=trendingVideo.views

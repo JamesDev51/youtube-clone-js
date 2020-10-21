@@ -3,9 +3,9 @@
  
 ## Pages:
 
-- [ ] Home
-- [ ] Join
-- [ ] Login
+- [x] Home
+- [x] Join
+- [x] Login
 - [ ] Account setting
   - [ ] My channel
     - [ ] Edit Profile

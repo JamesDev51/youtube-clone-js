@@ -1,0 +1,12 @@
+include ../mixins/nextVideoBlock
+
+.nextVideo
+    span.nextVideo__title 다음 동영상
+    .nextVideo__videos
+        each nextVideo in videos
+            +nextVideoBlock({
+                title:nextVideo.title,
+                views:nextVideo.views
+            })
+        
+    

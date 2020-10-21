@@ -1,0 +1,29 @@
+
+
+.sidebar
+    .sidebar__wrapper-big
+        .sidebar__element
+            .channel__info
+                a(href=`${domain}/channel/${id}`)
+                    img(src=channel.avatarUrl)
+                span.user__channel 내 채널
+                span.user__title=channel.name
+        .sidebar__element
+            ul.cnSidebar-list
+                li.cnVideos
+                    a(href=`${domain}/studio/channel/${channel.id}/my_videos`  class="home-container")
+                        i.fas.fa-file-video
+                        |동영상
+                li.trending
+                    a(href=`${domain}/studio/channel/${channel.id}/comments` class="trending-container")  
+                        i.fas.fa-comment-alt
+                        |댓글
+                li.subscriptions
+                    a(href=`${domain}/studio/channel/${channel.id}/cn_edit` class="subscriptions-container")
+                        i.fas.fa-magic
+                        |맞춤설정
+                
+
+
+
+        

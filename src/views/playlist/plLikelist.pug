@@ -1,10 +1,10 @@
-extends layouts/main
-include mixins/videoBlock
+extends ../layouts/main
+include ../mixins/likelistVideoBlock
 
 block content
-    .videos
+    .likelistVideo
         each video in videos
-            +videoBlock({
+            +likelistVideoBlock({
                 title:video.title,
                 views:video.views
             })

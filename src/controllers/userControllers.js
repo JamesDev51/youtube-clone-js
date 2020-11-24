@@ -1,25 +1,34 @@
 import routes from "../routes"
-import {channels} from "../db"
+import Video from "../models/Video"
+import Channel from "../models/Channel"
+import Comment from "../models/Comment"
+import Trending from "../models/Trending"
 
 export const join = (req,res)=>{
-    res.render("join",{channels});
+    res.render("join/join");
 }
 
-export const postJoin = (req,res)=> {
-    res.send("join");
-}
 export const getNewJoin = (req,res)=> {
-    res.render("newJoin",{channels});
+    res.render("join/newJoin",{pageTitle:"일반"});
 }
 export const postNewJoin = (req,res)=> {
-    res.send("newJoin");
+    const {body:{name,email,password,password2}}=req;
+    if(password !== password2){
+        res.status(400);
+        res.render("join/newJoin",{pageTitle:"일반"})
+    }else{
+        //To do : register User
+        //To do : Log user in
+        res.redirect(routes.home)
+    }
 }
 export const getSocialJoin = (req,res)=> {
-    res.render("socialJoin",{channels});
+    res.render("join/socialJoin",{pageTitle:"소셜"});
 }
 export const postSocialJoin = (req,res)=> {
     res.send("socialJoin");
 }
+
 
 
 

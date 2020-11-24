@@ -1,4 +1,10 @@
 extends ../layouts/studio
 
 block content
-    span myvideo
+    .form-container
+        form(action=`${domain}/${routes.sdEditVideo(1,video.id)}`,method="post")
+            input(type="text",placeholder="제목",name="title",value=video.title)
+            textarea(name="description",placeholder="설명")=video.description
+            input(type="submit",value="업데이트")
+        a.form-container__link(href=`${domain}/${routes.sdDeleteVideo(1,video.id)}`)
+            button.delete 동영상 삭제

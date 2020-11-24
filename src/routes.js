@@ -27,8 +27,8 @@ const SD_MYVIDEOS = "/:id/my_videos"
 const SD_COMMENTS = "/:id/comments"
 const SD_CN_EDIT = "/:id/cn_edit"
 const SD_UPLOAD ="/:id/upload"
-const SD_EDIT_VIDEO ="/:id/edit_video"
-const SD_DELETE_VIDEO = "/:id/delete"
+const SD_EDIT_VIDEO ="/:id/edit_video/:id"
+const SD_DELETE_VIDEO = "/:id/edit_video/:id/delete"
 
 //PLAYLIST 
 const PLAYLIST = "/playlist"
@@ -102,16 +102,16 @@ const routes = {
             return SD_UPLOAD
         }}
     ,
-    sdEditVideo : (id)=> {
-        if(id){
-            return `studio/channel/${id}/edit_video`;
+    sdEditVideo : (id1,id2)=> {
+        if(id1,id2){
+            return `studio/channel/${id1}/edit_video/${id2}`;
         }else{
             return SD_EDIT_VIDEO
         }}
     ,
-    sdDeleteVideo : (id)=> {
-        if(id){
-            return `studio/channel/${id}/delete`;
+    sdDeleteVideo : (id1,id2)=> {
+        if(id1,id2){
+            return `studio/channel/${id1}/edit_video/${id2}/delete`;
         }else{
             return SD_DELETE_VIDEO
         }} 

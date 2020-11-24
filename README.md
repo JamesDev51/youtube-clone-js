@@ -28,3 +28,13 @@
 - [ ] Search
 
 
+USER  MODEL에 추가할 항목 
+1. SUBSCRIPTION
+2. LIBRARY
+3. CHANNEL
+4. LIKELIST
+5. WATCHLIST
+
+To do 
+1. searchd
+2. 가상키보드 api

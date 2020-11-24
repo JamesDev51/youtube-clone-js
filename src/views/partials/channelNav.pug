@@ -1,9 +1,13 @@
-nav.channelNav__wrapper
-    .channelNav__element
-        a(href=`${domain}/channel/${channel.id}/feature`) 홈
-    .channelNav__element
-        a(href=`${domain}/channel/${channel.id}/videos`) 동영상
-    .channelNav__element
-        a(href=`${domain}/channel/${channel.id}/community`) 커뮤니티
-    .channelNav__element
-        a(href=`${domain}/channel/${channel.id}/about`) 정보
+.channelNav
+    .channelNav__bar
+        .channelNav__wrapper
+            a(href=`${domain}/channel/${channel.id}/feature`) 
+                span 홈
+            a(href=`${domain}/channel/${channel.id}/videos`) 
+                span 동영상
+            a(href=`${domain}/channel/${channel.id}/community`) 
+                span 커뮤니티
+            a(href=`${domain}/channel/${channel.id}/about`) 
+                span 정보
+            a(href="")
+                    i.fas.fa-search

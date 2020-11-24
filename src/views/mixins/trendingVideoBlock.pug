@@ -1,5 +1,23 @@
 mixin trendingVideoBlock(trendingVideo = {})
     .trendingVideoBlock
-        a(href=routes.videoDetail) 
-            h4.video__title=trendingVideo.title
-            h6.video__views=trendingVideo.views
+        .trendingVideoBlock__column
+            a(href=routes.videoDetail(trendingVideo.id))
+                video.videoBlock__thumbnail(src=trendingVideo.videoFile)
+                                //-재생시간 추가하기
+        .trendingVideoBlock__column
+            a.trendingVideoBlock__title(href=routes.videoDetail(trendingVideo.id))
+                h4.video__title=trendingVideo.title
+            .trendingVideoBlock__info
+                a(href=routes.channel(trendingVideo.channelId))
+                    h6.channel__name=trendingVideo.channelName
+                a(href=routes.videoDetail(trendingVideo.id))
+                    h6.video__views 조회수 #{trendingVideo.views}
+                    //- n시간 전 만들기
+            .trendingVideoBlock__description
+                h6.video__description=trendingVideo.description
+
+
+
+
+
+

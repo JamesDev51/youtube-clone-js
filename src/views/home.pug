@@ -2,9 +2,17 @@ extends layouts/main
 include mixins/videoBlock
 
 block content
-    .videos
-        each video in videos
-            +videoBlock({
-                title:video.title,
-                views:video.views
-            })
+    .videos__wrapper
+        |This is video
+        .videos
+            each video in videos
+                +videoBlock({
+                    id:video._id,
+                    videoFile:video.videoFile,
+                    title:video.title,
+                    views:video.views,
+                    description:video.description,
+                    channelName:video.channel.name,
+                    channelId:video.channel.id,
+                    channelAvatar:video.channel.avatarUrl,
+                })

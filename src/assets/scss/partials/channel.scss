@@ -1,0 +1,73 @@
+.channelHeader {
+  z-index: -10;
+  width: 100%;
+  .cnHeader__cover {
+    width: 100%;
+    height: 300px;
+  }
+  .cnHeader__wrapper {
+    width: 100%;
+    background-color: white;
+    padding: 20px 200px 5px 200px;
+    .cnHeader__info {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .info__column {
+        &:first-child {
+          display: flex;
+          img {
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+          }
+          .cnHeader__detail {
+            padding: 10px 0px 10px 20px;
+            margin-right: 200px;
+            .cnHeader__cnName {
+              font-size: 33px;
+              font-weight: 400;
+            }
+            .info__column-cnSubscribers {
+              display: flex;
+              padding-top: 5px;
+              div {
+                font-size: 15px;
+                font-weight: 500;
+                opacity: 0.6;
+                &:first-child {
+                  margin-right: 3px;
+                }
+              }
+            }
+          }
+        }
+        &:nth-child(2) {
+          margin-top: 30px;
+          div {
+            color: white;
+            padding: 13px 22px;
+            background-color: $red;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+.channelNav {
+  z-index: 1;
+  width: 100%;
+  .channelNav__bar {
+    width: 100%;
+    display: flex;
+    background-color: white;
+    padding: 20px 0px 20px 130px;
+    .channelNav__wrapper {
+      a {
+        padding: 10px 35px;
+      }
+    }
+  }
+}

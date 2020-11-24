@@ -4,9 +4,12 @@
         .cnHeader__info
             .info__column
                 img.cnHeader__avatar(src=channel.avatarUrl)
+                .cnHeader__detail    
+                    .cnHeader__cnName=channel.name
+                    .info__column-cnSubscribers
+                        div.cnHedaer__cnSubscribers-title 구독자
+                        div.cnHeader__cnSubscribers-number=channel.subscribers
+                        div.cnHedaer__cnSubscribers-person 명
             .info__column
-                h3.cnHeader__cnName=channel.name
-                h5.cnHeader__cnSubscribers=channel.subscribers
-            .info__column
-                span.cnHeader__subscribeBtn 구독
+                .cnHeader__subscribeBtn 구독
                 

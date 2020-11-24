@@ -1,18 +1,64 @@
 import routes from "../routes"
-import {channels,videos} from "../db"
+import Video from "../models/Video"
+import Channel from "../models/Channel"
+import Comment from "../models/Comment"
+import Trending from "../models/Trending"
 
-export const cnDetail = (req,res)=>{
-    res.render("channel/cnDetail",{channels, videos})
+export const cnDetail = async (req,res)=>{
+    try{
+        const videos = await Video.find({}).sort({id:-1})
+        const channels = await Channel.find({})
+        res.render("channel/cnDetail",{videos,channels})
+    }catch(error){
+        console.log(error)
+        res.render("channel/cnDetail",{videos,channels})
+    }
 }
-export const cnFeature = (req,res)=>{
-    res.render("channel/cnFeature",{channels, videos})
+export const cnFeature = async(req,res)=>{
+    try{
+        const videos = await Video.find({}).sort({id:-1})
+        const channels = await Channel.find({})
+        res.render("channel/cnFeature",{videos,channels})
+       
+    }catch(error){
+        console.log(error)
+        res.render("channel/cnFeature",{videos,channels})
+       
+    }
 }
-export const cnVideos = (req,res)=>{
-    res.render("channel/cnVideos",{channels, videos})
+export const cnVideos = async(req,res)=>{
+    try{
+        const videos = await Video.find({}).sort({id:-1})
+        const channels = await Channel.find({})
+        res.render("channel/cnVideos",{videos,channels})
+        
+    }catch(error){
+        console.log(error)
+        res.render("channel/cnVideos",{videos,channels})
+        
+    }
 }
-export const cnCommunity = (req,res)=>{
-    res.render("channel/cnCommunity",{channels, videos})
+export const cnCommunity = async(req,res)=>{
+    try{
+        const videos = await Video.find({}).sort({id:-1})
+        const channels = await Channel.find({})
+        res.render("channel/cnCommunity",{videos,channels})
+        
+    }catch(error){
+        console.log(error)
+        res.render("channel/cnCommunity",{videos,channels})
+        
+    }
 }
-export const cnAbout = (req,res)=>{
-    res.render("channel/cnAbout",{channels, videos})
+export const cnAbout = async(req,res)=>{
+    try{
+        const videos = await Video.find({}).sort({id:-1})
+        const channels = await Channel.find({})
+        res.render("channel/cnAbout",{videos,channels})
+        
+    }catch(error){
+        console.log(error)
+        res.render("channel/cnAbout",{videos,channels})
+        
+    }
 }

@@ -11,14 +11,14 @@ import multer from "multer"
 import cors from "cors"
 import methodOverride from "method-override"
 import session from "express-session"
-import { localMiddleware } from "./localMiddlewares";
+import { localMiddleware } from "./middlewares";
+import path from "path"
 
 
 //routers
 import routes from "./routes"
 import globalRouter from "./routers/globalRouter"
 import videoRouter from "./routers/videoRouter";
-import studioRouter from "./routers/studioRouter";
 import playlistRouter from "./routers/playlistRouter";
 import feedRouter from "./routers/feedRouter";
 import channelRouter from "./routers/channelRouter";
@@ -30,12 +30,16 @@ const app = express();
 
 app.set("view engine","pug");
 app.set("views", "src/views");
+app.use("/uploads",express.static("uploads"))
+app.use("/static",express.static(__dirname+"/static"))
+app.use("/img",express.static(path.join(__dirname,'/img')))
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(helmet({contentSecurityPolicy:false}));
 app.use(compression());
 app.use(morgan("tiny"));
+
 app.use(localMiddleware)
 
 app.use(routes.home, globalRouter);

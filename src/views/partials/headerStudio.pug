@@ -1,26 +1,57 @@
-header.header
+header.header.header__studio
     .header__wrapper
-        .header__column
+        .header__column#sdHeaderOne
             .sidebar__button
-                i.fas.fa-bars
-        .header__column
+                button(onclick="sidebarBtn()")
+                    i.fas.fa-bars
             a(href=`${domain}/studio/channel/${channel.id}`)
                 span.jamesTube-logo
                     i.fab.fa-youtube
-                span.jamesTube-Title Studio
-        .header__column
-            .search__wrapper
-                .search__wrapper-column
+                span.jamesTube-Title#studioTitle Studio
+        .header__column#sdHeaderTwo
+            .search__wrapper#studioSearchWrapper
+                .search__wrapper-column#studioSearchWrapperColumn
                     span.search-button-logo
                         i.fas.fa-search
                     form(action=routes.search, method="get")
                         input(type="text", placeholder="채널에서 검색하기", name="term")
         .header__column
-            .upload__wrapper
-                span.video-plus__icon
-                    i.fas.fa-video
-                span.video-plus__title 만들기
-        .header__column
-            .user
-                span.user__title m
-                
+            .sdUpload__wrapper
+                .sdUpload-dropdown
+                    .sdUploadDropdown-button
+                        button(onclick="sdUploadDropdown()" class="sdUploadDropdownBtn ")
+                            span.video-plus__icon
+                                i.fas.fa-video
+                            span.video-plus__title 만들기
+                    .sdUploadDropdown-content
+                        .uploadDropdown__wrapper
+                            a(href=`/${routes.sdUpload(1)}`)
+                                i.fas.fa-upload.sdUploadIcon
+                                span.sdDropdownTitle 동영상 업로드
+            .sdUser__wrapper
+                .sdUser-dropdown
+                    .sdUserDropdown-button
+                        button(onclick="sdUserDropdown()", class="userDropdownBtn")
+                            span.user__title#headerUserAvatarSd M
+                    .sdUserDropdown-content
+                        .sdUserProfile
+                            .userProfile-column
+                                span.user__title.user__avatar M
+                            .userProfile-column
+                                span.channel__name=channel.name
+                        .user__function-wrapper
+                            .user__function-row
+                                a(href=routes.cnDetail(1))
+                                    i.fas.fa-user-circle.headerUserIcon#mychannelIcon
+                                    span.dropdownTitle 내 채널
+                                a(href=routes.home)
+                                    i.fab.fa-youtube.headerUserIcon#jamesTube
+                                    span.dropdownTitle JamesTube
+                                a(href=routes.sdUpload(1))
+                                    i.fas.fa-sign-out-alt.headerUserIcon#logout
+                                    span.dropdownTitle 로그아웃
+                            .user__function-row
+                                a(href=routes.sdUpload(1))
+                                    i.fas.fa-envelope-open-text.headerUserIcon#complains
+                                    span.dropdownTitle 의견 보내기
+        

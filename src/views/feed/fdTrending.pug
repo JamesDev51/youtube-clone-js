@@ -3,8 +3,14 @@ include ../mixins/trendingVideoBlock
 
 block content
     .trendingVideo
-        each video in videos
+        each trending in trendings
             +trendingVideoBlock({
-                title:video.title,
-                views:video.views
+                id:trending.id,
+                videoFile:trending.videoFile,
+                title:trending.title,
+                views:trending.views,
+                description:trending.description,
+                channelName:trending.channel.name,
+                channelId:trending.channel.id,
+                channelAvatar:trending.channel.avatarUrl,
             })

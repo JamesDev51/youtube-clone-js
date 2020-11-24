@@ -1,4 +1,11 @@
 extends ../layouts/studio
+include ../mixins/sdmyvideoList
 
 block content
-    span myvideo
+    each video in videos
+        +sdmyvideoList({
+            id:video._id,
+            title:video.title,
+            views:video.views
+        })
+

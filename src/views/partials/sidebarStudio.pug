@@ -1,29 +1,54 @@
 
 
-.sidebar
+.sidebar#sidebarStudio
+    .sidebar__wrapper-small
+        .sidebar__element
+            .studio-list
+                .channel-info
+                    .channel__wrapper
+                        .channel__title-wrapper
+                            span.channel__title M
+                        .channel__title-hover    
+                            a(href=`${domain}/channel/${id}` class="sdSide__channel")      
+                                i.fas.fa-external-link-alt
+                a(href=`${domain}/studio/channel/${channel.id}` )
+                    i.fas.fa-th-large
+                a(href=`${domain}/studio/channel/${channel.id}/my_videos`  class="home-container")
+                    i.fas.fa-file-video
+                a(href=`${domain}/studio/channel/${channel.id}/comments` class="trending-container")  
+                    i.fas.fa-comment-alt
+                a(href=`${domain}/studio/channel/${channel.id}/comments` class="trending-container")  
+                    i.fas.fa-comment-alt
+                a(href=`${domain}/studio/channel/${channel.id}/cn_edit` class="subscriptions-container")
+                    i.fas.fa-magic
+    
     .sidebar__wrapper-big
         .sidebar__element
             .channel__info
-                a(href=`${domain}/channel/${id}`)
-                    img(src=channel.avatarUrl)
-                span.user__channel 내 채널
-                span.user__title=channel.name
-        .sidebar__element
-            ul.cnSidebar-list
-                li.cnVideos
-                    a(href=`${domain}/studio/channel/${channel.id}/my_videos`  class="home-container")
-                        i.fas.fa-file-video
-                        |동영상
-                li.trending
-                    a(href=`${domain}/studio/channel/${channel.id}/comments` class="trending-container")  
-                        i.fas.fa-comment-alt
-                        |댓글
-                li.subscriptions
-                    a(href=`${domain}/studio/channel/${channel.id}/cn_edit` class="subscriptions-container")
-                        i.fas.fa-magic
-                        |맞춤설정
+                .channel__wrapper
+                    .channel__avatar
+                        span.user__title M
+                    .channel__avatar-hover                   
+                        a(href=`${domain}/channel/${id}` class="sdSide__channel")
+                            i.fas.fa-external-link-alt
+                .channel__title
+                    span.channel__mychannel 내 채널
+                    span.channel__name=channel.name
+            .studio-list
+                a(href=`${domain}/studio/channel/${channel.id}` class="sdDash")
+                    i.fas.fa-th-large
+                    |대시보드
+                a(href=`${domain}/studio/channel/${channel.id}/my_videos`  class="sdVideos")
+                    i.fas.fa-file-video
+                    |동영상
+                a(href=`${domain}/studio/channel/${channel.id}/comments` class="sdComments")  
+                    i.fas.fa-comment-alt
+                    |댓글
+                a(href=`${domain}/studio/channel/${channel.id}/cn_edit` class="sdSettings")
+                    i.fas.fa-magic
+                    |맞춤설정
+            
+
+
+
                 
-
-
-
-        

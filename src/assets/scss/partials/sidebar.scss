@@ -1,0 +1,218 @@
+.sidebar__wrapper-small {
+  .feed-list,
+  .studio-list {
+    height: 100%;
+    width: 75px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 23px 20px;
+      opacity: 0.8;
+      &:hover {
+        background-color: $grey;
+      }
+      i {
+        font-size: 18px;
+        padding-bottom: 5px;
+      }
+      span {
+        font-size: 7px;
+      }
+    }
+  }
+
+  .studio-list {
+    a {
+      padding: 15px 10px;
+
+      .user__title-hover {
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        color: white;
+        padding: 6px 8px;
+        border-radius: 60%;
+      }
+    }
+    .channel-info {
+      width: 100%;
+      height: 60px;
+      padding: 17px 22px;
+      .channel__wrapper {
+        width: 32px;
+        height: 32px;
+        position: relative;
+        .channel__title-wrapper {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background-color: peru;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .channel__title {
+            opacity: 1;
+            font-size: 18px;
+            color: white;
+          }
+          position: absolute;
+        }
+        .channel__title-hover {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          right: 0px;
+          display: none;
+          a {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px;
+            border-radius: 50%;
+            background-color: black;
+            opacity: 0.6;
+
+            i {
+              color: white;
+              opacity: 1;
+              font-size: 14px;
+              padding: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.sidebar__wrapper-big {
+  display: none;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 60px;
+  left: 0px;
+  background-color: white;
+  .feed-list,
+  .playlist-list,
+  .studio-list {
+    display: flex;
+    flex-direction: column;
+    a {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 10px 30px;
+      opacity: 0.8;
+      &:hover {
+        background-color: $grey;
+      }
+      &:active {
+        background-color: $dark-grey;
+      }
+      i {
+        font-size: 20px;
+        min-width: 30px;
+      }
+      span {
+        padding-left: 10px;
+      }
+    }
+  }
+  .feed-list {
+    border-bottom: 1px solid $dark-grey;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .playlist-list {
+    border-bottom: 1px solid $dark-grey;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .channel__info {
+    width: 100%;
+    height: 190px;
+    .channel__wrapper {
+      width: 100%;
+      height: 140px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .channel__avatar {
+        position: absolute;
+        margin: 24px 0px 13px 0px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: peru;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .user__title {
+          opacity: 1;
+          font-size: 55px;
+          font-weight: 400;
+          color: white;
+        }
+      }
+      .channel__avatar-hover {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 24px;
+        display: none;
+        a {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0px;
+          border-radius: 50%;
+          background-color: black;
+          opacity: 0.6;
+
+          i {
+            color: white;
+            opacity: 1;
+            font-size: 18px;
+            padding: 0px;
+          }
+        }
+      }
+    }
+    .channel__title {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .channel__mychannel {
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+      .channel__name {
+        font-size: 13px;
+        opacity: 0.7;
+      }
+    }
+  }
+}

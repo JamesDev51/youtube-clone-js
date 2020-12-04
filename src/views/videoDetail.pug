@@ -1,4 +1,60 @@
 extends layouts/video
 
 block content
-    span hi 
+    .video-detail__container
+        .video__player
+            video(src=`/${video.videoFile}`)
+        .video__info
+            .video__info-row
+                h5.video__title=video.title
+            .video__info-row
+                .video__info-column
+                    span.video__views 조회수 #{video.views}회
+                    div.mid-dot •
+                    span.video__date=video.createdAt
+                .video__info-column
+                    .video__like-wrapper
+                        button.video__like-btn
+                            .video-btn__wrapper
+                                i.fas.fa-thumbs-up.video__info-icon
+                                span=video.likes
+                        button.video__dislike-btn
+                            .video-btn__wrapper
+                                i.fas.fa-thumbs-down.video__info-icon
+                                span=video.dislikes
+                    .video__function-wrapper
+                        button.video__save-btn
+                            .video-btn__wrapper
+                                i.fas.fa-folder-plus.video__info-icon
+                                span 저장
+        .video__creator
+            .channel-creator
+                .creator__column
+                    img.creator__avatar.roundAvatar(src=channel.avatarUrl)
+                    .creator__info
+                        .creator__name
+                            span=channel.name
+                        .creator__subscribeNum
+                            span.cnHedaer__cnSubscribers-title 구독자
+                            span.cnHeader__cnSubscribers-number=channel.subscribers
+                            span.cnHedaer__cnSubscribers-person 명
+                .creator__column
+                    .creator__subscribeBtn.subscribeBtn 구독
+            .video__description
+                p=video.description
+        .video__comments
+            .video__comments-row
+                span.comments__number 댓글 #{video.comments.length} 개
+            .video__comments-row
+                .comment-write__column
+                    img.comment-writer__img.roundAvatar(src=channel.avatarUrl)
+                .comment-write__column
+                    form.comment-write__form
+                        input(type="text" ,placeholder="공개 댓글 추가..." ,name="comment")
+                    .comment-write__btns
+                        button.comment-cancel__btn.squareBtn
+                            span 취소
+                        button.comment-up__btn.squareBtn
+                            span 댓글
+                        
+            .video__comments-row

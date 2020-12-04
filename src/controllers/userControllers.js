@@ -1,8 +1,11 @@
+import passport from "passport"
 import routes from "../routes"
+import User from "../models/User"
 import Video from "../models/Video"
 import Channel from "../models/Channel"
 import Comment from "../models/Comment"
 import Trending from "../models/Trending"
+
 
 export const join = (req,res)=>{
     res.render("join/join");
@@ -11,15 +14,24 @@ export const join = (req,res)=>{
 export const getNewJoin = (req,res)=> {
     res.render("join/newJoin",{pageTitle:"일반"});
 }
-export const postNewJoin = (req,res)=> {
+export const postNewJoin = async(req,res,next) => {
     const {body:{name,email,password,password2}}=req;
     if(password !== password2){
         res.status(400);
         res.render("join/newJoin",{pageTitle:"일반"})
     }else{
-        //To do : register User
-        //To do : Log user in
-        res.redirect(routes.home)
+        try{
+            const user = await User({
+                name,email
+            })
+            await User.register(user,password);
+            next();
+        }catch(error){
+            console.log(error)
+            res.redirect(routes.home);
+        }
+     
+
     }
 }
 export const getSocialJoin = (req,res)=> {
@@ -32,22 +44,44 @@ export const postSocialJoin = (req,res)=> {
 
 
 
-export const getLogin = (req,res) => {
-    res.render("login", {channels})
+export const getLogin = async(req,res) => {
+    const channels = await Channel.find({})
+    try{
+        res.render("login", {channels})
+        
+    }catch(error){
+        console.log(error)
+        res.render("login", {channels})
+    }
 }
 
-export const postLogin = (req,res) => {
-    res.send("login")
-}
+export const postLogin = passport.authenticate('local',{
+    successRedirect:routes.home,
+    failureRedirect:routes.login
+})
 
 export const logout = (req,res)=> {
     res.send("logout")
 }
 
-export const editProfile = (req,res) => { 
-    res.send("edit Profile")
+export const editProfile = async(req,res) => { 
+    const channels = await Channel.find({})
+    try{
+        res.render("editProfile", {channels})
+        
+    }catch(error){
+        console.log(error)
+        res.render("editProfile", {channels})
+    }
 }
 
-export const changePassword = (req,res)=> {
-    res.send("change Password")
+export const changePassword = async(req,res)=> {
+    const channels = await Channel.find({})
+    try{
+        res.render("changePassword", {channels})
+        
+    }catch(error){
+        console.log(error)
+        res.render("changePassword", {channels})
+    }
 }

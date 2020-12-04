@@ -38,3 +38,15 @@ USER  MODEL에 추가할 항목
 To do 
 1. searchd
 2. 가상키보드 api
+
+
+
+
+                    channelName:video.channel.name,
+                    channelId:video.channel.id,
+                    channelAvatar:video.channel.avatarUrl,
+
+                                a(href=routes.channel(video.channelId))
+                img.channel__avatar(src=video.channelAvatar)
+            a(href=routes.channel(video.channelId))
+                h6.channel__name=video.channelName

@@ -1,6 +1,17 @@
 const sidebarBig = document.querySelector(".sidebar__wrapper-big")
+const sidebarSmall = document.querySelector(".sidebar__wrapper-small")
 const sidebarButton = document.querySelector(".sidebar__button")
-const main = document.querySelector("main")
+const sidebarMenu = document.querySelector(".sidebarMenu")
+
+const loginForm = document.querySelector(".login__form-container")
+
+const standardMain = document.querySelector("#mainStandard,#mainStudio")
+
+const videoBody = document.querySelector("#bodyVideo")
+const videoMain = document.querySelector("#mainVideo")
+const videoHeader = document.querySelector("#videoHeader")
+const videoSideDark = document.querySelector(".bodyDarkWrapper")
+
 const cnHeaderCover = document.querySelector(".cnHeader__cover")
 const cnHeaderWrapper = document.querySelector(".cnHeader__wrapper")
 const sdCnTitle = document.querySelector(".channel__title-wrapper")
@@ -8,26 +19,32 @@ const sdCnTitleHover = document.querySelector(".channel__title-hover")
 const sdCnAvatarBig= document.querySelector(".channel__avatar")
 const sdCnAvatarBigHover = document.querySelector(".channel__avatar-hover")
 
-const SHOWING_CN="showing";
+const SHOWING_CN="showing"
+const DARK_CN = "dark"
 const SIDEBARBIG_LS = "sidebarbig"
-
-
 
 function loadSidebarOption() {
     let loadedSidebar = localStorage.getItem(SIDEBARBIG_LS);
-    if(loadedSidebar ==="showing"){
+    if(loadedSidebar === SHOWING_CN){
         sidebarBig.classList.add(SHOWING_CN)
+        sidebarBig.style.width="250px"
+        if(videoSideDark){
+            videoSideDark.classList.add(DARK_CN);
+            videoBody.style.overflow = "hidden";
+        }
     }
 }
 
 function saveSidebarBig () {
     let hasClass = sidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
-        localStorage.setItem(SIDEBARBIG_LS,"showing")   
+        localStorage.setItem(SIDEBARBIG_LS,SHOWING_CN)   
+
     }else{
         localStorage.removeItem(SIDEBARBIG_LS)
     }
 }
+
 function setChannelSize(){
     let hasClass = sidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
@@ -41,42 +58,78 @@ function setChannelSize(){
     }
 }
 
+
 function setMainSize(){
     let hasClass = sidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
-        main.style.marginLeft="250px";
+        standardMain.style.marginLeft="250px";
+        if(loginForm){
+            standardMain.style.marginLeft="80px";
+        }
         if(cnHeaderCover || cnHeaderWrapper){
             setChannelSize();
         }
-       
     }else{
-        main.style.marginLeft="80px"
+        standardMain.style.marginLeft="80px"
         if(cnHeaderCover || cnHeaderWrapper){
             setChannelSize();
         }
     }
 }
 
+function setBodyDark(){
+    let hasClass = sidebarBig.classList.contains(SHOWING_CN);
+    if(hasClass){
+        videoSideDark.classList.add(DARK_CN)
+        videoBody.style.overflow = "hidden";
+        
+    }else{
+        videoSideDark.classList.remove(DARK_CN)
+        videoBody.style.overflow = "visible";
+        
+    }
+
+}
+
 function sidebarBtn() {
-    sidebarBig.classList.toggle("showing")
+    sidebarBig.classList.toggle(SHOWING_CN)
     saveSidebarBig();
     setMainSize();
     
 }
 
-
-
+function sidebarVideoBtn() {
+    sidebarBig.classList.toggle(SHOWING_CN)
+    setBodyDark();
+    saveSidebarBig();
+    
+}
 
 
 function init(){
     loadSidebarOption();
-    setMainSize();
+    if(standardMain){
+        setMainSize()
+    }
+}
+if(sidebarBig){
+    init();
 }
 
-init();
+function handleVideoDarkClick(){
+    sidebarBig.classList.remove(SHOWING_CN);
+    videoMain.style.marginLeft="0px"
+    videoSideDark.classList.remove(DARK_CN)
+    videoBody.style.overflow = "visible";
+    localStorage.removeItem(SIDEBARBIG_LS)
+}
+
+if(videoSideDark){
+    videoSideDark.addEventListener("click",handleVideoDarkClick)
+}
 
 window.sidebarBtn = sidebarBtn;
-window.sidebarBtn = sidebarBtn;
+window.sidebarVideoBtn = sidebarVideoBtn;
 
 function handleSdCnTitleEnter(){
     sdCnTitleHover.style.display="block";

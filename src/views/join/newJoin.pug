@@ -1,8 +1,10 @@
 extends ../layouts/join
 
 block content
+    
     .join__form-container
-        form(action=routes.join,method="post")
+        span.join__form-title 가입 정보 입력
+        form(action=`/join${routes.newJoin}`,method="post")
             label(for="name") 이름
             input(type="text",name="name",placeholder="한글 2자 이상 입력")
             label(for="email") 이메일

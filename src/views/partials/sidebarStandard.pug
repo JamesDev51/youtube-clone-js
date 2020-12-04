@@ -1,54 +1,94 @@
 include ../mixins/subscriptionList
 
 .sidebar#sidebarStandard
-    .sidebar__wrapper-small
-        .sidebar__element
-            .feed-list
-                a(href=routes.home class="home")
-                    i.fas.fa-home
-                    span 홈
-                a(href=`${domain}/feed/trending` class="trending")  
-                    i.fas.fa-fire
-                    span 인기
-                a(href=`${domain}/feed/subscriptions` class="subscriptions")
-                    i.fas.fa-archive 
-                    span 구독
-                a(href=`${domain}/feed/library` class="library")
-                    i.fas.fa-box
-                    span 보관함
-    .sidebar__wrapper-big
-        .sidebar__element
-            .feed-list
-                a(href=routes.home class="home")
-                    i.fas.fa-home
-                    span 홈
-                a(href=`${domain}/feed/trending` class="trending")  
-                    i.fas.fa-fire
-                    span 인기
-                a(href=`${domain}/feed/subscriptions` class="subscriptions")
-                    i.fas.fa-archive 
-                    span 구독
-        .sidebar__element
-            .playlist-list
-                a(href=`${domain}/feed/library` class="library")
-                    i.fas.fa-box
-                    span 보관함
-                a(href=`${domain}/feed/my_videos` class="myvideos")
-                    i.fas.fa-film
-                    span 내 동영상
-                a(href=`${domain}/playlist/WL` class="watchlist")
-                    i.fas.fa-clock
-                    span 나중에 볼 동영상
-                a(href=`${domain}/playlist/LL` class="likelist")
-                    i.fas.fa-thumbs-up
-                    span 좋아요 표시한 동영상
-        .sidebar__element
-            ul.subscriptions-list
-                each channel in channels
-                    +subscriptionList({
-                        channelName : channel.name,
-                        subscriber:channel.subscriber
-                    })
+    if !user
+        .sidebar__wrapper-small
+            .sidebar__element
+                .feed-list
+                    a(href=routes.home class="home")
+                        i.fas.fa-home
+                        span 홈
+                    a(href=`${domain}/feed/trending` class="trending")  
+                        i.fas.fa-fire
+                        span 인기
+                    a(href=`${domain}/feed/subscriptions` class="subscriptions")
+                        i.fas.fa-archive 
+                        span 구독
+                    a(href=`${domain}/feed/library` class="library")
+                        i.fas.fa-box
+                        span 보관함
+        .sidebar__wrapper-big
+            .sidebar__element
+                .feed-list
+                    a(href=routes.home class="home")
+                        i.fas.fa-home
+                        span 홈
+                    a(href=`${domain}/feed/trending` class="trending")
+                        i.fas.fa-fire
+                        span 인기
+                    a(href=`${domain}/feed/subscriptions` class="subscriptions")
+                        i.fas.fa-archive 
+                        span 구독
+            .sidebar__element
+                .playlist-list
+                    a(href=`${domain}/feed/library` class="library")
+                        i.fas.fa-box
+                        span 보관함
+            .sidebar__element.sidebar__login
+                span.sidebar__login-title 로그인하면 동영상에 좋아요<br>를 표시하고 댓글을 달거나<br>구독할 수 있습니다.
+                a(href=routes.login, class="login-btn")
+                    i.fas.fa-user-circle.login-btn__icon
+                    span.login-btn__title 로그인
+                
+    else
+        .sidebar__wrapper-small
+            .sidebar__element
+                .feed-list
+                    a(href=routes.home class="home")
+                        i.fas.fa-home
+                        span 홈
+                    a(href=`${domain}/feed/trending` class="trending")  
+                        i.fas.fa-fire
+                        span 인기
+                    a(href=`${domain}/feed/subscriptions` class="subscriptions")
+                        i.fas.fa-archive 
+                        span 구독
+                    a(href=`${domain}/feed/library` class="library")
+                        i.fas.fa-box
+                        span 보관함
+        .sidebar__wrapper-big
+            .sidebar__element
+                .feed-list
+                    a(href=routes.home class="home")
+                        i.fas.fa-home
+                        span 홈
+                    a(href=`${domain}/feed/trending` class="trending")
+                        i.fas.fa-fire
+                        span 인기
+                    a(href=`${domain}/feed/subscriptions` class="subscriptions")
+                        i.fas.fa-archive 
+                        span 구독
+            .sidebar__element
+                .playlist-list
+                    a(href=`${domain}/feed/library` class="library")
+                        i.fas.fa-box
+                        span 보관함
+                    a(href=`${domain}/feed/my_videos` class="myvideos")
+                        i.fas.fa-film
+                        span 내 동영상
+                    a(href=`${domain}/playlist/WL` class="watchlist")
+                        i.fas.fa-clock
+                        span 나중에 볼 동영상
+                    a(href=`${domain}/playlist/LL` class="likelist")
+                        i.fas.fa-thumbs-up
+                        span 좋아요 표시한 동영상
+            .sidebar__element
+                ul.subscriptions-list
+                    each channel in channels
+                        +subscriptionList({
+                            channelName : channel.name,
+                            subscriber:channel.subscriber
+                        })
                 
 
 

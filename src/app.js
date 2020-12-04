@@ -7,12 +7,16 @@ import helmet from "helmet";
 import compression from "compression";
 import bodyParser from "body-parser"
 import cookieParser from "cookie-parser"
-import multer from "multer"
-import cors from "cors"
-import methodOverride from "method-override"
-import session from "express-session"
-import { localMiddleware } from "./middlewares";
 import path from "path"
+import { localMiddleware } from "./middlewares";
+import mongoose from "mongoose"
+import session from "express-session"
+import MongoStore from "connect-mongo"
+import passport from "passport";
+import "../passport"
+
+import dotenv from "dotenv"
+dotenv.config()
 
 
 //routers
@@ -28,6 +32,8 @@ import sdChannelRouter from "./routers/sdChannelRouter";
 
 const app = express();
 
+const CookieStore = MongoStore(session)
+
 app.set("view engine","pug");
 app.set("views", "src/views");
 app.use("/uploads",express.static("uploads"))
@@ -38,7 +44,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(helmet({contentSecurityPolicy:false}));
 app.use(compression());
-app.use(morgan("tiny"));
+app.use(morgan("dev"));
+app.use(session({ 
+    secret:process.env.COOKIE_SECRET,
+    resave:false,
+    saveUninitialized:false,
+    store : new CookieStore({mongooseConnection:mongoose.connection})
+}))
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use(localMiddleware)
 

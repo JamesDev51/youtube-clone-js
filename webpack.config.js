@@ -49,7 +49,8 @@ const config = {
         },
         plugins:[new MiniCssExtractPlugin({
             filename:"styles.css"
-        })]
+        })],
+
     }
 
     module.exports = config;

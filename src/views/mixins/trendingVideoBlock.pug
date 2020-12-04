@@ -8,7 +8,7 @@ mixin trendingVideoBlock(trendingVideo = {})
             a.trendingVideoBlock__title(href=routes.videoDetail(trendingVideo.id))
                 h4.video__title=trendingVideo.title
             .trendingVideoBlock__info
-                a(href=routes.channel(trendingVideo.channelId))
+                a(href=routes.cnDetail(trendingVideo.channelId))
                     h6.channel__name=trendingVideo.channelName
                 a(href=routes.videoDetail(trendingVideo.id))
                     h6.video__views 조회수 #{trendingVideo.views}

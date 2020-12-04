@@ -3,7 +3,7 @@
     .cnHeader__wrapper
         .cnHeader__info
             .info__column
-                img.cnHeader__avatar(src=channel.avatarUrl)
+                img.cnHeader__avatar.roundAvatar(src=channel.avatarUrl)
                 .cnHeader__detail    
                     .cnHeader__cnName=channel.name
                     .info__column-cnSubscribers
@@ -11,5 +11,5 @@
                         div.cnHeader__cnSubscribers-number=channel.subscribers
                         div.cnHedaer__cnSubscribers-person 명
             .info__column
-                .cnHeader__subscribeBtn 구독
+                .cnHeader__subscribeBtn.subscribeBtn 구독
                 

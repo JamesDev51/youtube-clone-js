@@ -1,31 +1,31 @@
 import express from "express"
 import { sdCnEdit, sdComments, sdDash, sdDeleteVideo, sdPostEditVideo, sdGetEditVideo, sdGetUpload, sdMyvideos, sdPostUpload} from "../controllers/studioControllers"
-import { uploadVideo } from "../middlewares"
+import { onlyPrivate, uploadVideo } from "../middlewares"
 import routes from "../routes"
 
 const studioRouter = express.Router()
 
 //STUDIO CHANNEL HOME
-studioRouter.get(routes.sdDash(), sdDash)
+studioRouter.get(routes.sdDash(),onlyPrivate, sdDash)
 
 //STUDIO CHANNEL COMMENTS
-studioRouter.get(routes.sdComments(), sdComments)
+studioRouter.get(routes.sdComments(),onlyPrivate, sdComments)
 
 //STUDIO CHANNEL EDIT VIDEO
-studioRouter.get(routes.sdEditVideo(), sdGetEditVideo)
-studioRouter.post(routes.sdEditVideo(), sdPostEditVideo)
+studioRouter.get(routes.sdEditVideo(),onlyPrivate, sdGetEditVideo)
+studioRouter.post(routes.sdEditVideo(),onlyPrivate, sdPostEditVideo)
 
 //STUDIO CHANNEL DELETE VIDEO
-studioRouter.get(routes.sdDeleteVideo(), sdDeleteVideo)
+studioRouter.get(routes.sdDeleteVideo(),onlyPrivate, sdDeleteVideo)
 
 //STUDIO CHANNEL MYVIDEOS
-studioRouter.get(routes.sdMyVideos(), sdMyvideos)
+studioRouter.get(routes.sdMyVideos(),onlyPrivate, sdMyvideos)
 
 //STUDIO CHANNEL UPLOAD VIDEO
-studioRouter.get(routes.sdUpload(), sdGetUpload)
-studioRouter.post(routes.sdUpload(),uploadVideo, sdPostUpload)
+studioRouter.get(routes.sdUpload(),onlyPrivate, sdGetUpload)
+studioRouter.post(routes.sdUpload(),onlyPrivate,uploadVideo, sdPostUpload)
 
 //STUDIO CHANNEL EDIT
-studioRouter.get(routes.sdCnEdit(), sdCnEdit)
+studioRouter.get(routes.sdCnEdit(),onlyPrivate, sdCnEdit)
 
 export default studioRouter

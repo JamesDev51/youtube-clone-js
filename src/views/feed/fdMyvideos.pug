@@ -2,9 +2,12 @@ extends ../layouts/main
 include ../mixins/myvideosVideoBlock
 
 block content
-    .myvideosVideo
-        each video in videos
-            +myvideosVideoBlock({
-                title:video.title,
-                views:video.views
-            })
+    if !user
+        span 로그인하여 동영상을 업로드해보세요.
+    else
+        .myvideosVideo
+            each video in videos
+                +myvideosVideoBlock({
+                    title:video.title,
+                    views:video.views
+                })

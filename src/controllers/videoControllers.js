@@ -5,11 +5,15 @@ import Comment from "../models/Comment"
 import Trending from "../models/Trending"
 
 
+
+
 export const home = async (req,res) => {
+
     try{
         const videos = await Video.find({}).sort({_id:-1})
         const channels = await Channel.find({})
         res.render("home",{videos,channels})
+
     }
     catch(error){
         console.log(error)
@@ -18,15 +22,30 @@ export const home = async (req,res) => {
     }
 }
 
-export const search = (req,res) => {
-    res.render("search")
+export const search = async(req,res) => {
+    try{
+        const videos = await Video.find({}).sort({_id:-1})
+        const channels = await Channel.find({})
+        res.render("search",{channels,videos})
+    }
+    catch(error){
+        console.log(error)
+        res.render("search",{channels,videos})
+
+    }
 }
 
 export const videoDetail = async(req,res) => {
-    try{const videos = await Video.find({}).sort({_id:-1})
-    const channels = await Channel.find({})
-    res.render("videoDetail",{channels,videos})}
+    const{
+        params:{id}
+    }=req;
+    try{
+        const video = await Video.findById(id);
+        const nextVideos = await Video.find({}).sort({_id:-1})
+        const channels = await Channel.find({})
+        res.render("videoDetail",{pageTitle:video.title,video,channels,nextVideos})}
     catch(error){
+        console.log(error)
         res.render("videoDetail",{channels,videos})
     }
 }

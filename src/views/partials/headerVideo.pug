@@ -1,15 +1,15 @@
-header.header
+header.header#videoHeader
     .header__wrapper
-        .header__column
-            span.sidebar__button
-                i.fas.fa-bars
-        .header__column
+        .header__column#headerOneVideo
+            .sidebar__button
+                button(onclick="sidebarVideoBtn()")
+                    i.fas.fa-bars
             a(href=routes.home)
                 span.jamesTube-logo
                     i.fab.fa-youtube
                 span.jamesTube-Title JamesTube
                 span.jamesTube-language KR
-        .header__column
+        .header__column#headerTwoVideo
             .search__wrapper
                 .search__wrapper-column
                     form(action=routes.search, method="get")
@@ -19,15 +19,143 @@ header.header
                 .search__wrapper-column
                     span.search-button-logo
                         i.fas.fa-search
-        .header__column
-            .function__wrapper
-                span.function-upload
-                    i.fas.fa-plus-square
-                span.header__function-apps
-                    i.fas.fa-th
-                span.header__function-alarms
-                    i.fas.fa-bell
-        .header__column
-            .user
-                span.user__title m
+        if !user
+            .header__column
+                .function__wrapper
+                    .function__upload-dropdown
+                        button(onclick="uploadDropdownOne()" class="uploadDropdownBtn dropdownbtn") 
+                            i.fas.fa-plus-square.dropdownbtn
+                        .uploadDropdown-content
+                            .uploadVideo__wrapper
+                                a(href=routes.sdUpload(1))
+                                    i.fas.fa-video.headerIcon
+                                    span.dropdownTitle 동영상 업로드
+
+                    .function__apps-dropdown
+                        button(onclick="appsDropdownOne()" class="appsDropdownBtn dropdownbtn") 
+                            i.fas.fa-th.dropdownbtn
+                        .appsDropdown-content
+                            .appsDropdown-row
+                                a(href="")
+                                    i.fas.fa-tv.headerIcon
+                                    span.dropdownTitle JamesTube TV
+                            .appsDropdown-row
+                                a(href="")
+                                    i.far.fa-play-circle.headerIcon#headerPlayIcon
+                                    span.dropdownTitle JamesTube Music
+                                a(href="")
+                                    i.fas.fa-child.headerIcon#headerKidsIcon
+                                    span.dropdownTitle JamesTube Kids
+                                
+                    .function__settings-dropdown
+                        button(onclick="settingsDropdownOne()" class="settingsDropdownBtn dropdownbtn") 
+                            i.fas.fa-ellipsis-v.dropdownbtn
+                        .settingsDropdown-content
+                            .settings__wrapper
+                                a(href=routes.sdUpload(1))
+                                    i.fas.fa-adjust.headerUserIcon#themeAdjust
+                                    span.dropdownTitle 디자인 : 기기 테마
+                                a(href=routes.sdUpload(1))
+                                    i.fas.fa-language.headerUserIcon#language
+                                    span.dropdownTitle 언어 : 한국어
+                                a(href=routes.sdUpload(1))
+                                    i.fas.fa-globe.headerUserIcon#location
+                                    span.dropdownTitle 위치 : 한국
+                                a(href=routes.sdUpload(1))
+                                    i.fas.fa-envelope-open-text.headerUserIcon#complains
+                                    span.dropdownTitle 의견 보내기
+
+                    .function__login-btn
+                        a(href=routes.login, class="login-btn")
+                            i.fas.fa-user-circle.login-btn__icon
+                            span.login-btn__title 로그인
+
+        else
+            .header__column
+                .function__wrapper
+                    .function__upload-dropdown
+                        button(onclick="uploadDropdownTwo()" class="uploadDropdownBtn dropdownbtn") 
+                            i.fas.fa-plus-square.dropdownbtn
+                        .uploadDropdown-content
+                            .uploadVideo__wrapper
+                                a(href=`${domain}/${routes.sdUpload(1)}`)
+                                    i.fas.fa-video.headerIcon
+                                    span.dropdownTitle 동영상 업로드
+
+                    .function__apps-dropdown
+                        button(onclick="appsDropdownTwo()" class="appsDropdownBtn dropdownbtn") 
+                            i.fas.fa-th.dropdownbtn
+                        .appsDropdown-content
+                            .appsDropdown-row
+                                a(href="")
+                                    i.fas.fa-tv.headerIcon
+                                    span.dropdownTitle JamesTube TV
+                            .appsDropdown-row
+                                a(href="")
+                                    i.far.fa-play-circle.headerIcon#headerPlayIcon
+                                    span.dropdownTitle JamesTube Music
+                                a(href="")
+                                    i.fas.fa-child.headerIcon#headerKidsIcon
+                                    span.dropdownTitle JamesTube Kids
+                                
+
+                    .function__alarms-dropdown
+                        button(onclick="alarmsDropdownTwo()" class="alarmsDropdownBtn dropdownbtn") 
+                            i.fas.fa-bell.dropdownbtn
+                        .alarmsDropdown-content
+                            .alarm-row
+                                .alarm-column
+                                    span 알림
+                                .alarm-column
+                                    i.fas.fa-cog
+                            .alarm-row__main
+                                .alarm__nothing
+                                    .alarm__nothing-row
+                                        i.fas.fa-bell
+                                    .alarm__nothing-row
+                                        span.alarm__nothing-title 여기에 알림이 표시됩니다.
+                                    .alarm__nothing-row
+                                        span.alarm__nothing-subtitle 즐겨찾는 채널을 구독하여 최신 동영상의 <br> 알림을 받아 보세요.
+                        
+                    .function__user-dropdown
+                        button(onclick="userDropdownTwo()" class="userDropdownBtn")  
+                            span.user__title#headerUserAvatar  M
+                        .userDropdown-content
+                            .userProfile
+                                .userProfile-column
+                                    span.user__title.userProfile__avatar M
+                                .userProfile-column
+                                    span.userProfile__name James
+                                    span.userProfile__email James@google.com
+                                    a(href=routes.editProfile class="userProfile__edit") 계정 관리
+                            .user__function-wrapper
+                                .user__function-row
+                                    a(href=routes.cnDetail(1))
+                                        i.fas.fa-user-circle.headerUserIcon#mychannelIcon
+                                        span.dropdownTitle 내 채널
+                                    a(href=routes.sdUpload(1))
+                                        i.fas.fa-credit-card.headerUserIcon
+                                        span.dropdownTitle 구매항목 및 멤버십
+                                    a(href=`${domain}/studio/channel/${channel.id}`)
+                                        i.fas.fa-file-video.headerUserIcon#jamesStudio
+                                        span.dropdownTitle JamesTube 스튜디오
+                                    a(href=routes.sdUpload(1))
+                                        i.fas.fa-sign-out-alt.headerUserIcon#logout
+                                        span.dropdownTitle 로그아웃
+                                .user__function-row
+                                    a(href=routes.sdUpload(1))
+                                        i.fas.fa-adjust.headerUserIcon#themeAdjust
+                                        span.dropdownTitle 디자인 : 기기 테마
+                                    a(href=routes.sdUpload(1))
+                                        i.fas.fa-language.headerUserIcon#language
+                                        span.dropdownTitle 언어 : 한국어
+                                    a(href=routes.sdUpload(1))
+                                        i.fas.fa-globe.headerUserIcon#location
+                                        span.dropdownTitle 위치 : 한국
+                                    a(href=routes.sdUpload(1))
+                                        i.fas.fa-envelope-open-text.headerUserIcon#complains
+                                        span.dropdownTitle 의견 보내기
+                                    
+                    
+                
                 

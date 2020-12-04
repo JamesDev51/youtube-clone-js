@@ -1,13 +1,14 @@
 import express from "express"
-import { join, getNewJoin, postNewJoin, getSocialJoin, postSocialJoin } from "../controllers/userControllers"
+import { join, getNewJoin, postNewJoin, getSocialJoin, postSocialJoin, postLogin } from "../controllers/userControllers"
+import { onlyPublic } from "../middlewares"
 import routes from "../routes"
 
 const joinRouter = express.Router()
 
-joinRouter.get(routes.remain,join)
-joinRouter.get(routes.newJoin, getNewJoin)
-joinRouter.post(routes.newJoin, postNewJoin)
-joinRouter.get(routes.socialJoin, getSocialJoin)
-joinRouter.post(routes.socialJoin, postSocialJoin)
+joinRouter.get(routes.remain,onlyPublic,join)
+joinRouter.get(routes.newJoin, onlyPublic,getNewJoin)
+joinRouter.post(routes.newJoin,onlyPublic, postNewJoin, postLogin)
+joinRouter.get(routes.socialJoin,onlyPublic, getSocialJoin)
+joinRouter.post(routes.socialJoin, onlyPublic,postSocialJoin)
 
 export default joinRouter

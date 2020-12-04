@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
 
+const moment = require('moment-timezone')
+
+const currentDateKorea = moment().tz(`Asia/Seoul`).format("YYYY.MM.DD.")
+
 const VideoSchema = new mongoose.Schema({
     videoFile:{
         type:String,
@@ -15,8 +19,16 @@ const VideoSchema = new mongoose.Schema({
         default:0
     },
     createdAt:{
-        type:Date,
-        default:Date.now
+        type:String,
+        default:currentDateKorea
+    },
+    likes:{
+        type:Number,
+        default:0
+    },
+    dislikes:{
+        type:Number,
+        default:0
     },
     comments:[{
         type:mongoose.Schema.Types.ObjectId,

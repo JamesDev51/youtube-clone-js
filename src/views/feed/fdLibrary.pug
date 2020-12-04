@@ -2,9 +2,12 @@ extends ../layouts/main
 include ../mixins/libraryVideoBlock
 
 block content
-    .libraryVideo
-        each video in videos
-            +libraryVideoBlock({
-                title:video.title,
-                views:video.views
-            })
+    if !user
+        span 좋아하는 동영상을 감상해보세요.
+    else
+        .libraryVideo
+            each video in videos
+                +libraryVideoBlock({
+                    title:video.title,
+                    views:video.views
+                })

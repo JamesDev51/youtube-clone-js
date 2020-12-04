@@ -1,16 +1,13 @@
 mixin videoBlock(video = {})
     .videoBlock
-        a(href=routes.videoDetail(video.id)) 
-            video.videoBlock__thumbnail(src=video.videoFile)
+        a(href=routes.videoDetail(video.id))
+            .videoBlock__player.videoPlayer
+                video.videoBlock__thumbnail(src=video.videoFile)
             //-재생시간 추가하기
         .videoBlock__main
-            a(href=routes.channel(video.channelId))
-                img.channel__avatar(src=video.channelAvatar)
             a(href=routes.videoDetail(video.id))
                 h4.video__title=video.title
         .videoBlock__sub
-            a(href=routes.channel(video.channelId))
-                h6.channel__name=video.channelName
             a(href=routes.videoDetail(video.id))
                 h6.video__views 조회수 #{video.views}
 //- n시간 전 만들기

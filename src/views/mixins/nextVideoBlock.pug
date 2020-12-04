@@ -1,5 +1,13 @@
 mixin nextVideoBlock(nextVideo = {})
     .nextVideoBlock
-        a(href=routes.videoDetail) 
-            h4.video__title=nextVideo.title
-            h6.video__views=nextVideo.views
+        a(href=routes.videoDetail(nextVideo.id))
+            .nextVideo__player
+                video.nextVideo__thumbnail(src=`/${nextVideo.videoFile}`)
+        a(href=routes.videoDetail(nextVideo.id))
+            .nextVideo__info
+                h4.video__title=nextVideo.title
+                h5.video__creator 민석
+                .nextVideo__info-column
+                    h6.video__views 조회수 #{nextVideo.views}회
+                    div.mid-dot •
+                    h6.video__createdAt=nextVideo.createdAt

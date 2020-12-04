@@ -1,17 +1,18 @@
 .social-login
-    span.social-login__title 소셜 로그인
-    button
-        span
-            i.fab.fa-google
-    button
-        span
-            i.fas.fa-comment
-    button
-        span
-            |N
-    button
-        span 
-            i.fab.fa-facebook-f
+    .social-login__title 소셜 간편로그인
+    .social-login__btn
+        a(href=routes.home)
+            div
+                i.fab.fa-google.google
+        a(href=routes.home)
+            div
+                i.fas.fa-comment.kakao
+        a(href=routes.home)
+            div 
+                span.naver N
+        a(href=routes.home)
+            div
+                i.fab.fa-facebook-f.facebook
             
     
             

@@ -2,9 +2,12 @@ extends ../layouts/main
 include ../mixins/trendingVideoBlock
 
 block content
-    .trendingVideo
-        each video in videos
-            +trendingVideoBlock({
-                title:video.title,
-                views:video.views
-            })
+    if !user
+        span 새로운 동영상을 놓치지 마세요.
+    else
+        .trendingVideo
+            each video in videos
+                +trendingVideoBlock({
+                    title:video.title,
+                    views:video.views
+                })

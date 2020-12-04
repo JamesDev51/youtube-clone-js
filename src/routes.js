@@ -44,7 +44,7 @@ const LIBRARY = "/library";
 
 //USERS 
 const USERS = "/users";
-const EDIT_PROFILE = "/profile";
+const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password"
 
 //CHANNEL 

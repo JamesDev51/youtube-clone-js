@@ -2,5 +2,25 @@ extends ../layouts/join
 
 block content
     .join__wrapper
-        a(href=`join${routes.newJoin}`).join__newJoin 일반회원으로 가입하기
-        a(href=`join${routes.socialJoin}`).join__social 소셜계정으로 가입하기
+        img(src=img.join class="joinLaptop")
+        .join__select
+            .join__select-title
+                span 안녕하세요.
+                span JamesTube 입니다.
+            a(href=`join${routes.newJoin}`).join__newJoin 
+                span 일반회원으로 가입하기
+                i.fas.fa-chevron-right.joinArrowRight
+            .join__social-dropdown
+                button(href=`join${routes.socialJoin}` onclick="socialJoinDropdown()").join__social
+                    span 소셜계정으로 가입하기
+                    i.fas.fa-angle-down
+                .join__social-content
+                    .join__social-wrapper
+                        a(href=routes.home)
+                            i.fab.fa-google.google
+                        a(href=routes.home)
+                            i.fas.fa-comment.kakao
+                        a(href=routes.home)
+                            span.naver N
+                        a(href=routes.home)
+                            i.fab.fa-facebook-f.facebook

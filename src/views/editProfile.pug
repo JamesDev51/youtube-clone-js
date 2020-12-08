@@ -1,4 +1,16 @@
 extends layouts/main
 
 block content
-    span hi
+    .form-container
+        span.form-title 회원정보변경
+        form(action=`/users${routes.editProfile}`, method="post")
+            .fileUpload
+                label(for="avatar") 프로필사진
+                input(type="file",name="avatar", accept="image/*", value=user.avatarUrl)
+            label(for="name") 이름
+            input(type="text",name="name",placeholder="한글 2자 이상 입력",value=user.name)
+            label(for="email") 이메일
+            input(type="email", name="email",placeholder="이메일 주소 입력",value=user.email readonly)
+            label(for="email") 채널
+            input(type="text", name="channelName",placeholder="새로운 채널명 입력",value=user.channel.name)
+            input(type="submit", value="변경하기")

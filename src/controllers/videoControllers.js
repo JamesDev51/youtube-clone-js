@@ -1,5 +1,6 @@
 import routes from "../routes"
 import Video from "../models/Video"
+import User from "../models/User"
 import Channel from "../models/Channel"
 import Comment from "../models/Comment"
 import Trending from "../models/Trending"
@@ -10,6 +11,10 @@ import Trending from "../models/Trending"
 export const home = async (req,res) => {
 
     try{
+        if(req.user){
+            const currentUser = await User.findById(req.user._id).populate('channel')
+            console.log(currentUser)
+        }
         const videos = await Video.find({}).sort({_id:-1})
         const channels = await Channel.find({})
         res.render("home",{videos,channels})
@@ -40,8 +45,8 @@ export const videoDetail = async(req,res) => {
         params:{id}
     }=req;
     try{
-        const video = await Video.findById(id);
-        const nextVideos = await Video.find({}).sort({_id:-1})
+        const video = await Video.findById(id).populate('channel');
+        const nextVideos = await Video.find({}).populate('channel').sort({_id:-1})
         const channels = await Channel.find({})
         res.render("videoDetail",{pageTitle:video.title,video,channels,nextVideos})}
     catch(error){

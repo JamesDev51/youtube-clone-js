@@ -32,13 +32,22 @@ header.header.header__studio
                 .sdUser-dropdown
                     .sdUserDropdown-button
                         button(onclick="sdUserDropdown()", class="userDropdownBtn")
-                            span.user__title#headerUserAvatarSd M
+                            .user__avatar#headerUserAvatarSd(style=`background-color:${userColor};`)
+                                if user.avatarUrl
+                                    img(src=user.avatarUrl class="header__userAvatar-img")
+                                else
+                                    span(class="header__userAvatar-name") #{user.name.substr(0,1)} 
                     .sdUserDropdown-content
                         .sdUserProfile
                             .userProfile-column
-                                span.user__title.user__avatar M
+                                .user__avatar(style=`background-color:${userColor};`) 
+                                    if user.avatarUrl
+                                        img(src=user.avatarUrl class="header__userAvatar-img")
+                                    else
+                                        span(class="header__userAvatar-name") #{user.name.substr(0,1)} 
                             .userProfile-column
-                                span.channel__name=channel.name
+                                span.channel__name=user.name
+                                span.channel__name=user.channel.name
                         .user__function-wrapper
                             .user__function-row
                                 a(href=routes.cnDetail(1))
@@ -47,7 +56,7 @@ header.header.header__studio
                                 a(href=routes.home)
                                     i.fab.fa-youtube.headerUserIcon#jamesTube
                                     span.dropdownTitle JamesTube
-                                a(href=routes.sdUpload(1))
+                                a(href=routes.logout)
                                     i.fas.fa-sign-out-alt.headerUserIcon#logout
                                     span.dropdownTitle 로그아웃
                             .user__function-row

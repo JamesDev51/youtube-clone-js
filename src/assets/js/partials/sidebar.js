@@ -14,10 +14,10 @@ const videoSideDark = document.querySelector(".bodyDarkWrapper")
 
 const cnHeaderCover = document.querySelector(".cnHeader__cover")
 const cnHeaderWrapper = document.querySelector(".cnHeader__wrapper")
-const sdCnTitle = document.querySelector(".channel__title-wrapper")
-const sdCnTitleHover = document.querySelector(".channel__title-hover")
-const sdCnAvatarBig= document.querySelector(".channel__avatar")
-const sdCnAvatarBigHover = document.querySelector(".channel__avatar-hover")
+const sdCnAvatar= document.querySelector(".channel__avatar")
+const sdCnAvatarHover = document.querySelector(".channel__avatar-hover")
+const sdCnAvatarBig= document.querySelector(".channel__avatarBig")
+const sdCnAvatarHoverBig = document.querySelector(".channel__avatar-hoverBig")
 
 const SHOWING_CN="showing"
 const DARK_CN = "dark"
@@ -131,29 +131,30 @@ if(videoSideDark){
 window.sidebarBtn = sidebarBtn;
 window.sidebarVideoBtn = sidebarVideoBtn;
 
-function handleSdCnTitleEnter(){
-    sdCnTitleHover.style.display="block";
+
+
+function handleSdCnAvatarEnter(){
+    sdCnAvatarHover.style.display="block";
+}
+function handleSdCnAvatarLeave(){
+    sdCnAvatarHover.style.display="none";
 }
 
-function handleSdCnTitleLeave(){
-    sdCnTitleHover.style.display="none";
-}
-
-if(sdCnTitle && sdCnTitleHover){
-    sdCnTitle.addEventListener("mouseover",handleSdCnTitleEnter)
-    sdCnTitleHover.addEventListener("mouseleave",handleSdCnTitleLeave)
+if(sdCnAvatar && sdCnAvatarHover){
+    sdCnAvatar.addEventListener("mouseover",handleSdCnAvatarEnter)
+    sdCnAvatarHover.addEventListener("mouseleave",handleSdCnAvatarLeave)
 }
 
 function handleSdCnAvatarBigEnter(){
-    sdCnAvatarBigHover.style.display="block";
+    sdCnAvatarHoverBig.style.display="block";
 }
 function handleSdCnAvatarBigLeave(){
-    sdCnAvatarBigHover.style.display="none";
+    sdCnAvatarHoverBig.style.display="none";
 }
 
-if(sdCnAvatarBig && sdCnAvatarBigHover){
+if(sdCnAvatarBig && sdCnAvatarHoverBig){
     sdCnAvatarBig.addEventListener("mouseover",handleSdCnAvatarBigEnter)
-    sdCnAvatarBigHover.addEventListener("mouseleave",handleSdCnAvatarBigLeave)
+    sdCnAvatarHoverBig.addEventListener("mouseleave",handleSdCnAvatarBigLeave)
 }
 
 

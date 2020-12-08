@@ -52,7 +52,7 @@
         width: 32px;
         height: 32px;
         position: relative;
-        .channel__title-wrapper {
+        .channel__avatar-wrapper {
           width: 100%;
           height: 100%;
           border-radius: 50%;
@@ -60,14 +60,27 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          .channel__title {
+          position: absolute;
+          .channel__avatar {
             opacity: 1;
             font-size: 18px;
             color: white;
+            width:100%;
+            height:100%;
+            overflow:hidden;
+            display:flex;
+            border:0px;
+            border-radius: 60%;
+            justify-content: center;
+            align-items: center;
+            img{
+              width:100%;
+              height:100%;
+              object-fit: cover;
+            }
           }
-          position: absolute;
         }
-        .channel__title-hover {
+        .channel__avatar-hover {
           width: 100%;
           height: 100%;
           display: flex;
@@ -168,24 +181,36 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      .channel__avatar {
+      .channel__avatar-wrapper {
         position: absolute;
-        margin: 24px 0px 13px 0px;
         width: 100px;
         height: 100px;
+        margin: 24px 0px 13px 0px;
         border-radius: 50%;
         background-color: peru;
         display: flex;
         align-items: center;
         justify-content: center;
-        .user__title {
-          opacity: 1;
-          font-size: 55px;
-          font-weight: 400;
-          color: white;
+        .channel__avatarBig {
+            opacity: 1;
+            font-size: 18px;
+            color: white;
+            width:100%;
+            height:100%;
+            overflow:hidden;
+            display:flex;
+            border:0px;
+            border-radius: 60%;
+            justify-content: center;
+            align-items: center;
+            img{
+              width:100%;
+              height:100%;
+              object-fit: cover;
+            }
         }
       }
-      .channel__avatar-hover {
+      .channel__avatar-hoverBig {
         width: 100px;
         height: 100px;
         display: flex;

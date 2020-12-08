@@ -3,7 +3,11 @@
     .cnHeader__wrapper
         .cnHeader__info
             .info__column
-                img.cnHeader__avatar.roundAvatar(src=channel.avatarUrl)
+                .user__avatar(style=`background-color:${userColor};`)
+                    if channel.avatarUrl
+                        img(src=channel.avatarUrl class="header__userAvatar-img")
+                    else
+                        span(class="header__userAvatar-name") #{user.name.substr(0,1)}
                 .cnHeader__detail    
                     .cnHeader__cnName=channel.name
                     .info__column-cnSubscribers

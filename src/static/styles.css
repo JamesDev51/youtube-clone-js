@@ -177,8 +177,7 @@ main {
   width: 100% !important; }
 
 .border {
-  border: 0px !important;
-  padding: 7px 9px !important; }
+  border: 0px !important; }
 
 form {
   width: 100%;
@@ -249,6 +248,20 @@ form {
   .login-btn .login-btn__title {
     color: #437dca;
     font-size: 16px; }
+
+.video__player {
+  width: 100%;
+  height: 0;
+  background-color: transparent;
+  padding-bottom: 56.25%;
+  position: relative;
+  outline: none; }
+  .video__player video {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    outline: none; }
 
 .header {
   position: fixed;
@@ -376,14 +389,12 @@ form {
       width: 220px; }
       .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper {
         margin-right: 10px; }
-      .header .header__wrapper .header__column:nth-child(3) .user__title {
+      .header .header__wrapper .header__column:nth-child(3) .user__avatar {
         opacity: 1;
         font-size: 18px;
         display: flex;
         align-items: center;
         color: white;
-        background-color: peru;
-        padding: 6px 8px;
         border-radius: 60%;
         border: 1px solid #01097e; }
       .header .header__wrapper .header__column:nth-child(3) .user__title-studio {
@@ -423,7 +434,30 @@ form {
         .header .header__wrapper .header__column:nth-child(3) .function__wrapper .userDropdownBtn,
         .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .userDropdownBtn,
         .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .userDropdownBtn {
-          cursor: pointer; }
+          cursor: pointer;
+          width: 33px;
+          height: 35px; }
+          .header .header__wrapper .header__column:nth-child(3) .function__wrapper .userDropdownBtn #headerUserAvatar,
+          .header .header__wrapper .header__column:nth-child(3) .function__wrapper .userDropdownBtn #headerUserAvatarSd,
+          .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .userDropdownBtn #headerUserAvatar,
+          .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .userDropdownBtn #headerUserAvatarSd,
+          .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .userDropdownBtn #headerUserAvatar,
+          .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .userDropdownBtn #headerUserAvatarSd {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center; }
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .userDropdownBtn #headerUserAvatar img,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .userDropdownBtn #headerUserAvatarSd img,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .userDropdownBtn #headerUserAvatar img,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .userDropdownBtn #headerUserAvatarSd img,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .userDropdownBtn #headerUserAvatar img,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .userDropdownBtn #headerUserAvatarSd img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover; }
         .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUploadDropdownBtn,
         .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUploadDropdownBtn,
         .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUploadDropdownBtn {
@@ -992,39 +1026,6 @@ form {
               .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUploadDropdown-content a:hover,
               .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUserDropdown-content a:hover {
                 background-color: #e7e7e7; }
-          .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .user__title,
-          .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .user__title {
-            opacity: 1;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            color: white;
-            background-color: peru;
-            padding: 6px 8px;
-            border-radius: 60%;
-            border: 1px solid #01097e; }
           .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .uploadDropdown-content,
           .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .uploadDropdown-content,
           .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .uploadDropdown-content,
@@ -1509,8 +1510,7 @@ form {
             .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .userDropdown-content .userProfile {
               padding: 15px 10px;
               display: flex;
-              border-bottom: 1px solid #e2e2e2;
-              z-index: 10; }
+              border-bottom: 1px solid #e2e2e2; }
               .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child,
               .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child,
               .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child,
@@ -1536,33 +1536,112 @@ form {
               .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child,
               .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child {
                 padding-right: 15px; }
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .userProfile__avatar {
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar, .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar {
+                  width: 38px;
+                  height: 38px;
+                  border-radius: 60% !important;
                   border: 0px;
                   font-size: 25px;
-                  padding: 7px 8px; }
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  overflow: hidden; }
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img, .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child #userProfile__avatar img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .userDropdown-content .userProfile .userProfile-column:first-child .user__avatar img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover; }
               .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .userDropdown-content .userProfile .userProfile-column:nth-child(2),
               .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .userDropdown-content .userProfile .userProfile-column:nth-child(2),
               .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .userDropdown-content .userProfile .userProfile-column:nth-child(2),
@@ -2092,32 +2171,64 @@ form {
                 width: 36px;
                 height: 36px;
                 margin: 15px; }
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span,
-                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child span {
-                  padding: 10px;
-                  border: none; }
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div,
+                .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div {
+                  width: 100%;
+                  height: 100%;
+                  overflow: hidden;
+                  display: flex;
+                  border: 0px;
+                  justify-content: center;
+                  align-items: center; }
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:first-child div img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover; }
               .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2),
               .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2),
               .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2),
@@ -2143,6 +2254,8 @@ form {
               .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2),
               .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) {
                 display: flex;
+                flex-direction: column;
+                justify-content: center;
                 align-items: center; }
                 .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span,
                 .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span,
@@ -2168,8 +2281,34 @@ form {
                 .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span,
                 .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span,
                 .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span {
-                  font-size: 18px;
+                  font-size: 16px;
                   font-weight: 500; }
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child,
+                  .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUserDropdown-content .sdUserProfile .userProfile-column:nth-child(2) span:first-child {
+                    font-size: 20px;
+                    font-weight: 600; }
             .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUserDropdown-content .user__function-row:first-child,
             .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUserDropdown-content .user__function-row:first-child,
             .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUserDropdown-content .user__function-row:first-child,
@@ -2278,7 +2417,7 @@ form {
       width: 32px;
       height: 32px;
       position: relative; }
-      .sidebar__wrapper-small .studio-list .channel-info .channel__wrapper .channel__title-wrapper {
+      .sidebar__wrapper-small .studio-list .channel-info .channel__wrapper .channel__avatar-wrapper {
         width: 100%;
         height: 100%;
         border-radius: 50%;
@@ -2287,11 +2426,23 @@ form {
         align-items: center;
         justify-content: center;
         position: absolute; }
-        .sidebar__wrapper-small .studio-list .channel-info .channel__wrapper .channel__title-wrapper .channel__title {
+        .sidebar__wrapper-small .studio-list .channel-info .channel__wrapper .channel__avatar-wrapper .channel__avatar {
           opacity: 1;
           font-size: 18px;
-          color: white; }
-      .sidebar__wrapper-small .studio-list .channel-info .channel__wrapper .channel__title-hover {
+          color: white;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          display: flex;
+          border: 0px;
+          border-radius: 60%;
+          justify-content: center;
+          align-items: center; }
+          .sidebar__wrapper-small .studio-list .channel-info .channel__wrapper .channel__avatar-wrapper .channel__avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; }
+      .sidebar__wrapper-small .studio-list .channel-info .channel__wrapper .channel__avatar-hover {
         width: 100%;
         height: 100%;
         display: flex;
@@ -2302,7 +2453,7 @@ form {
         left: 0px;
         right: 0px;
         display: none; }
-        .sidebar__wrapper-small .studio-list .channel-info .channel__wrapper .channel__title-hover a {
+        .sidebar__wrapper-small .studio-list .channel-info .channel__wrapper .channel__avatar-hover a {
           width: 100%;
           height: 100%;
           display: flex;
@@ -2312,7 +2463,7 @@ form {
           border-radius: 50%;
           background-color: black;
           opacity: 0.6; }
-          .sidebar__wrapper-small .studio-list .channel-info .channel__wrapper .channel__title-hover a i {
+          .sidebar__wrapper-small .studio-list .channel-info .channel__wrapper .channel__avatar-hover a i {
             color: white;
             opacity: 1;
             font-size: 14px;
@@ -2383,22 +2534,33 @@ form {
       display: flex;
       flex-direction: column;
       align-items: center; }
-      .sidebar__wrapper-big .channel__info .channel__wrapper .channel__avatar {
+      .sidebar__wrapper-big .channel__info .channel__wrapper .channel__avatar-wrapper {
         position: absolute;
-        margin: 24px 0px 13px 0px;
         width: 100px;
         height: 100px;
+        margin: 24px 0px 13px 0px;
         border-radius: 50%;
         background-color: peru;
         display: flex;
         align-items: center;
         justify-content: center; }
-        .sidebar__wrapper-big .channel__info .channel__wrapper .channel__avatar .user__title {
+        .sidebar__wrapper-big .channel__info .channel__wrapper .channel__avatar-wrapper .channel__avatarBig {
           opacity: 1;
-          font-size: 55px;
-          font-weight: 400;
-          color: white; }
-      .sidebar__wrapper-big .channel__info .channel__wrapper .channel__avatar-hover {
+          font-size: 18px;
+          color: white;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          display: flex;
+          border: 0px;
+          border-radius: 60%;
+          justify-content: center;
+          align-items: center; }
+          .sidebar__wrapper-big .channel__info .channel__wrapper .channel__avatar-wrapper .channel__avatarBig img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; }
+      .sidebar__wrapper-big .channel__info .channel__wrapper .channel__avatar-hoverBig {
         width: 100px;
         height: 100px;
         display: flex;
@@ -2407,7 +2569,7 @@ form {
         position: absolute;
         top: 24px;
         display: none; }
-        .sidebar__wrapper-big .channel__info .channel__wrapper .channel__avatar-hover a {
+        .sidebar__wrapper-big .channel__info .channel__wrapper .channel__avatar-hoverBig a {
           width: 100%;
           height: 100%;
           display: flex;
@@ -2417,7 +2579,7 @@ form {
           border-radius: 50%;
           background-color: black;
           opacity: 0.6; }
-          .sidebar__wrapper-big .channel__info .channel__wrapper .channel__avatar-hover a i {
+          .sidebar__wrapper-big .channel__info .channel__wrapper .channel__avatar-hoverBig a i {
             color: white;
             opacity: 1;
             font-size: 18px;
@@ -2503,11 +2665,24 @@ body {
       display: flex;
       justify-content: space-between; }
       .channelHeader .cnHeader__wrapper .cnHeader__info .info__column:first-child {
-        display: flex; }
-        .channelHeader .cnHeader__wrapper .cnHeader__info .info__column:first-child img {
-          border-radius: 50%;
-          width: 90px;
-          height: 90px; }
+        display: flex;
+        align-items: center; }
+        .channelHeader .cnHeader__wrapper .cnHeader__info .info__column:first-child .user__avatar {
+          width: 50px;
+          height: 50px;
+          background-color: chocolate;
+          color: white;
+          border-radius: 60% !important;
+          border: 0px;
+          font-size: 25px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden; }
+          .channelHeader .cnHeader__wrapper .cnHeader__info .info__column:first-child .user__avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; }
         .channelHeader .cnHeader__wrapper .cnHeader__info .info__column:first-child .cnHeader__detail {
           padding: 10px 0px 10px 20px;
           margin-right: 200px; }
@@ -2590,9 +2765,12 @@ body {
         display: flex;
         opacity: 0.8; }
 
-main .videos__wrapper {
+.videos__wrapper {
   width: 100%;
   height: 100%; }
+  .videos__wrapper .videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 
 .login__form-container {
   width: 100%;
@@ -2739,31 +2917,39 @@ main .videos__wrapper {
             padding: 10px;
             background-color: white; }
 
-.join__form-container {
+.join__form-container, .form-container {
   margin-top: 50px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center; }
-  .join__form-container .join__form-title {
+  .join__form-container .join__form-title, .join__form-container .form-title, .form-container .join__form-title, .form-container .form-title {
+    margin-top: 30px;
     font-size: 30px;
     font-weight: 600;
     margin-bottom: 50px; }
-  .join__form-container form {
+  .join__form-container form, .form-container form {
     width: 100%;
     max-width: 400px; }
-    .join__form-container form label {
+    .join__form-container form .fileUpload label, .form-container form .fileUpload label {
       font-size: 16px;
       font-weight: 600; }
-    .join__form-container form input {
+    .join__form-container form .fileUpload input, .form-container form .fileUpload input {
+      padding: 20px;
+      margin-top: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.1); }
+    .join__form-container form label, .form-container form label {
+      font-size: 16px;
+      font-weight: 600; }
+    .join__form-container form input, .form-container form input {
       padding: 20px;
       margin-top: 5px; }
-      .join__form-container form input:not(:last-of-type) {
+      .join__form-container form input:not(:last-of-type), .form-container form input:not(:last-of-type) {
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 5px; }
-      .join__form-container form input:not(:nth-of-type(3)) {
+      .join__form-container form input:not(:nth-of-type(3)), .form-container form input:not(:nth-of-type(3)) {
         margin-bottom: 30px; }
-      .join__form-container form input:nth-of-type(3) {
+      .join__form-container form input:nth-of-type(3), .form-container form input:nth-of-type(3) {
         margin-bottom: 5px; }
 
 #mainVideo {
@@ -2775,17 +2961,6 @@ main .videos__wrapper {
   height: 100%;
   margin-top: 30px;
   margin-right: 30px; }
-  .video-detail__container .video__player {
-    width: 100%;
-    height: 0;
-    background-color: black;
-    padding-bottom: 56.25%;
-    position: relative; }
-    .video-detail__container .video__player video {
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 100%; }
   .video-detail__container .video__info {
     width: 100%;
     margin-top: 25px;
@@ -2884,4 +3059,66 @@ main .videos__wrapper {
           .video-detail__container .video__comments .video__comments-row:nth-child(2) .comment-write__column:nth-child(2) .comment-write__btns .comment-up__btn {
             background-color: rgba(0, 0, 0, 0.3);
             color: white; }
+
+.profile__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .profile__wrapper .profile__header {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end; }
+    .profile__wrapper .profile__header a {
+      font-size: 15px; }
+    .profile__wrapper .profile__header .profile__edit-btn {
+      margin-right: 15px; }
+  .profile__wrapper .profile__body {
+    display: flex;
+    margin-bottom: 30px; }
+    .profile__wrapper .profile__body .profile__user-avatar {
+      margin-right: 20px;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      border-radius: 60%;
+      border: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      color: white; }
+      .profile__wrapper .profile__body .profile__user-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
+    .profile__wrapper .profile__body .profile__user-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; }
+      .profile__wrapper .profile__body .profile__user-info span:not(:last-child) {
+        margin-bottom: 10px; }
+      .profile__wrapper .profile__body .profile__user-info .user-name {
+        font-size: 35px;
+        font-weight: 600; }
+      .profile__wrapper .profile__body .profile__user-info .user-email {
+        font-size: 20px;
+        font-weight: 400; }
+      .profile__wrapper .profile__body .profile__user-info .user-createdAt {
+        font-size: 15px; }
+  .profile__wrapper .profile__footer {
+    margin-top: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 15px; }
+    .profile__wrapper .profile__footer .profile__channel-info {
+      display: flex;
+      flex-direction: column; }
+      .profile__wrapper .profile__footer .profile__channel-info span {
+        font-size: 20px; }
+        .profile__wrapper .profile__footer .profile__channel-info span:not(:last-child) {
+          margin-bottom: 15px; }
 

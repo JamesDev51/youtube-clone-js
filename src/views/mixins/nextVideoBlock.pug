@@ -6,7 +6,7 @@ mixin nextVideoBlock(nextVideo = {})
         a(href=routes.videoDetail(nextVideo.id))
             .nextVideo__info
                 h4.video__title=nextVideo.title
-                h5.video__creator 민석
+                h5.video__creator=nextVideo.channelName
                 .nextVideo__info-column
                     h6.video__views 조회수 #{nextVideo.views}회
                     div.mid-dot •

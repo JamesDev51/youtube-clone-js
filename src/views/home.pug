@@ -3,7 +3,6 @@ include mixins/videoBlock
 
 block content
     .videos__wrapper
-        |This is video
         .videos
             each video in videos
                 +videoBlock({
@@ -11,6 +10,7 @@ block content
                     videoFile:video.videoFile,
                     title:video.title,
                     views:video.views,
-                    description:video.description
-
+                    createdAt:video.createdAt,
+                    channelName:video.channel.name,
+                    channelAvatar:video.channel.avatarUrl
                 })

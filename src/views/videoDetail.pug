@@ -30,13 +30,13 @@ block content
         .video__creator
             .channel-creator
                 .creator__column
-                    img.creator__avatar.roundAvatar(src=channel.avatarUrl)
+                    img.creator__avatar.roundAvatar(src=video.channel.avatarUrl)
                     .creator__info
                         .creator__name
-                            span=channel.name
+                            span=video.channel.name
                         .creator__subscribeNum
                             span.cnHedaer__cnSubscribers-title 구독자
-                            span.cnHeader__cnSubscribers-number=channel.subscribers
+                            span.cnHeader__cnSubscribers-number=video.channel.subscribers
                             span.cnHedaer__cnSubscribers-person 명
                 .creator__column
                     .creator__subscribeBtn.subscribeBtn 구독
@@ -47,7 +47,7 @@ block content
                 span.comments__number 댓글 #{video.comments.length} 개
             .video__comments-row
                 .comment-write__column
-                    img.comment-writer__img.roundAvatar(src=channel.avatarUrl)
+                    img.comment-writer__img.roundAvatar(src=user.avatarUrl)
                 .comment-write__column
                     form.comment-write__form
                         input(type="text" ,placeholder="공개 댓글 추가..." ,name="comment")

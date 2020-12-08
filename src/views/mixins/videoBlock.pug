@@ -1,7 +1,7 @@
 mixin videoBlock(video = {})
     .videoBlock
         a(href=routes.videoDetail(video.id))
-            .videoBlock__player.videoPlayer
+            .videoBlock__player.video__Player
                 video.videoBlock__thumbnail(src=video.videoFile)
             //-재생시간 추가하기
         .videoBlock__main

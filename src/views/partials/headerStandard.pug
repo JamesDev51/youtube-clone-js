@@ -118,28 +118,36 @@ header.header
                                         span.alarm__nothing-subtitle 즐겨찾는 채널을 구독하여 최신 동영상의 <br> 알림을 받아 보세요.
                         
                     .function__user-dropdown
-                        button(onclick="userDropdownTwo()" class="userDropdownBtn")  
-                            span.user__title#headerUserAvatar  M
+                        button(onclick="userDropdownTwo()" class="userDropdownBtn")
+                            .user__avatar#headerUserAvatar(style=`background-color:${userColor};`)
+                                if user.avatarUrl
+                                    img(src=user.avatarUrl class="header__userAvatar-img")
+                                else
+                                    span(class="header__userAvatar-name") #{user.name.substr(0,1)}
                         .userDropdown-content
                             .userProfile
                                 .userProfile-column
-                                    span.user__title.userProfile__avatar M
+                                    .user__avatar#userProfile__avatar(style=`background-color:${userColor};`)
+                                        if user.avatarUrl
+                                            img(src=user.avatarUrl class="header__userAvatar-img")
+                                        else
+                                            span(class="header__userAvatar-name") #{user.name.substr(0,1)} 
                                 .userProfile-column
-                                    span.userProfile__name James
-                                    span.userProfile__email James@google.com
-                                    a(href=`/users${routes.editProfile}` class="userProfile__edit") 계정 관리
+                                    span.userProfile__name=user.name
+                                    span.userProfile__email=user.email
+                                    a(href=`/users${routes.myPage}` class="userProfile__edit") 계정 관리
                             .user__function-wrapper
                                 .user__function-row
-                                    a(href=routes.cnDetail(1))
+                                    a(href=routes.cnDetail(channel.id))
                                         i.fas.fa-user-circle.headerUserIcon#mychannelIcon
                                         span.dropdownTitle 내 채널
-                                    a(href=routes.sdUpload(1))
+                                    a(href=routes.sdUpload(channel.id))
                                         i.fas.fa-credit-card.headerUserIcon
                                         span.dropdownTitle 구매항목 및 멤버십
                                     a(href=`${domain}/studio/channel/${channel.id}`)
                                         i.fas.fa-file-video.headerUserIcon#jamesStudio
                                         span.dropdownTitle JamesTube 스튜디오
-                                    a(href=routes.sdUpload(1))
+                                    a(href=routes.logout)
                                         i.fas.fa-sign-out-alt.headerUserIcon#logout
                                         span.dropdownTitle 로그아웃
                                 .user__function-row

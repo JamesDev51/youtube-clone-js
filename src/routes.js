@@ -44,6 +44,7 @@ const LIBRARY = "/library";
 
 //USERS 
 const USERS = "/users";
+const MY_PAGE = "/myPage"
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password"
 
@@ -54,6 +55,22 @@ const CN_FEATURE = "/:id/feature";
 const CN_VIDEOS = "/:id/videos";
 const CN_COMMUNITY = "/:id/community"
 const CN_ABOUT = "/:id/about"
+
+//Google
+const GOOGLE = "/auth/google";
+const GOOGLE_CALLBACK="/auth/google/callback"
+
+//Kakao
+const KAKAO = "/auth/kakao";
+const KAKAO_CALLBACK="/auth/kakao/callback"
+
+//Naver
+const NAVER = "/auth/naver";
+const NAVER_CALLBACK="/auth/naver/callback"
+
+//Github
+const GITHUB = "/auth/github";
+const GITHUB_CALLBACK="/auth/github/callback"
 
 
 const routes = {
@@ -125,6 +142,7 @@ const routes = {
     subscriptions : SUBSCRIPTIONS,
     library : LIBRARY,
     users : USERS,
+    myPage:MY_PAGE,
     editProfile : EDIT_PROFILE,
     changePassword : CHANGE_PASSWORD,
     channel : CHANNEL,
@@ -167,7 +185,15 @@ const routes = {
         }else{
             return VIDEO_DETAIL;
         }
-    }
+    },
+    google:GOOGLE,
+    googleCallback:GOOGLE_CALLBACK,
+    kakao:KAKAO,
+    kakaoCallback:KAKAO_CALLBACK,
+    naver:NAVER,
+    naverCallback:NAVER_CALLBACK,
+    github:GITHUB,
+    githubCallback:GITHUB_CALLBACK
 }
 
 export default routes;

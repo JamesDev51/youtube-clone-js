@@ -4,7 +4,10 @@ const ChannelSchema = new mongoose.Schema({
     name:String,
     coverUrl:String,
     avatarUrl:String,
-    subscribers:Number,
+    subscribers:{
+        type:Number,
+        default:0
+    },
     videos:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Video"

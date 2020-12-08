@@ -6,9 +6,13 @@
             .studio-list
                 .channel-info
                     .channel__wrapper
-                        .channel__title-wrapper
-                            span.channel__title M
-                        .channel__title-hover    
+                        .channel__avatar-wrapper
+                            .channel__avatar 
+                                if user.avatarUrl
+                                    img(src=user.avatarUrl class="header__userAvatar-img")
+                                else
+                                    span(class="header__userAvatar-name") #{user.name.substr(0,1)} 
+                        .channel__avatar-hover    
                             a(href=`${domain}/channel/${id}` class="sdSide__channel")      
                                 i.fas.fa-external-link-alt
                 a(href=`${domain}/studio/channel/${channel.id}` )
@@ -26,14 +30,18 @@
         .sidebar__element
             .channel__info
                 .channel__wrapper
-                    .channel__avatar
-                        span.user__title M
-                    .channel__avatar-hover                   
+                    .channel__avatar-wrapper
+                        .channel__avatarBig(style=`background-color:${userColor};`) 
+                            if user.avatarUrl
+                                img(src=user.avatarUrl class="header__userAvatar-img")
+                            else
+                                span(class="header__userAvatar-name") #{user.name.substr(0,1)} 
+                    .channel__avatar-hoverBig                  
                         a(href=`${domain}/channel/${id}` class="sdSide__channel")
                             i.fas.fa-external-link-alt
                 .channel__title
                     span.channel__mychannel 내 채널
-                    span.channel__name=channel.name
+                    span.channel__name=user.channel.name
             .studio-list
                 a(href=`${domain}/studio/channel/${channel.id}` class="sdDash")
                     i.fas.fa-th-large

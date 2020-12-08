@@ -23,14 +23,14 @@ export const sdGetUpload = (req,res)=>{
     res.render("studio/sdUpload",{pageTitle:"동영상 업로드"})
 }
 export const sdPostUpload = async(req,res)=>{
-    const {body:{title,description},file:{path}}=req;
-    const {locals:{channel}}=res;
+    const {body:{title,description},file:{path},user:{channel}}=req;
     
     try{
         const newVideo = await Video.create({
             videoFile:path,
             title,
             description,
+            channel
         })
         res.redirect(routes.videoDetail(newVideo._id))
     }

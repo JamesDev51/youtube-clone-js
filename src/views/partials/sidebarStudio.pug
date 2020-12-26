@@ -3,56 +3,54 @@
 .sidebar#sidebarStudio
     .sidebar__wrapper-small
         .sidebar__element
-            .studio-list
+            .studio-list#studioSidebarSmall
                 .channel-info
                     .channel__wrapper
                         .channel__avatar-wrapper
-                            .channel__avatar 
+                            .channel__avatar(style=`background-color:${user.userColor};`) 
                                 if user.avatarUrl
                                     img(src=user.avatarUrl class="header__userAvatar-img")
                                 else
-                                    span(class="header__userAvatar-name") #{user.name.substr(0,1)} 
+                                    span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
                         .channel__avatar-hover    
-                            a(href=`${domain}/channel/${id}` class="sdSide__channel")      
+                            a(href=`${domain}${routes.cnVideos(user.channel.id)}` class="sdSide__channel")      
                                 i.fas.fa-external-link-alt
-                a(href=`${domain}/studio/channel/${channel.id}` )
+                a(href=`${domain}${routes.sdDash(user.channel.id)}` )
                     i.fas.fa-th-large
-                a(href=`${domain}/studio/channel/${channel.id}/my_videos`  class="home-container")
+                a(href=`${domain}${routes.sdMyVideos(user.channel.id)}`  class="home-container")
                     i.fas.fa-file-video
-                a(href=`${domain}/studio/channel/${channel.id}/comments` class="trending-container")  
+                a(href=`${domain}${routes.sdComments(user.channel.id)}` class="trending-container")  
                     i.fas.fa-comment-alt
-                a(href=`${domain}/studio/channel/${channel.id}/comments` class="trending-container")  
-                    i.fas.fa-comment-alt
-                a(href=`${domain}/studio/channel/${channel.id}/cn_edit` class="subscriptions-container")
+                a(href=`${domain}${routes.sdEditImages(user.channel.id)}` class="subscriptions-container")
                     i.fas.fa-magic
     
-    .sidebar__wrapper-big
+    .sidebar__wrapper-big#studioSidebarBig
         .sidebar__element
             .channel__info
                 .channel__wrapper
                     .channel__avatar-wrapper
-                        .channel__avatarBig(style=`background-color:${userColor};`) 
+                        .channel__avatarBig(style=`background-color:${user.userColor};`) 
                             if user.avatarUrl
                                 img(src=user.avatarUrl class="header__userAvatar-img")
                             else
-                                span(class="header__userAvatar-name") #{user.name.substr(0,1)} 
+                                span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
                     .channel__avatar-hoverBig                  
-                        a(href=`${domain}/channel/${id}` class="sdSide__channel")
+                        a(href=`${domain}${routes.cnVideos(user.channel.id)}` class="sdSide__channel")
                             i.fas.fa-external-link-alt
                 .channel__title
                     span.channel__mychannel 내 채널
                     span.channel__name=user.channel.name
             .studio-list
-                a(href=`${domain}/studio/channel/${channel.id}` class="sdDash")
+                a(href=`${domain}${routes.sdDash(user.channel.id)}` class="sdDash")
                     i.fas.fa-th-large
                     |대시보드
-                a(href=`${domain}/studio/channel/${channel.id}/my_videos`  class="sdVideos")
+                a(href=`${domain}${routes.sdMyVideos(user.channel.id)}`  class="sdVideos")
                     i.fas.fa-file-video
                     |동영상
-                a(href=`${domain}/studio/channel/${channel.id}/comments` class="sdComments")  
+                a(href=`${domain}${routes.sdComments(user.channel.id)}` class="sdComments")  
                     i.fas.fa-comment-alt
                     |댓글
-                a(href=`${domain}/studio/channel/${channel.id}/cn_edit` class="sdSettings")
+                a(href=`${domain}${routes.sdEditImages(user.channel.id)}` class="sdSettings")
                     i.fas.fa-magic
                     |맞춤설정
             

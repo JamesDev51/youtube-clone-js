@@ -1,60 +1,264 @@
 extends layouts/video
+include mixins/videoPlayer
 
 block content
     .video-detail__container
-        .video__player
-            video(src=`/${video.videoFile}`)
+        +videoPlayer({
+            videoFile:video.videoFile
+        })
         .video__info
             .video__info-row
                 h5.video__title=video.title
             .video__info-row
                 .video__info-column
-                    span.video__views 조회수 #{video.views}회
+                    div.video__views 
+                        span 조회수 
+                        span#jsVideoViews #{video.views}
+                        span 회
                     div.mid-dot •
                     span.video__date=video.createdAt
                 .video__info-column
-                    .video__like-wrapper
-                        button.video__like-btn
-                            .video-btn__wrapper
-                                i.fas.fa-thumbs-up.video__info-icon
-                                span=video.likes
-                        button.video__dislike-btn
-                            .video-btn__wrapper
-                                i.fas.fa-thumbs-down.video__info-icon
-                                span=video.dislikes
-                    .video__function-wrapper
-                        button.video__save-btn
-                            .video-btn__wrapper
-                                i.fas.fa-folder-plus.video__info-icon
-                                span 저장
+                    if user
+                        .video__like-wrapper#jsVideoLikeWrapper
+                            input#jsVideoToken(type="hidden",name="videoToken", value=videoToken).hidden
+                            button.video__like-btn#jsVideoLikeBtn
+                                .video-btn__wrapper
+                                    i.fas.fa-thumbs-up.video__info-icon
+                                    span#jsVideoLike=video.likelist.length
+                            button.video__dislike-btn#jsVideoDislikeBtn
+                                .video-btn__wrapper
+                                    i.fas.fa-thumbs-down.video__info-icon
+                                    span#jsVideoDislike=video.dislikelist.length
+                        .video__function-wrapper
+                            input#jsVideoSaveToken(type="hidden",name="videoSaveToken", value=videoSaveToken).hidden
+                            button.video__save-btn#jsVideoSaveBtn
+                                .video-btn__wrapper
+                                    i.fas.fa-folder-plus.video__info-icon
+                                    span 저장
+                    else
+                        a(href=routes.login)
+                            .video__like-wrapper
+                                button.video__like-btn
+                                    .video-btn__wrapper
+                                        i.fas.fa-thumbs-up.video__info-icon
+                                        span=video.likelist.length
+                                button.video__dislike-btn
+                                    .video-btn__wrapper
+                                        i.fas.fa-thumbs-down.video__info-icon
+                                        span=video.dislikelist.length
+                            .video__function-wrapper
+                                button.video__save-btn
+                                    .video-btn__wrapper
+                                        i.fas.fa-folder-plus.video__info-icon
+                                        span 저장
         .video__creator
             .channel-creator
                 .creator__column
-                    img.creator__avatar.roundAvatar(src=video.channel.avatarUrl)
+                    .creator__avatar(style=`background-color:${video.channel.userColor}`)
+                        a(href=routes.cnVideos(video.channel.id))
+                            if video.channel.avatarUrl
+                                img(src=video.channel.avatarUrl class="creator__avatar-img.roundAvatar")
+                            else
+                                span(class="creator__avatar-name.roundAvatar") #{video.channel.name.substr(0,1)}
                     .creator__info
                         .creator__name
-                            span=video.channel.name
+                            a(href=routes.cnVideos(video.channel.id))
+                                span=video.channel.name
                         .creator__subscribeNum
-                            span.cnHedaer__cnSubscribers-title 구독자
-                            span.cnHeader__cnSubscribers-number=video.channel.subscribers
+                            span.cnHedaer__cnSubscribers-title 구독자 
+                            span.cnHeader__cnSubscribers-number=video.channel.subscribers.length
                             span.cnHedaer__cnSubscribers-person 명
                 .creator__column
-                    .creator__subscribeBtn.subscribeBtn 구독
+                    if user
+                        if channelId == user.channel.id
+                            .video__editBtn-wrapper
+                                a(href=routes.sdEditVideo(video.channel.id,video.id))
+                                    button.deleteVideoBtn.window__modal-btn 동영상 수정
+                                button.deleteVideoBtn.window__modal-btn(onclick="openModal()") 동영상 삭제
+                                .deleteVideoModal#deleteVideoWrapper.modal.modalVideo
+                                    .deleteVideo__modal-wrapper.modal-wrapper
+                                        .deleteVideo__modal-container.modal-container
+                                            .deleteVideo__modal-title.modal-title
+                                                h1 동영상 삭제
+                                                p 해당 동영상을 삭제하시겠습니까?
+                                                p 삭제된 동영상은 복구가 불가능합니다.
+                                            .deleteVideo__modal-select.modal-select
+                                                button(class="cancle-btn" onclick="closeModal()") 취소
+                                                a(href=routes.deleteVideo(video.id)) 
+                                                    button.delete-btn
+                                                        span 삭제
+                        else
+                            .creator__subscribeBtn 
+                                input#jsSubscribeToken(type="hidden",name="subscribeToken", value=subscribeToken).hidden
+                                input#jsChannelId(type="hidden",name="channelId", value=channelId).hidden
+                                button.subscribe-btn.subscribeBtn#jsSubscribeBtn 구독 
+                    else
+                        a(href=routes.login)
+                            .creator__subscribeBtn 
+                                button.subscribe-btn.subscribeBtn 구독 
+
             .video__description
                 p=video.description
         .video__comments
             .video__comments-row
                 span.comments__number 댓글 #{video.comments.length} 개
             .video__comments-row
-                .comment-write__column
-                    img.comment-writer__img.roundAvatar(src=user.avatarUrl)
-                .comment-write__column
-                    form.comment-write__form
-                        input(type="text" ,placeholder="공개 댓글 추가..." ,name="comment")
-                    .comment-write__btns
-                        button.comment-cancel__btn.squareBtn
-                            span 취소
-                        button.comment-up__btn.squareBtn
-                            span 댓글
+                .comment-write__wrapper
+                    if user
+                        .comment-writer.roundAvatar(style=`background-color:${user.userColor};`)
+                            if user.avatarUrl
+                                img(src=user.avatarUrl class="comment-writer-img")
+                            else
+                                span(class="comment-writer-name") #{user.channel.name.substr(0,1)} 
+                        .comment-write
+                            form.comment-write__form#jsCommentForm
+                                input#jsCommentInput(type="text" ,placeholder="공개 댓글 추가..." ,name="comment")
+                                .comment-write__btns
+                                    input.comment-cancel__btn.squareBtn#jsResetBtn(type="reset", value="취소")
+                                    input.comment-up__btn.squareBtn#jsSubmitBtn(type="submit", value="댓글")
+                    else
+                        a(href=routes.login).noneUser-comment
+                            .comment-writer.roundAvatar
+                                img(src=img.noneUser class="comment-writer-img")
+                            .comment-write
+                                form.comment-write__form.noneUser-write__form
+                                    input(type="text" ,placeholder="공개 댓글 추가..." ,name="comment")
                         
-            .video__comments-row
+            .video__comments-row#jsCommentLikeWrapper
+                each comment in comments
+                    .comment-write__wrapper
+                        if user
+                            input#jsUserId(type="hidden" value=user._id name="userId")
+                            .comment-writer.roundAvatar(style=`background-color:${comment.writer.userColor};`)
+                                if comment.writer.avatarUrl
+                                    img(src=comment.writer.avatarUrl class="comment-writer-img")
+                                else
+                                    span(class="comment-writer-name") #{comment.writer.name.substr(0,1)} 
+                            .comment-info
+                                .comment-info__row
+                                        span.comment-writer-name=comment.writer.name
+                                        span.comment-createdAt=comment.createdAt
+                                .comment-info__row
+                                    p.comment-p=comment.text
+                                .comment-info__row
+                                    input#jsCommentId(type="hidden",value=comment.id, name="commentId")
+                                    .comment-like__wrapper
+                                        input#jsCommentToken(type="hidden", value="", name="commentToken").hidden
+                                        input#jsCommentLikeToken(type="hidden" value=comment.likelist , name="commentLikeToken").hidden
+                                        button.comment__like-btn#jsCommentLikeBtn
+                                            .comment-btn__wrapper
+                                                i.fas.fa-thumbs-up.comment__info-icon
+                                                if comment.likelist.length==0
+                                                    span
+                                                else
+                                                    span#jsCommentLike=comment.likelist.length
+                                        input#jsCommentDislikeToken(type="hidden" value=comment.dislikelist , name="commentDislikeToken").hidden
+                                        button.comment__dislike-btn#jsCommentDislikeBtn
+                                            .comment-btn__wrapper
+                                                i.fas.fa-thumbs-down.comment__info-icon
+                                                if comment.dislikelist.length==0
+                                                    span
+                                                else
+                                                    span#jsCommentDislike=comment.dislikelist.length
+                                        div.comment-writer-like
+                                    button.reply__write-btn#jsReplyBtn
+                                        span 답글
+                                    if comment.writer.id == user.id
+                                        button.deleteCommentBtn.window__modal-btn(onclick="openCommentModal()") 댓글 삭제
+                                        .deleteCommentModal#deleteCommentWrapper.modal.modalComment
+                                            .deleteComment__modal-wrapper.modal-wrapper
+                                                .deleteComment__modal-container.modal-container
+                                                    .deleteComment__modal-title.modal-title
+                                                        h1 댓글 삭제
+                                                        p 해당 댓글을 삭제하시겠습니까?
+                                                        p 삭제된 댓글은 복구가 불가능합니다.
+                                                    .deleteComment__modal-select.modal-select
+                                                        button(class="cancle-btn" onclick="closeCommentModal()") 취소
+                                                        a(href=routes.deleteComment(comment.id)) 
+                                                            button.delete-btn 
+                                                                span 삭제
+                                .comment-info__row
+                                    .reply-write__wrapper#jsReplyWrapper
+                                        .replyWrapper
+                                            .reply-writer.roundAvatar(style=`background-color:${user.userColor};`)
+                                                if user.avatarUrl
+                                                    img(src=user.avatarUrl class="reply-writer-img")
+                                                else
+                                                    span(class="reply-writer-name") #{user.channel.name.substr(0,1)} 
+                                            .reply-write
+                                                form.reply-write__form#jsReplyForm
+                                                    input#jsReplyInput(type="text" ,placeholder="공개 답글 추가..." ,name="reply")
+                                                    input#jsReplyCommentId(type="hidden" , value=`${comment.id}`,name="commentId" style="display:none")
+                                                    .reply-write__btns
+                                                        input.reply-cancel__btn.squareBtn#jsReplyResetBtn(type="reset", value="취소")
+                                                        input.reply-up__btn.squareBtn#jsReplySubmitBtn(type="submit", value="댓글")
+                                .comment-info__row
+                                    if comment.replies.length==0
+                                    else
+                                        button.reply__show-btn 답글 보기 
+                                            i.fas.fa-caret-down  
+                                    .comment__replies
+                                        each reply in comment.replies
+                                            .comment-reply__wrapper
+                                                .reply-row
+                                                    .reply-column
+                                                        a(href=routes.cnDetail(reply.channelId)).reply-writer-name=reply.writer
+                                                    .reply-column
+                                                        span.reply-createdAt=reply.createdAt
+                                                .reply-row
+                                                    p.reply-text=reply.text
+                        else
+                            .comment-writer.roundAvatar(style=`background-color:${comment.writer.userColor};`)
+                                if comment.writer.avatarUrl
+                                    img(src=comment.writer.avatarUrl class="comment-writer-img")
+                                else
+                                    span(class="comment-writer-name") #{user.channel.name.substr(0,1)} 
+                            .comment-info
+                                .comment-info__row
+                                        span.comment-writer-name=comment.writer.name
+                                        span.comment-createdAt=comment.createdAt
+                                .comment-info__row
+                                    p.comment-p=comment.text
+                                .comment-info__row
+                                    a(href=routes.login)
+                                        .comment-like__wrapper
+                                            button.comment__like-btn
+                                                .comment-btn__wrapper
+                                                    i.fas.fa-thumbs-up.comment__info-icon
+                                                    if comment.likelist.length==0
+                                                    else
+                                                        span=comment.likelist.length
+                                            button.comment__dislike-btn
+                                                .comment-btn__wrapper
+                                                    i.fas.fa-thumbs-down.comment__info-icon
+                                                    if comment.dislikelist.length==0
+                                                    else
+                                                        span=comment.dislikelist.length
+                                            div.comment-writer-like
+                                    button.reply__write-btn#jsReplyBtn
+                                        span 답글
+                                .comment-info__row
+                                    .reply-write__wrapper#jsReplyWrapper
+                                            a(href=routes.login).noneUser-reply
+                                                .reply-writer.roundAvatar
+                                                    img(src=img.noneUser class="reply-writer-img")
+                                                .reply-write
+                                                    form.reply-write__form
+                                                        input(type="text" ,placeholder="공개 답글 추가..." ,name="reply")
+                                .comment-info__row
+                                    if comment.replies.length==0
+                                    else
+                                        button.reply__show-btn
+                                            span
+                                                i.fas.fa-caret-down
+                                            span 답글 보기 
+                                    .comment__replies
+                                        each reply in comment.replies
+                                            .comment-reply__wrapper
+                                                .reply-row
+                                                    .reply-column
+                                                        a(href=routes.cnDetail(reply.channelId)).reply-writer-name=reply.writer
+                                                    .reply-column
+                                                        span.reply-createdAt=reply.createdAt
+                                                .reply-row
+                                                    p.reply-text=reply.text

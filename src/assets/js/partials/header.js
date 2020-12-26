@@ -31,6 +31,7 @@ const bd_CN="border"
 function uploadDropdownOne() {
     switchDropdownUploadOne()
     uploadDropList.classList.toggle(SW__CN)
+
 }
 function appsDropdownOne() {
     switchDropdownAppsOne()

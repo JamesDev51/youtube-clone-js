@@ -1,0 +1,13 @@
+.sdEditNav.nav
+    .sdEdit__title
+        h1 채널 맞춤설정
+    .sdEdit__bar.nav__bar
+        .sdEditNav__wrapper.nav__wrapper
+            a(href=`${domain}${routes.sdEditImages(user.channel.id)}`)
+                span 브랜딩
+            a(href=`${domain}${routes.sdEditDetails(user.channel.id)}`)
+                span 기본 정보
+        .sdEditNav__submit-btn
+            button 취소
+            input(type="submit", value="게시")
+    

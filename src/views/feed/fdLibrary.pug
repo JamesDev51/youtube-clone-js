@@ -5,9 +5,15 @@ block content
     if !user
         span 좋아하는 동영상을 감상해보세요.
     else
-        .libraryVideo
-            each video in videos
-                +libraryVideoBlock({
-                    title:video.title,
-                    views:video.views
-                })
+        .libraryVideos__wrapper.videos__wrapper
+            .libraryVideo.videos  
+                each video in videos
+                    +libraryVideoBlock({
+                        id:video._id,
+                        videoFile:video.videoFile,
+                        title:video.title,
+                        views:video.views,
+                        createdAt:video.createdAt,
+                        channel:video.channel
+                    })
+

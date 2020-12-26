@@ -1,24 +1,88 @@
 import routes from "../routes"
+import User from "../models/User"
 import Video from "../models/Video"
 import Channel from "../models/Channel"
 import Comment from "../models/Comment"
 import Trending from "../models/Trending"
 
+//global function or variable
+const domain = "http://localhost:2000"
+
 export const sdDash = (req,res)=>{
     res.render("studio/sdDash")
 }
 export const sdMyvideos = async(req,res) =>{
-    const videos = await Video.find({}).sort({_id:-1})
-    
+    const {user:{channel}}=req;
+    const videos = await Video.find({channel}).sort({_id:-1})
     res.render("studio/sdMyvideos",{videos})
 }
 
-export const sdComments = (req,res)=>{
-    res.render("studio/sdComments")
+export const sdComments = async(req,res) => {
+    const {user:{id:userId}}=req
+    try{
+        const comments = await Comment.find({'writer':{$in:userId}}).populate('video')
+        
+        res.render("studio/sdComments", {comments})
+    }catch(error){
+        console.log(error)
+        res.render("studio/sdComments",{comments})
+    }
 }
-export const sdCnEdit = (req,res)=>{
-    res.render("studio/sdCnEdit")
+export const sdGetCnEditImages = (req,res)=>{
+    try{
+        res.render("studio/sdEditImages")
+        
+    }catch(error){
+        console.log(error)
+        res.render("studio/sdEditImages")
+    }
 }
+export const sdPostCnEditImages = async(req,res)=>{
+    const {user,files:{avatar,cover,watermark}}=req;
+    try{
+        const channel = await Channel.findById(user.channel)
+        const avatarUrl = avatar ? `${domain}/${avatar[0].path}` : null
+        const coverUrl = cover ? `${domain}/${cover[0].path}` : null
+        const watermarkUrl = watermark ? `${domain}/${watermark[0].path}` : null
+        await User.findByIdAndUpdate(user._id,{
+            avatarUrl : avatar ? avatarUrl : user.avatarUrl
+        })
+        await Channel.findByIdAndUpdate(channel._id,{
+            avatarUrl : avatar ? avatarUrl : channel.avatarUrl,
+            coverUrl : cover ? coverUrl : channel.coverUrl,
+            watermarkUrl : watermark ? watermarkUrl : channel.watermarkUrl
+        })
+        res.redirect(`${routes.sdEditImages(user.channel)}`)
+    }catch(error){
+        console.log(error)
+        res.redirect(`${routes.sdEditImages(user.channel)}`)
+    }
+}
+export const sdGetCnEditDetails = (req,res)=>{
+    try{
+        res.render("studio/sdEditDetails")
+    }
+    catch(error){
+        console.log(error)
+        res.render("studio/sdEditDetails")
+    }
+}
+
+export const sdPostCnEditDetails = async(req,res) => {
+    const {user, body:{cnName,cnDescription}}=req
+    try{
+        const channel = await Channel.findById(user.channel)
+        await Channel.findByIdAndUpdate(channel._id,{
+            name: cnName ? cnName : channel.name,
+            description: cnDescription ? cnDescription : channel.description
+        })
+        res.redirect(`${routes.sdEditDetails(user.channel)}`)
+    }catch(error){
+        console.log(error)
+        res.redirect(`${routes.sdEditDetails(user.channel)}`)
+    }
+}
+
 export const sdGetUpload = (req,res)=>{
     res.render("studio/sdUpload",{pageTitle:"동영상 업로드"})
 }
@@ -27,11 +91,13 @@ export const sdPostUpload = async(req,res)=>{
     
     try{
         const newVideo = await Video.create({
-            videoFile:path,
+            videoFile:`${domain}/${path}`,
             title,
             description,
             channel
         })
+        req.user.videos.push(newVideo._id)
+        req.user.save();
         res.redirect(routes.videoDetail(newVideo._id))
     }
     catch(error){
@@ -40,12 +106,32 @@ export const sdPostUpload = async(req,res)=>{
         
     }
 }
+
+export const sdRecord = (req,res) => {
+    const {user}=req
+    try{
+        res.render("studio/sdRecord")
+    }catch(error){
+        console.log(error)
+        res.red
+    }
+}
+export const sdStreaming = (req,res) => {
+    
+    console.log("hi")
+}
+
+
 export const sdGetEditVideo = async(req,res)=>{
     const {params:{id}}=req;
-    
-    const video = await Video.findById({_id:id})
-    console.log(video)
-    res.render("studio/sdEditVideo",{video})
+    try{
+        const video = await Video.findById({_id:id})
+        res.render("studio/sdEditVideo",{video})
+    }
+    catch(error){
+        console.log(error)
+        res.render("studio/sdEditVideo",{video})
+    }
 }
 export const sdPostEditVideo = async(req,res)=>{
     const {params:{id},body:{title,description}}=req;
@@ -53,21 +139,7 @@ export const sdPostEditVideo = async(req,res)=>{
         await Video.findOneAndUpdate({_id:id},{title,description})
         res.redirect(routes.videoDetail(id))
     }catch(error){
-        res.redirect(routes.home)
-    }
-}
-export const sdDeleteVideo = async(req,res)=>{
-    const {params:{id}}=req;
-    const {locals:{channel,domain}}=res;
-
-    try{
-        await Video.findOneAndDelete({_id:id})
-        res.redirect(`${domain}/studio/channel/${channel.id}/my_videos`)
-    }
-    catch(error){
         console.log(error)
         res.redirect(routes.home)
-
     }
-    
 }

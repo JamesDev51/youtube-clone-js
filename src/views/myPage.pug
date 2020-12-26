@@ -8,17 +8,17 @@ block content
             a(href=`/users${routes.changePassword}`).change-password-btn
                 span.edit-btn-title 비밀번호변경
         .profile__body
-            .profile__user-avatar(style=`background-color:${userColor};`)
+            .profile__user-avatar(style=`background-color:${user.userColor};`)
                 if user.avatarUrl
                     img(src=user.avatarUrl class="header__userAvatar-img")
                 else
-                    span(class="header__userAvatar-name") #{user.name.substr(0,1)} 
+                    span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
             .profile__user-info
                 span.user-name=user.name
                 span.user-email=user.email
                 span.user-createdAt=user.createdAt
         .profile__footer
             .profile__channel-info
-                span.user-channelName 채널명 : #{channel.name}
-                span.user-channelSubscribers 구독자 수 : #{channel.subscribers} 명
-                span.user-channelVideos 업로드 동영상 : #{channel.videos.length} 개
+                span.user-channelName 채널명 : #{user.channel.name}
+                span.user-channelSubscribers=`구독자 수 : ${user.channel.subscribers.length} 명`
+                span.user-channelVideos 업로드 동영상 : #{user.channel.videos.length} 개

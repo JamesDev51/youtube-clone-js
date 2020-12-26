@@ -7,9 +7,17 @@
 @import "partials/channelPartial.scss";
 @import "partials/nextVideo.scss";
 @import "partials/videoBlock.scss";
+@import "partials/modal.scss";
+@import "partials/sdEditNav.scss";
+@import "partials/videoPlayer.scss";
+@import "partials/videoRecord.scss";
+@import "partials/videoStreaming.scss";
 
 @import "pages/home.scss";
 @import "pages/login.scss";
 @import "pages/join.scss";
 @import "pages/videoDetail.scss";
-@import "pages/myPage.scss";
+@import "pages/myPage.scss"; 
+@import "pages/sdEdit.scss"; 
+@import "pages/sdComments.scss"; 
+@import "pages/channel.scss"; 

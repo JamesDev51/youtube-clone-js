@@ -1,11 +1,15 @@
 extends ../layouts/studio
-include ../mixins/sdmyvideoList
+include ../mixins/sdMyvideoBlock
 
 block content
-    each video in videos
-        +sdmyvideoList({
-            id:video._id,
-            title:video.title,
-            views:video.views
-        })
+    .sdMyvideos__wrapper.videos__wrapper
+        .sdMyvideos.videos
+            each video in videos
+                +sdMyvideoBlock({
+                    id:video._id,
+                    videoFile:video.videoFile,
+                    title:video.title,
+                    views:video.views,
+                    createdAt:video.createdAt
+                })
 

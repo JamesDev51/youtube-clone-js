@@ -6,8 +6,10 @@ const sidebarMenu = document.querySelector(".sidebarMenu")
 const loginForm = document.querySelector(".login__form-container")
 
 const standardMain = document.querySelector("#mainStandard,#mainStudio")
+const videoWrapper = document.querySelector(".videos__wrapper")
 
 const videoBody = document.querySelector("#bodyVideo")
+const videoSidebarBig = document.querySelector("#videoSidebarWrapper")
 const videoMain = document.querySelector("#mainVideo")
 const videoHeader = document.querySelector("#videoHeader")
 const videoSideDark = document.querySelector(".bodyDarkWrapper")
@@ -22,12 +24,23 @@ const sdCnAvatarHoverBig = document.querySelector(".channel__avatar-hoverBig")
 const SHOWING_CN="showing"
 const DARK_CN = "dark"
 const SIDEBARBIG_LS = "sidebarbig"
+const SIDEBARBIGVD_LS = "sidebarbigvd"
+
 
 function loadSidebarOption() {
     let loadedSidebar = localStorage.getItem(SIDEBARBIG_LS);
     if(loadedSidebar === SHOWING_CN){
         sidebarBig.classList.add(SHOWING_CN)
         sidebarBig.style.width="250px"
+        
+    }
+}
+
+function loadVideoSidebarOption() {
+    let loadedSidebarVd = localStorage.getItem(SIDEBARBIGVD_LS);
+    if(loadedSidebarVd === SHOWING_CN){
+        videoSidebarBig.classList.add(SHOWING_CN)
+        videoSidebarBig.style.width="250px"
         if(videoSideDark){
             videoSideDark.classList.add(DARK_CN);
             videoBody.style.overflow = "hidden";
@@ -35,6 +48,7 @@ function loadSidebarOption() {
     }
 }
 
+//save 
 function saveSidebarBig () {
     let hasClass = sidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
@@ -42,6 +56,16 @@ function saveSidebarBig () {
 
     }else{
         localStorage.removeItem(SIDEBARBIG_LS)
+    }
+}
+
+function saveSidebarBigVd () {
+    let hasClass = sidebarBig.classList.contains(SHOWING_CN);
+    if(hasClass){
+        localStorage.setItem(SIDEBARBIGVD_LS,SHOWING_CN)   
+
+    }else{
+        localStorage.removeItem(SIDEBARBIGVD_LS)
     }
 }
 
@@ -58,11 +82,15 @@ function setChannelSize(){
     }
 }
 
-
 function setMainSize(){
     let hasClass = sidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
         standardMain.style.marginLeft="250px";
+        if(videoWrapper){
+            videoWrapper.style.paddingLeft="70px"
+            videoWrapper.style.paddingRight="70px"
+
+        }
         if(loginForm){
             standardMain.style.marginLeft="80px";
         }
@@ -71,6 +99,10 @@ function setMainSize(){
         }
     }else{
         standardMain.style.marginLeft="80px"
+        if(videoWrapper){
+            videoWrapper.style.paddingLeft="25px"
+            videoWrapper.style.paddingRight="25px"
+        }
         if(cnHeaderCover || cnHeaderWrapper){
             setChannelSize();
         }
@@ -78,7 +110,7 @@ function setMainSize(){
 }
 
 function setBodyDark(){
-    let hasClass = sidebarBig.classList.contains(SHOWING_CN);
+    let hasClass = videoSidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
         videoSideDark.classList.add(DARK_CN)
         videoBody.style.overflow = "hidden";
@@ -99,15 +131,19 @@ function sidebarBtn() {
 }
 
 function sidebarVideoBtn() {
-    sidebarBig.classList.toggle(SHOWING_CN)
+    videoSidebarBig.classList.toggle(SHOWING_CN)
     setBodyDark();
-    saveSidebarBig();
+    saveSidebarBigVd();
     
 }
 
 
 function init(){
-    loadSidebarOption();
+    if(!videoSidebarBig){
+        loadSidebarOption();
+    }else{
+        loadVideoSidebarOption();
+    }
     if(standardMain){
         setMainSize()
     }
@@ -117,19 +153,17 @@ if(sidebarBig){
 }
 
 function handleVideoDarkClick(){
-    sidebarBig.classList.remove(SHOWING_CN);
+    videoSidebarBig.classList.remove(SHOWING_CN);
     videoMain.style.marginLeft="0px"
     videoSideDark.classList.remove(DARK_CN)
     videoBody.style.overflow = "visible";
-    localStorage.removeItem(SIDEBARBIG_LS)
+    localStorage.removeItem(SIDEBARBIGVD_LS)
 }
 
 if(videoSideDark){
     videoSideDark.addEventListener("click",handleVideoDarkClick)
 }
 
-window.sidebarBtn = sidebarBtn;
-window.sidebarVideoBtn = sidebarVideoBtn;
 
 
 
@@ -159,3 +193,5 @@ if(sdCnAvatarBig && sdCnAvatarHoverBig){
 
 
 
+window.sidebarBtn = sidebarBtn;
+window.sidebarVideoBtn = sidebarVideoBtn;

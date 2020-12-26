@@ -1,0 +1,55 @@
+extends ../layouts/studio
+
+block content
+    form(action=`${domain}${routes.sdEditImages(user.channel.id)}`,method="post",enctype="multipart/form-data")
+        include ../partials/sdEditNav
+        .sdEdit__images-wrapper
+            .sdEdit__image-profile.sdEdit__image-row
+                h4.image-profile__title.sdEdit__image-title 프로필 사진
+                h5.image-profile__subtitle.sdEdit__image-subtitle 프로필 사진은 동영상 및 댓글 옆과 같이 JamesTube에서 채널을 나타내는 위치에 표시됩니다. 여기에서 변경하면 다른 서비스에도 반영됩니다.
+                .image-profile__preview.sdEdit__image-preview
+                    .sdEdit__image-column
+                        .sdEdit__image-wrapper
+                            img.sdEdit__roundProfile(src=user.avatarUrl)
+                    .sdEdit__image-column        
+                        p 98x98픽셀 이상, 4MB 이하의 사진이 권장됩니다. PNG 또</br>는 GIF(애니메이션 GIF 제외)파일을 사용하세요. 사진이</br>JamesTube 커뮤니티 가이드를 준수해야 합니다.
+                            .fileUploadBox
+                                label(for="avatar") 업로드
+                                input(type="file",name="avatar",id="avatar", accept="image/*" )
+            .sdEdit__image-cover.sdEdit__image-row
+                h4.image-cover__title.sdEdit__image-title 배너 이미지
+                h5.image-cover__subtitle.sdEdit__image-subtitle 이 이미지가 채널 상단에 표시됩니다.
+                .image-cover__preview.sdEdit__image-preview
+                    .sdEdit__image-column
+                        .sdEdit__image-wrapper
+                            .sdEdit__channel-device
+                                .sdEdit__channel-cover
+                                    if user.channel.coverUrl
+                                        img.sdEdit__cover(src=user.channel.coverUrl)
+                                    else 
+                                        .red-box
+                    .sdEdit__image-column        
+                        p 모든 기기에 최적화된 이미지가 표시되도록 2048x1152 픽</br>셀 이상, 6MB 이하의 이미지를 사용하세요. 
+                            .fileUploadBox
+                                label(for="cover") 업로드
+                                input(type="file",name="cover",id="cover", accept="image/*" )
+            .sdEdit__image-watermark.sdEdit__image-row
+                h4.image-watermark__title.sdEdit__image-title 동영상 워터마크
+                h5.image-watermark__subtitle.sdEdit__image-subtitle 동영상에서 워터마크는 동영상 플레이어의 오른쪽 모서리 부분에 표시됩니다.
+                .image-watermark__preview.sdEdit__image-preview
+                    .sdEdit__image-column
+                        .sdEdit__image-wrapper.watermark__wrapper
+                            .sdEdit__watermark
+                                if user.channel.watermarkUrl
+                                    img.sdEdit__cover(src=user.channel.watermarkUrl)
+                                else 
+                                    span 
+                                        i.fas.fa-chess-board
+                    .sdEdit__image-column        
+                        p 150x150 픽셀의 이미지가 권장됩니다. 1MB 이하의 PNG,</br>GIF(애니메이션 GIF 제외), BMP,JPEG 파일을 사용하세요.
+                            .fileUploadBox
+                                label(for="watermark") 업로드
+                                input(type="file",name="watermark",id="watermark", accept="image/*" )        
+        
+        
+    

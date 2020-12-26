@@ -3,17 +3,26 @@
     .cnHeader__wrapper
         .cnHeader__info
             .info__column
-                .user__avatar(style=`background-color:${userColor};`)
+                .user__avatar(style=`background-color:${channel.userColor};`)
                     if channel.avatarUrl
                         img(src=channel.avatarUrl class="header__userAvatar-img")
                     else
-                        span(class="header__userAvatar-name") #{user.name.substr(0,1)}
+                        span(class="header__userAvatar-name") #{channel.name.substr(0,1)}
                 .cnHeader__detail    
                     .cnHeader__cnName=channel.name
                     .info__column-cnSubscribers
                         div.cnHedaer__cnSubscribers-title 구독자
-                        div.cnHeader__cnSubscribers-number=channel.subscribers
+                        div.cnHeader__cnSubscribers-number=channel.subscribers.length
                         div.cnHedaer__cnSubscribers-person 명
             .info__column
-                .cnHeader__subscribeBtn.subscribeBtn 구독
-                
+                if user
+                    if channelId == user.channel.id
+                    else
+                        .cnHeader__subscribeBtn                    
+                            input#jsSubscribeToken(type="hidden",name="subscribeToken", value=subscribeToken).hidden
+                            input#jsChannelId(type="hidden",name="channelId", value=channelId).hidden
+                            button.subscribe-btn.subscribeBtn#jsSubscribeBtn 구독 
+                else
+                    a(href=routes.login)
+                        .creator__subscribeBtn 
+                            button.subscribe-btn.subscribeBtn 구독 

@@ -19,12 +19,47 @@ const UserSchema = new mongoose.Schema({
         type:String,
         default:date
     },
-    userColor:Number,
+    comments:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Comment"
+    }],
+    replies:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Reply"
+        }],
+    userColor:String,
     avatarUrl:String,
     googleId:Number,
     kakaoId:Number,
     naverId:Number,
-    instagramId:Number
+    githubId:Number,
+    passwordToken:{
+        type:Boolean,
+        default:false},
+    videos:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Video"
+    }],
+    subscribeChannels:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Channel"
+    }],
+    library:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Video"
+    }],
+    likelist:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Video"
+    }],
+    dislikelist:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Video"
+    }],
+    watchlist:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Video"
+    }]
 });
 
 UserSchema.plugin(passportLocalMongoose,{usernameField:"email"})

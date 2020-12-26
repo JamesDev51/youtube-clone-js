@@ -1,5 +1,23 @@
-mixin libraryVideoBlock(libraryVideo = {})
-    .libraryVideoBlock
-        a(href=routes.videoDetail) 
-            h4.video__title=libraryVideo.title
-            h6.video__views=libraryVideo.views
+mixin libraryVideoBlock(video = {})
+    .libraryVideoBlock.videoBlock
+        a(href=routes.videoDetail(video.id))
+            .libraryVideoBlock__player.videoPlayer
+                video.libraryVideoBlock__thumbnail#jsVideoThumbnail(src=video.videoFile)
+            //-재생시간 추가하기
+        .libraryVideoBlock__info.videoBlock__info
+            .libraryVideo__info-column.video__info-column
+                a(href=routes.cnVideos(video.channel._id))
+                    .libraryVideo__creator-avatar.user__avatar(style=`background-color:${video.channel.userColor};`)
+                        if video.channel.avatarUrl
+                            img(src=video.channel.avatarUrl class="libraryVideo__creator-img")
+                        else
+                            span(class="libraryVideo__creator-name")=video.channel.name.substr(0,1)
+            .libraryVideo__info-column.video__info-column
+                .libraryVideo__info-main.video__info-main
+                    a(href=routes.videoDetail(video.id))
+                        h4.libraryVideo__title=video.title
+                .libraryVideo__info-sub.video__info-sub
+                    a(href=routes.cnVideos(video.channel))
+                        h6.libraryVideo__creator-name.video__creator-name=video.channel.name
+                    a(href=routes.videoDetail(video.id))
+                        h6.libraryVideo__views 조회수 #{video.views}회 • #{video.createdAt}

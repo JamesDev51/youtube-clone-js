@@ -22,22 +22,26 @@ const VideoSchema = new mongoose.Schema({
         type:String,
         default:currentDateKorea
     },
-    likes:{
-        type:Number,
-        default:0
-    },
-    dislikes:{
-        type:Number,
-        default:0
-    },
+    likelist:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    }],
+    dislikelist:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    }],
     comments:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Comment"
+    }],    
+    replies:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Reply"
     }],
     channel:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Channel"
-    }
+    },
 })
 
 const model = mongoose.model("Video",VideoSchema);

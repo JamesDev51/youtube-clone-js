@@ -2,9 +2,17 @@ extends ../layouts/main
 include ../mixins/watchlistVideoBlock
 
 block content
-    .watchlistVideo
-        each video in videos
-            +watchlistVideoBlock({
-                title:video.title,
-                views:video.views
-            })
+    if !user
+        span 새로운 동영상을 놓치지 마세요.
+    else
+        .watchlistVideos__wrapper.videos__wrapper
+            .watchlistVideo.videos  
+                each video in videos
+                    +watchlistVideoBlock({
+                    id:video._id,
+                    videoFile:video.videoFile,
+                    title:video.title,
+                    views:video.views,
+                    createdAt:video.createdAt,
+                    channel:video.channel
+                    })

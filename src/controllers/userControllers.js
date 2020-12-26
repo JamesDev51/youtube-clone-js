@@ -5,9 +5,48 @@ import Video from "../models/Video"
 import Channel from "../models/Channel"
 import Comment from "../models/Comment"
 import Trending from "../models/Trending"
-import { NULL } from "node-sass"
+import { TRUE } from "node-sass"
+
+//global function or variable
+const domain = "http://localhost:2000"
+
+function colorSelector(userColor) {
+if(userColor==0){
+        const selectedColor = "#ff99cc"
+        return selectedColor
+}
+if(userColor==1){
+    const selectedColor = "#cccc00"
+    return selectedColor
+}
+if(userColor==2){    
+    const selectedColor = "#0066cc"
+return selectedColor}
+if(userColor==3){    
+    const selectedColor = "#009933"
+return selectedColor}
+if(userColor==4){    
+    const selectedColor = "#6600cc"
+    return selectedColor}
+if(userColor==5){    
+    const selectedColor = "#660033"
+    return selectedColor}
+if(userColor==6){    
+    const selectedColor = "#66ff99"
+    return selectedColor}
+if(userColor==7){    
+    const selectedColor = "#ff99cc"
+    return selectedColor}
+if(userColor==8){    
+    const selectedColor = "#009999"
+    return selectedColor}
+if(userColor==9){    
+    const selectedColor = "#cc3300"
+    return selectedColor}
+}
 
 
+//join
 export const join = (req,res)=>{
     res.render("join/join");
 }
@@ -23,13 +62,17 @@ export const postNewJoin = async(req,res,next) => {
     }else{
         try{
             const userColor = Math.floor(Math.random()*10)
+            const selectedColor = colorSelector(userColor)
             const channel = await Channel.create({
-                name,avatarUrl
+                name,userColor:selectedColor
             })
             const user = await User({
-                name,email,channelName:name,userColor,channel:channel._id
+                name,
+                email,
+                userColor:selectedColor,
+                channel:channel._id,
+                passwordToken:true
             })
-            
             await User.register(user,password);
             next();
         }catch(error){
@@ -40,6 +83,7 @@ export const postNewJoin = async(req,res,next) => {
 }
 
 
+//login
 export const getLogin = async(req,res) => {
     const channels = await Channel.find({})
     try{
@@ -56,10 +100,11 @@ export const postLogin = passport.authenticate('local',{
     failureRedirect:routes.login
 })
 
+//social login & join
 export const googleLogin = passport.authenticate("google",{scope:['profile','email']});
 
 export const googleLoginCallback = async(accessToken, refreshToken, profile, cb) => {
-    const {_json:{sub:googleId,name,picture:avatarUrl,email}}=profile;
+    const {_json:{sub:googleId,name:displayName,picture:avatarUrl,email}}=profile;
 
     try{
         const emailError = new Error
@@ -79,15 +124,22 @@ export const googleLoginCallback = async(accessToken, refreshToken, profile, cb)
                 user.save();
                 return cb(null,user);
             }
+            let name
+            if(!displayName){
+                name=googleId
+            }else{
+                name=displayName
+            }
             const userColor = Math.floor(Math.random()*10)
+            const selectedColor = colorSelector(userColor)
             const channel = await Channel.create({
-                name,avatarUrl
+                name,userColor:selectedColor,avatarUrl
             })
             const newUser = await User.create({
                 email,
                 name,
-                channel,
-                userColor,
+                channel:channel._id,
+                userColor:selectedColor,
                 googleId,
                 avatarUrl
             })
@@ -104,7 +156,7 @@ export const kakaoLogin = passport.authenticate('kakao',{scope:['profile','accou
 
 export const kakaoLoginCallback = async(accessToken, refreshToken, profile, cb)=>{
     
-    const {_json:{id:kakaoId,properties:{nickname:name,profile_image:avatarUrl},kakao_account:{email}}}=profile
+    const {_json:{id:kakaoId,properties:{nickname:displayName,profile_image:avatarUrl},kakao_account:{email}}}=profile
     try{
         const emailError = new Error
         if(!email){
@@ -122,15 +174,22 @@ export const kakaoLoginCallback = async(accessToken, refreshToken, profile, cb)=
             user.save();
             return cb(null,user)
         }
+        let name
+        if(!displayName){
+            name=kakaoId
+        }else{
+            name=displayName
+        }
         const userColor = Math.floor(Math.random()*10)
+        const selectedColor = colorSelector(userColor)
         const channel = await Channel.create({
-            name,avatarUrl
+            name,userColor:selectedColor,avatarUrl
         })
         const newUser = await User.create({
             name,
             email,
-            channel,
-            userColor,
+            channel:channel._id,
+            userColor:selectedColor,
             kakaoId,
             avatarUrl
         })
@@ -147,7 +206,7 @@ export const postKakaoLogin = (req,res)=>{
 export const naverLogin = passport.authenticate('naver',{scope:['profile']});
 
 export const naverLoginCallback = async(accessToken, refreshToken, profile, cb)=>{
-    const {displayName:name,_json:{
+    const {displayName,_json:{
         email,profile_image:avatarUrl,id:naverId
     }}=profile
     try{
@@ -167,15 +226,22 @@ export const naverLoginCallback = async(accessToken, refreshToken, profile, cb)=
             user.save();
             return cb(null,user)
         }
+        let name
+        if(!displayName){
+            name=naverId
+        }else{
+            name=displayName
+        }
         const userColor = Math.floor(Math.random()*10)
+        const selectedColor = colorSelector(userColor)
         const channel = await Channel.create({
-            name,avatarUrl
+            name,userColor:selectedColor,avatarUrl
         })
         const newUser = await User.create({
             name,
             email,
-            userColor,
-            channel,
+            userColor:selectedColor,
+            channel:channel._id,
             naverId,
             avatarUrl
         })
@@ -191,7 +257,7 @@ export const postNaverLogin = (req,res)=>{
 export const githubLogin = passport.authenticate('github',{scope:['profile']});
 
 export const githubLoginCallback = async(accessToken, refreshToken, profile, cb)=>{
-    const {_json:{id:githubId,avatar_url:avatarUrl,name,email}}=profile;
+    const {_json:{id:githubId,avatar_url:avatarUrl,name:displayName,email}}=profile;
     try{
         const emailError = new Error
         if(!email){
@@ -209,15 +275,22 @@ export const githubLoginCallback = async(accessToken, refreshToken, profile, cb)
             user.save();
             return cb(null,user)
         }
+        let name
+        if(!displayName){
+            name=naverId
+        }else{
+            name=displayName
+        }
         const userColor = Math.floor(Math.random()*10)
+        const selectedColor = colorSelector(userColor)
         const channel = await Channel.create({
-            name,avatarUrl
+            name,userColor:selectedColor,avatarUrl
         })
         const newUser = await User.create({
             name,
             email,
-            userColor,
-            channel,
+            userColor:selectedColor,
+            channel:channel._id,
             githubId,
             avatarUrl
         })
@@ -231,12 +304,13 @@ export const postGithubLogin = (req,res)=>{
     res.redirect(routes.home)
 }
 
+//logout
 export const logout = (req,res)=> {
     req.logout();
     res.redirect(routes.home);
 }
 
-
+//mypage
 export const myPage = async(req,res)=>{
     const channels = await Channel.find({})
     try{
@@ -249,7 +323,8 @@ export const myPage = async(req,res)=>{
     }
 }
 
-export const editProfile = async(req,res) => { 
+//editProfile
+export const getEditProfile = async(req,res) => { 
     const channels = await Channel.find({})
     try{
         res.render("editProfile", {channels})
@@ -260,13 +335,97 @@ export const editProfile = async(req,res) => {
     }
 }
 
-export const changePassword = async(req,res)=> {
+export const postEditProfile = async(req,res)=>{
+    const {body:{name,email},file}=req;
+    try{
+
+        const avatarUrl = `${domain}/${file.path}`
+        await User.findByIdAndUpdate(req.user._id,{
+            name
+            ,email
+            ,avatarUrl: file ? avatarUrl : req.user.avatarUrl
+        })
+        await Channel.findByIdAndUpdate(req.user.channel,{
+            name:channelName,
+            avatarUrl: file ? avatarUrl : req.user.avatarUrl
+        })
+        res.redirect(`/users${routes.myPage}`)
+    }
+    catch(error){
+        console.log(error)
+        res.redirect(`/users${routes.myPage}`)
+    }
+}
+
+export const getSetPassword = async(req,res)=>{
     const channels = await Channel.find({})
     try{
+        res.render("setPassword", {channels})
+        
+    }catch(error){
+        console.log(error)
+        res.render("setPassword", {channels})
+    }
+}
+
+export const postSetPassword = async(req,res)=>{
+    const {body:{newPassword,newPassword1}}=req;
+    
+    try{
+        if(newPassword !== newPassword1){
+            res.status(400)
+            res.redirect(`/users${routes.setPassword}`)
+            return;
+        }
+        await req.user.setPassword(newPassword);
+        req.user.passwordToken = true;
+        req.user.save();
+        res.redirect(`/users${routes.myPage}`)
+    }
+    catch(error){
+        res.status(400)
+        res.redirect(`/users${routes.setPassword}`)
+    }
+}
+
+
+
+//changePassword
+export const getChangePassword = async(req,res)=> {
+    const channels = await Channel.find({})
+    const {user}=req
+    try{
+        if(user.passwordToken==false){
+            res.redirect(`/users${routes.setPassword}`)
+            return;
+        }
         res.render("changePassword", {channels})
         
     }catch(error){
         console.log(error)
+        if(user.googleId ||user.kakaoId ||user.naverId ||user.githubId){
+            res.redirect(`/users${routes.setPassword}`)
+            return;
+        }
         res.render("changePassword", {channels})
+    }
+}
+
+export const postChangePassword = async(req,res)=>{
+    const {body:{oldPassword,newPassword,newPassword1}}=req;
+    
+    try{
+        if(newPassword !== newPassword1){
+            res.status(400)
+            res.redirect(`/users${routes.changePassword}`)
+            return;
+        }
+        await req.user.changePassword(oldPassword,newPassword)
+        req.user.save();
+        res.redirect(`/users${routes.myPage}`)
+    }
+    catch(error){
+        res.status(400)
+        res.redirect(`/users${routes.changePassword}`)
     }
 }

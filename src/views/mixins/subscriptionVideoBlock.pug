@@ -1,0 +1,23 @@
+mixin subscriptionVideoBlock(video = {})
+    .subscriptionVideoBlock.videoBlock
+        a(href=routes.videoDetail(video.id))
+            .subscriptionVideoBlock__player.videoPlayer
+                video.subscriptionVideoBlock__thumbnail#jsVideoThumbnail(src=video.videoFile)
+            //-재생시간 추가하기
+        .subscriptionVideoBlock__info.videoBlock__info
+            .subscriptionVideo__info-column.video__info-column
+                a(href=routes.cnVideos(video.channel._id))
+                    .subscriptionVideo__creator-avatar.user__avatar(style=`background-color:${video.channel.userColor};`)
+                        if video.channel.avatarUrl
+                            img(src=video.channel.avatarUrl class="subscriptionVideo__creator-img")
+                        else
+                            span(class="subscriptionVideo__creator-name")=video.channel.name.substr(0,1)
+            .subscriptionVideo__info-column.video__info-column
+                .subscriptionVideo__info-main.video__info-main
+                    a(href=routes.videoDetail(video.id))
+                        h4.subscriptionVideo__title=video.title
+                .subscriptionVideo__info-sub.video__info-sub
+                    a(href=routes.cnVideos(video.channel))
+                        h6.subscriptionVideo__creator-name.video__creator-name=video.channel.name
+                    a(href=routes.videoDetail(video.id))
+                        h6.subscriptionVideo__views 조회수 #{video.views}회 • #{video.createdAt}

@@ -1,0 +1,187 @@
+.sdEdit__images-wrapper{
+    background-color: white;
+    height:100%;
+    padding-top:20px;
+    padding-left:20px;
+    .sdEdit__image-row{
+        margin-bottom:30px;
+        h4.sdEdit__image-title{
+            font-size:17px;     
+            margin-bottom:10px;       
+        }
+        h5.sdEdit__image-subtitle{
+            font-size:12px;
+            opacity:0.5;
+            margin-bottom:10px;
+        }
+        .sdEdit__image-preview{
+            display:flex;
+            .sdEdit__image-column{
+                &:first-child{
+                    .sdEdit__image-wrapper{
+                        
+                        margin-right:20px;
+                        width:270px;
+                        height:150px;
+                        background-color: $grey;
+                        outline:none;
+                        display:flex;
+                        justify-content: center;
+                        align-items: center;
+                        .sdEdit__roundProfile{
+                            top: 0;
+                            height: 120px;
+                            width: 120px;
+                            outline:none;
+                            border-radius: 50%;
+                        }
+                        .sdEdit__channel-device{
+                            width:180px;
+                            height:135px;
+                            background-color: white;
+                            border: 5px solid black;
+                            .sdEdit__channel-cover{
+                                width:100%;
+                                height:55px;
+                                overflow:hidden;
+                                display:flex;
+                                justify-content: center;
+                                align-items: center;
+                                .red-box{
+                                    width:100%;
+                                    height: 100%;
+                                    background-color: $red;
+                                }
+                                .sdEdit__cover{
+                                    width:100%;
+                                    height:100%;
+                                    object-fit: cover;
+                                }
+                            }
+                        }
+                    }
+                    .watermark__wrapper{
+                        display:flex;
+                        justify-content: flex-end;
+                        align-items: flex-end;
+                        padding-right: 15px;
+                        padding-bottom:30px;
+                        .sdEdit__watermark{
+                            width:35px;
+                            height:35px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            overflow: hidden;
+                            img{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                            span{
+                            font-size:35px; 
+                            color:$red;
+                            }
+                        }
+                       
+                    }
+                }
+                &:nth-child(2){
+                    p{
+                        font-size:13px;
+                        opacity:0.5;
+                        line-height: 17px;
+                        margin-bottom:11px;
+                        margin-left:10px;
+                    }
+                        .fileUploadBox{
+                            label{
+                                display: inline-block;
+                                padding: .5em .75em;
+                                color: rgb(100, 100, 243);
+                                font-size: inherit;
+                                line-height: normal;
+                                vertical-align: middle;
+                                background-color: transparent;
+                                cursor: pointer;
+                                border: none;
+                                border-radius: .25em;
+                                transition: background-color 0.2s;
+                            }
+                            label:active{
+                                background-color: #e9eef6;;
+                            }
+                            input[type="file"]{
+                                position: absolute;
+                                width: 1px;
+                                height: 1px;
+                                padding: 0;
+                                margin: -1px;
+                                overflow: hidden;
+                                clip: rect(0, 0, 0, 0);
+                                border: 0;
+                            }
+                        }
+                    
+                }
+            }
+        }
+    }
+}
+
+.sdEdit__details-wrapper{
+    background-color: white;
+    height:100%;
+    padding-top:20px;
+    padding-left:20px;
+    .sdEdit__cnName{
+        h4.sdEdit__cnName-title{
+            font-size:16px;
+            opacity: 0.6;
+            margin-bottom:11px;
+        }
+        h2.sdEdit__cnName-name{
+            font-size:20px;
+            padding-left:5px;
+            margin-bottom:10px;
+        }
+        input{
+            border:1px solid rgba(0,0,0,0.1);
+            width:300px;
+            padding:12px;
+            border-radius: 5px;
+            margin-bottom:30px;
+        }
+        label[for="cnName"]{
+            margin-right:10px;
+        }
+        .cnDescription-box{
+            position: relative;
+            height:200px;
+            width:90%;
+            border:1px solid rgba(0,0,0,0.1);
+            border-radius: 5px;
+            label{
+                position: absolute;
+                top:10px;
+                left:10px;
+                opacity: 0.5;
+            }
+            textarea{
+                padding:10px;
+                top:30px;
+                position: absolute;
+                width:80%;
+                height:100%;
+                outline: none;
+                resize:none;
+                overflow: hidden;
+                border:none;
+            }
+            textarea::placeholder{
+                opacity: 0.5;
+            }
+        }
+    }
+    
+}

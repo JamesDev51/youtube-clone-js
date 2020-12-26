@@ -1,0 +1,48 @@
+
+.record-container{
+    width:70%;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    z-index:1;
+    .preview-container{
+        display:flex;
+        justify-content: center;
+        position: relative;
+        width:960px;
+        height: 540px;
+        margin-bottom: 30px;
+        video{
+            width:100%;
+            height: 100%;
+            min-width:640px;
+            min-height: 360px;
+            background-color: rgba(0,0,0,0.9);
+    
+        }
+        .preview-function{
+            position: absolute;
+            bottom:-53px;
+            right:0px;
+            button{
+                padding:10px;
+            }
+            span{
+                margin-right:10px;
+            }
+        }
+    }
+    button{
+        color:white;
+        background-color: $red;
+        padding: 15px 30px 15px 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        opacity: 0.85;
+        margin-bottom: 15px;
+    }
+    button:hover{
+        opacity: 1;
+    }
+
+}

@@ -1,0 +1,23 @@
+mixin myVideoBlock(myVideo = {})
+    .myVideoBlock.videoBlock
+        a(href=routes.videoDetail(myVideo.id))
+            .myVideoBlock__player.videoPlayer
+                video.myVideoBlock__thumbnail(src=myVideo.videoFile)
+            //-재생시간 추가하기
+        .myVideoBlock__info.videoBlock__info
+            .myVideo__info-column.video__info-column
+                a(href=routes.cnVideos(myVideo.channel._id))
+                    .myVideo__creator-avatar.user__avatar(style=`background-color:${myVideo.channel.userColor};`)
+                        if myVideo.channel.avatarUrl
+                            img(src=myVideo.channel.avatarUrl class="myVideo__creator-img")
+                        else
+                            span(class="myVideo__creator-name")=myVideo.channel.name.substr(0,1)
+            .myVideo__info-column.video__info-column
+                .myVideo__info-main.video__info-main
+                    a(href=routes.videoDetail(myVideo.id))
+                        h4.myVideo__title=myVideo.title
+                .myVideo__info-sub.video__info-sub
+                    a(href=routes.cnVideos(myVideo.channel))
+                        h6.myVideo__creator-name.video__creator-name=myVideo.channel.name
+                    a(href=routes.videoDetail(myVideo.id))
+                        h6.myVideo__views 조회수 #{myVideo.views}회 • #{myVideo.createdAt}

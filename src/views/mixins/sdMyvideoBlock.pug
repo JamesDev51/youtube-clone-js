@@ -1,0 +1,16 @@
+mixin sdMyvideoBlock(sdMyvideo = {})
+    .sdMyvideoBlock.videoBlock
+        a(href=routes.videoDetail(sdMyvideo.id))
+            .sdMyvideo__player.videoPlayer
+                video.sdMyvideo__thumbnail(src=sdMyvideo.videoFile)
+        .sdMyvideo__info.videoBlock__info
+            .sdMyvideo__info-column.video__info-column
+                a(href=routes.sdEditVideo(user.channel.id,sdMyvideo.id)) 
+                    button Edit
+            .sdMyvideo__info-column.video__info-column
+                .sdMyvideo__info-main.video__info-main
+                    a(href=routes.videoDetail(sdMyvideo.id))
+                        h4.sdMyvideo__title=sdMyvideo.title
+                .sdMyvideo__info-sub.video__info-sub
+                    a(href=routes.videoDetail(sdMyvideo.id))
+                        h6.sdMyvideo__views 조회수 #{sdMyvideo.views}회 • #{sdMyvideo.createdAt}

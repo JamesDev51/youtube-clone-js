@@ -3,4 +3,10 @@ extends ../layouts/main
 block content
     include ../partials/channelHeader
     include ../partials/channelNav
-    span this is channel about
+    .cnAbout__wrapper
+        h3 채널명 : #{channel.name}
+        h3 구독자 수 : #{channel.subscribers.length}
+        h3 업로드 비디오 수 : #{channel.videos.length}
+        .description__wrapper
+            h1 설명
+            p=channel.description 

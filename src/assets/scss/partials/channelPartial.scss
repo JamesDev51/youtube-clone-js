@@ -39,7 +39,7 @@
             padding: 10px 0px 10px 20px;
             margin-right: 200px;
             .cnHeader__cnName {
-              font-size: 33px;
+              font-size: 28px;
               font-weight: 400;
             }
             .info__column-cnSubscribers {
@@ -59,10 +59,11 @@
         &:nth-child(2) {
           margin-top: 30px;
           div {
+            text-align: center;
             color: white;
-            padding: 13px 22px;
             background-color: $red;
             cursor: pointer;
+            min-width:84px;
           }
         }
       }
@@ -70,15 +71,15 @@
   }
 }
 
-.channelNav {
+.channelNav,.nav {
   z-index: 1;
   width: 100%;
-  .channelNav__bar {
+  background-color: white;
+  .channelNav__bar,.nav__bar {
     width: 100%;
     display: flex;
-    background-color: white;
     padding: 20px 0px 20px 130px;
-    .channelNav__wrapper {
+    .channelNav__wrapper,.nav__wrapper {
       a {
         padding: 10px 35px;
       }

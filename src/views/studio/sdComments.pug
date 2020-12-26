@@ -1,4 +1,45 @@
 extends ../layouts/studio
 
 block content
-    span sdcomments
+    .user__comments-wrapper
+        h1.user__comments-title 사용자가 작성한 댓글
+        table.comments-table
+            thead
+                tr
+                    th 비디오
+                    th 내용
+                    th 날짜
+                    th 
+                        i.fas.fa-thumbs-up
+                    th 
+                        i.fas.fa-thumbs-down
+                    th 버튼
+            tbody
+                if comments != []
+                    each comment in comments
+                        tr
+                            th.comment__Comment-title
+                                a(href=routes.videoDetail(comment.video.id))=comment.video.title
+                            th.comment__text=comment.text
+                            th.comment__createdAt=comment.createdAt
+                            th.comment__like=comment.likelist.length
+                            th.comment__dislike=comment.dislikelist.length
+                            th.comment__delete
+                                button.deleteCommentBtn.window__modal-btn(onclick="openCommentModal()") 댓글 삭제
+                                .deleteCommentModal#deleteCommentWrapper.modal.modalComment
+                                    .deleteComment__modal-wrapper.modal-wrapper
+                                        .deleteComment__modal-container.modal-container
+                                            .deleteComment__modal-title.modal-title
+                                                h1 댓글 삭제
+                                                p 해당 댓글을 삭제하시겠습니까?
+                                                p 삭제된 댓글은 복구가 불가능합니다.
+                                            .deleteComment__modal-select.modal-select
+                                                button(class="cancle-btn" onclick="closeCommentModal()") 취소
+                                                a(href=routes.deleteComment(comment.id)) 
+                                                    button.delete-btn 
+                                                        span 삭제
+                                
+                else
+                    h2 작성한 코멘트가 없습니다.
+            
+        

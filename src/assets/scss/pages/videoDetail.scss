@@ -3,6 +3,7 @@
 }
 
 .video-detail__container {
+  
   width: 90%;
   max-width: 1300px;
   height:100%;
@@ -32,6 +33,13 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          button{
+            cursor:pointer
+          }
+          a{
+            width:100%;
+            display:flex;
+          }
           .video__like-wrapper {
             margin-right: 10px;
             padding-bottom: 8px;
@@ -52,7 +60,7 @@
               justify-content: center;
               i {
                 font-size: 25px;
-                opacity: 0.5;
+                opacity: 0.4;
                 margin-right: 10px;
               }
               span {
@@ -80,19 +88,56 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          img {
-            width: 50px;
-            height: 50px;
-            margin-right: 15px;
+          .creator__avatar {
+            width:50px;
+            height:50px;
+            overflow:hidden;
+            display:flex;
+            border:0px;
+            border-radius: 60%;
+            font-size: 20px;
+            color:white;
+            margin-right:15px;
+            justify-content: center;
+            align-items: center;
+            a{
+              width:100%;
+              height:100%;
+              display:flex;
+              justify-content: center;
+              align-items: center;
+              img{
+              width:100%;
+              height:100%;
+              object-fit: cover;
           }
+            }
+           
+        }
           .creator__info {
             .creator__name {
-              font-size: 18px;
+              font-size: 17px;
               margin-bottom: 5px;
             }
             .creator__subscribeNum {
+              opacity: 0.7;
+            }
+          }
+        }
+        &:nth-child(2){
+          .video__editBtn-wrapper{
+            button{
+              width:200px !important;
+              margin-right:20px;
+            }
+            button:hover{
               opacity: 0.8;
             }
+          }
+          .creator__subscribeBtn{
+            text-align: center;
+            background-color: $red;
+            min-width:84px;
           }
         }
       }
@@ -100,9 +145,14 @@
 
     .video__description {
       padding-left: 65px;
+      p{
+        max-width:650px;
+        word-break: break-all;
+      }
     }
   }
   .video__comments {
+    padding-bottom:50px;
     width:100%;
     margin-bottom: 50px;
     .video__comments-row {
@@ -115,35 +165,213 @@
       &:nth-child(2) {
         display: flex;
         align-items: flex-start;
-        .comment-write__column {
-          &:first-child {
-            margin-right: 15px;
-            img {
-              width: 50px;
-              height: 50px;
-            }
+      }
+    }
+  }
+}
+
+.reply-write__wrapper{
+  display:none ;
+}
+
+.comment-write__wrapper{
+  display:flex;
+  align-items: flex-start;
+}
+
+.comment-write__wrapper,.reply-write__wrapper {
+  width:100%;
+  height:100%;
+  .replyWrapper{
+    display:flex;
+    width:100%;
+  }
+
+
+  .comment-writer,.reply-writer {
+    width: 45px;
+    height: 45px;
+    overflow:hidden;
+    color:white;
+    font-size: 20px;
+    border:0px;
+    border-radius:50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+  }    
+  .reply-writer{
+    margin-top:3px;
+    width:30px;
+    height:30px;
+    font-size: 13px;
+  }
+  
+  .comment-write,.reply-write,.noneUser-reply {
+    margin-left:15px;
+    margin-top:5px;
+    width: 100%;
+    .noneUser-write__form{
+      min-height: 100px;
+    }
+    form {
+      width: 100%;
+      padding: 5px;
+      background: transparent;
+      
+    input{
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+      padding: 5px;
+      background: transparent;
+    }
+    input::placeholder {
+      font-size: 14px;
+    }
+    .comment-write__btns,.reply-write__btns {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .comment-cancel__btn,.reply-cancel__btn {
+        margin-right: 7px;
+      }
+      .comment-up__btn,.reply-up__btn {
+        background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+      }
+      input{
+        width:72px !important;
+        padding:10px;
+      }
+    }
+  }
+}
+.reply-write{
+  margin-top:0px;
+  margin-left:8px;
+}
+
+  .noneUser-comment{
+    width:100%;
+  display:flex;
+  justify-content: flex-start;
+  cursor:default
+  }
+  .comment-info{
+    width:100%;
+    margin-left:15px;
+    .comment-info__row{
+      &:first-child{
+        display:flex;
+        margin-bottom: 6px;
+        .comment-writer-name{
+          font-size: 17px;
+          margin-right:7px;
+
+        }
+        .comment-createdAt{
+          opacity: 0.6;
+        }
+      }
+      &:nth-child(2){
+        margin-bottom: 13px;;
+        p{
+          min-height:25px;
+          max-width:700px;
+          word-break: break-all;
+        }
+      }
+      &:nth-child(3){
+        display: flex;
+        margin-bottom:10px;
+        .comment-like__wrapper{
+          margin-right:20px;
+          .comment__like-btn{
+            margin-right:10px;
           }
-          &:nth-child(2) {
-            width: 100%;
-            form {
-              width: 100%;
+          .comment-btn__wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    i {
+                      font-size: 16px;
+                      opacity: 0.5;
+                      padding-right: 7px;
+                    }
+                    span {
+                      font-size: 15px;
+                      opacity: 0.8;
+                    }
+                  }
+        }
+        .deleteCommentBtn{
+          width:100px !important;
+        }
+      }
+      &:nth-child(4){
+        .noneUser-reply{
+          display:flex;
+        }
+      }
+      &:nth-child(5){
+        .reply__show-btn{
+          margin-bottom:15px;
+          color:blue;
+          font-size: 14px;
+          i{
+            margin-right:7px;
+          }
+        }
+        .comment__replies{
+          display:none;
+        }
+        .comment-reply__wrapper{
+          padding-left:20px;
+          margin-bottom:15px;
+          .reply-row{
+            &:first-child{
+              display:flex;
               margin-bottom: 10px;
-              border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-              padding: 5px;
-              input::placeholder {
-                font-size: 14px;
+              .reply-column{
+                &:first-child{
+                  margin-right:10px;
+                }
+                &:nth-child(2){
+                  opacity: 0.7;
+                }
               }
             }
-            .comment-write__btns {
-              display: flex;
-              justify-content: flex-end;
-              align-items: center;
-              .comment-cancel__btn {
-                margin-right: 5px;
+            &:nth-child(2){
+              p{
+                word-break: break-all;
+                max-width: 600px;
+                min-height: 30px;
               }
-              .comment-up__btn {
-                background-color: rgba(0, 0, 0, 0.3);
-                color: white;
+            }
+            &:nth-child(3){
+              .reply-like__wrapper{
+                margin-right:20px;
+                .reply-btn__wrapper {
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+      
+                          i {
+                            font-size: 16px;
+                            opacity: 0.5;
+                            margin-right: 7px;
+                          }
+                          span {
+                            font-size: 15px;
+                            opacity: 0.8;
+                          }
+                        }
               }
             }
           }
@@ -152,3 +380,5 @@
     }
   }
 }
+
+

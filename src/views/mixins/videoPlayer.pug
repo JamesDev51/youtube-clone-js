@@ -1,0 +1,35 @@
+mixin videoPlayer(video={})
+    .videoPlayer#jsVideoPlayer
+        video#jsVideo(src=video.videoFile)
+        .videoPlayer__controls
+            .videoPlayer__controls-row.slidercontainer
+                input.videoPlayer__time.slider#jsTime(type="range",min="0", value="0",step="1")
+            .videoPlayer__controls-row
+                .videoPlayer__controls-column
+                    .controls__btn-column
+                        span#jsPlayBtn
+                            i.fas.fa-play
+                    .controls__btn-column
+                        span#jsVolumeBtn
+                            i.fas.fa-volume-down
+                    .controls__btn-column.slidercontainer#jsVolumeBarContainer
+                        input.videoPlayer__volume.slider#jsVolumeBar(type="range",min="0",max="1",step="0.1",value="0.5")
+                    .controls__btn-column
+                        span
+                            span#jsCurrentTime 00:00:00 
+                            |/ 
+                            span#jsTotalTime  00:00:00 
+                .videoPlayer__controls-column
+                    .functions__btn-column.slidercontainer#jsSpeedBarContainer
+                        input.videoPlayer__speend.slider#jsSpeedBar(type="range",min="0.5",max="2",step="0.25",value="1")
+                    .functions__btn-column
+                        span#jsSpeedBtn
+                            i.fas.fa-cog
+                    .functions__btn-column
+                        span#jsFullScreen
+                            i.fas.fa-expand
+        .videoPlayer__playBtn
+            span#jsPlayBtnBig
+                i.fas.fa-play
+                
+            

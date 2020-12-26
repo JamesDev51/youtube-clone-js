@@ -29,6 +29,7 @@ import channelRouter from "./routers/channelRouter";
 import userRouter from "./routers/userRouter"
 import joinRouter from "./routers/joinRouter"
 import sdChannelRouter from "./routers/sdChannelRouter";
+import apiRouter from "./routers/apiRouter"
 
 const app = express();
 
@@ -40,8 +41,8 @@ app.use("/uploads",express.static("uploads"))
 app.use("/static",express.static(__dirname+"/static"))
 app.use("/img",express.static(path.join(__dirname,'/img')))
 app.use(cookieParser());
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 app.use(helmet({contentSecurityPolicy:false}));
 app.use(compression());
 app.use(morgan("dev"));
@@ -64,6 +65,7 @@ app.use(routes.studio,sdChannelRouter);
 app.use(routes.playlist,playlistRouter);
 app.use(routes.feed, feedRouter);
 app.use(routes.channel,channelRouter);
+app.use(routes.api,apiRouter);
 
 
 

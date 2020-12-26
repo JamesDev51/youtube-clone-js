@@ -3,4 +3,5 @@ extends ../layouts/main
 block content
     include ../partials/channelHeader
     include ../partials/channelNav
-    span this is channel detail
+    .cnDetail__wrapper
+        h3 채널명 #{channel.name}

@@ -27,8 +27,45 @@ main {
   width: 90%;
 }
 
+button{
+  cursor:pointer
+}
+
+.colorBlue{
+  color:blue !important;
+  opacity: 0.9;
+}
+
+.colorRed{
+  color:$red !important;
+}
+
+.colorNo{
+  background-color:$red !important;
+  color:white !important;
+
+}
+
+.colorSb{
+  background-color:rgba(0, 0, 0, 0.6) !important;
+  color:white !important;
+}
+
+.borderBlue{
+  border-bottom: 2px solid blue !important;
+}
+
 .showing {
   display: block !important;
+}
+
+.hide{
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.hidden{
+  display:none !important;
 }
 
 .dark{
@@ -76,8 +113,6 @@ form {
 
 .roundAvatar {
   border-radius: 50%;
-  width: 90px;
-  height: 90px;
 }
 
 .subscribeBtn {
@@ -94,12 +129,6 @@ form {
   border-radius: 2px;
   background-color: white;
   cursor: pointer;
-}
-
-.videoPlayer {
-  width: 100%;
-  background-color: black;
-  padding-bottom: 56.25%;
 }
 
 
@@ -123,18 +152,66 @@ form {
   }
 }
 
-.video__player {
-  width: 100%;
-  height:0;
-  background-color: transparent;
-  padding-bottom: 56.25%;
-  position: relative;
-  outline:none;
-  video {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    outline:none;
+
+
+.user__avatar{
+  width:38px;
+  height:38px;
+  border-radius: 60% !important;
+  border: 0px;
+  font-size: 25px;
+  display:flex;
+  color:white;
+  justify-content: center;
+  align-items: center;
+  overflow:hidden;
+  img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
   }
 }
+
+.slidercontainer{
+  width:100%;
+  .slider{
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width:100%; /* Full-width */
+    height:5px;
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    overflow: hidden;
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+
+  .slider:hover{
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 5px; /* Set a specific slider handle width */
+    height: 5px; /* Slider handle height */
+    background: white; /* Green background */
+    border-radius: 50%;
+    cursor: pointer; /* Cursor on hover */
+    box-shadow: -20000px 0 0 20000px white;
+
+  }
+  .slider::-moz-range-thumb {
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    background: white; /* Green background */
+    border-radius: 50%;
+    cursor: pointer; /* Cursor on hover */
+
+  }
+}
+
+.barWidth{
+  width:80px !important;
+}
+

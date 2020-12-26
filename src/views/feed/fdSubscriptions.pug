@@ -1,13 +1,18 @@
 extends ../layouts/main
-include ../mixins/trendingVideoBlock
+include ../mixins/subscriptionVideoBlock
 
 block content
     if !user
         span 새로운 동영상을 놓치지 마세요.
     else
-        .trendingVideo
-            each video in videos
-                +trendingVideoBlock({
-                    title:video.title,
-                    views:video.views
-                })
+        .subscriptionVideos__wrapper.videos__wrapper
+            .subscriptionVideo.videos
+                each video in videos
+                    +subscriptionVideoBlock({
+                        id:video._id,
+                        videoFile:video.videoFile,
+                        title:video.title,
+                        views:video.views,
+                        createdAt:video.createdAt,
+                        channel:video.channel
+                    })

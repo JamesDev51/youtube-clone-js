@@ -1,0 +1,33 @@
+.user__comments-wrapper{
+    padding:40px;
+    .user__comments-title{
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .comments-table{
+        margin-top:30px;
+        width:90%;
+        border:1px solid rgba(0,0,0,0.2);
+        border-collapse: collapse;
+        border-radius: 7px;
+        thead{
+            font-size:20px;
+            font-weight: 600;
+            background-color: rgba(0,0,0,0.1);
+        }
+        tbody{
+            .comment__delete{
+                width:200px !important;
+                .deleteCommentBtn{
+                    max-width:200px;
+                }
+            }
+        }
+        th, td {
+            border: 1px solid rgba(0,0,0,0.2);
+            padding:10px;
+          }
+    }
+
+}

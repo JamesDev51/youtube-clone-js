@@ -1,13 +1,23 @@
 mixin videoBlock(video = {})
     .videoBlock
         a(href=routes.videoDetail(video.id))
-            .videoBlock__player.video__Player
-                video.videoBlock__thumbnail(src=video.videoFile)
+            .videoBlock__player.videoPlayer
+                video.videoBlock__thumbnail#jsVideoThumbnail(src=video.videoFile)
             //-재생시간 추가하기
-        .videoBlock__main
-            a(href=routes.videoDetail(video.id))
-                h4.video__title=video.title
-        .videoBlock__sub
-            a(href=routes.videoDetail(video.id))
-                h6.video__views 조회수 #{video.views}
-//- n시간 전 만들기
+        .videoBlock__info
+            .video__info-column
+                a(href=routes.cnVideos(video.channel._id))
+                    .video__creator-avatar.user__avatar(style=`background-color:${video.channel.userColor};`)
+                        if video.channel.avatarUrl
+                            img(src=video.channel.avatarUrl class="video__creator-img")
+                        else
+                            span(class="video__creator-name")=video.channel.name.substr(0,1)
+            .video__info-column
+                .video__info-main
+                    a(href=routes.videoDetail(video.id))
+                        h4.video__title=video.title
+                .video__info-sub
+                    a(href=routes.cnVideos(video.channel))
+                        h6.video__creator-name=video.channel.name
+                    a(href=routes.videoDetail(video.id))
+                        h6.video__views 조회수 #{video.views}회 • #{video.createdAt}

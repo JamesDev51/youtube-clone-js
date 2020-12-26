@@ -1,8 +1,8 @@
 mixin nextVideoBlock(nextVideo = {})
     .nextVideoBlock
         a(href=routes.videoDetail(nextVideo.id))
-            .nextVideo__player
-                video.nextVideo__thumbnail(src=`/${nextVideo.videoFile}`)
+            .nextVideo__player.video__player
+                video.nextVideo__thumbnail(src=nextVideo.videoFile)
         a(href=routes.videoDetail(nextVideo.id))
             .nextVideo__info
                 h4.video__title=nextVideo.title

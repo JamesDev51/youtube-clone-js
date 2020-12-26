@@ -1,6 +1,18 @@
 extends ../layouts/main
+include ../mixins/cnVideoBlock
+
 
 block content
     include ../partials/channelHeader
     include ../partials/channelNav
-    span this is channel videos
+    .cnVideos__wrapper.videos__wrapper
+        .cnVideos.videos
+            each cnVideo in cnVideos
+                +cnVideoBlock({
+                    id:cnVideo._id,
+                    videoFile:cnVideo.videoFile,
+                    title:cnVideo.title,
+                    views:cnVideo.views,
+                    createdAt:cnVideo.createdAt,
+                    channel:cnVideo.channel
+                })

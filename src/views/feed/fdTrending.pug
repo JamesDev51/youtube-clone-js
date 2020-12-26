@@ -2,15 +2,14 @@ extends ../layouts/main
 include ../mixins/trendingVideoBlock
 
 block content
-    .trendingVideo
-        each trending in trendings
-            +trendingVideoBlock({
-                id:trending.id,
-                videoFile:trending.videoFile,
-                title:trending.title,
-                views:trending.views,
-                description:trending.description,
-                channelName:trending.channel.name,
-                channelId:trending.channel.id,
-                channelAvatar:trending.channel.avatarUrl,
-            })
+    .trendingVideos__wrapper.videos__wrapper
+        .trendingVideo.videos  
+            each video in videos
+                +trendingVideoBlock({
+                        id:video._id,
+                        videoFile:video.videoFile,
+                        title:video.title,
+                        views:video.views,
+                        createdAt:video.createdAt,
+                        channel:video.channel
+                })

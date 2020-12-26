@@ -1,0 +1,33 @@
+.sdEditNav{
+    border-bottom:1px solid rgba(0,0,0,0.1);
+    .sdEdit__title{
+        padding: 25px 0px 20px 30px;
+        font-size:22px;
+        font-weight:500;
+    }
+    .sdEdit__bar{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        padding:10px 0px 15px 0px;
+        opacity: 0.5;
+        .sdEditNav__submit-btn{
+            display:flex;
+            width:170px;
+            height:35px;
+            button{
+                width:70px;
+                margin-right:10px;
+                font-size:14px;
+            }
+            input{
+                font-size:14px;
+                width:70px;
+                padding:0px;
+                background-color: rgba(0,0,0,0.7);
+                color:white;
+            }
+
+        }
+    }
+}

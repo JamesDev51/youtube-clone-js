@@ -2,9 +2,24 @@ extends ../layouts/studio
 
 block content
     .form-container
-        form(action=`${domain}/${routes.sdEditVideo(1,video.id)}`,method="post")
+        span.sdEditVideo__form-title 비디오 수정하기
+        form(action=`${domain}${routes.sdEditVideo(user.channel.id,video.id)}`,method="post")
             input(type="text",placeholder="제목",name="title",value=video.title)
             textarea(name="description",placeholder="설명")=video.description
             input(type="submit",value="업데이트")
-        a.form-container__link(href=`${domain}/${routes.sdDeleteVideo(1,video.id)}`)
-            button.delete 동영상 삭제
+        button.deleteVideoBtn.window__modal-btn(onclick="openModal()") 동영상 삭제
+        .deleteVideoModal#deleteVideoWrapper.modal.modalVideo
+            .deleteVideo__modal-wrapper.modal-wrapper
+                .deleteVideo__modal-container.modal-container
+                    .deleteVideo__modal-title.modal-title
+                        h1 동영상 삭제
+                        p 해당 동영상을 삭제하시겠습니까?
+                        p 삭제된 동영상은 복구가 불가능합니다.
+                    .deleteVideo__modal-select.modal-select
+                        button(class="cancle-btn" onclick="closeModal()") 취소
+                        a(href=routes.deleteVideo(video.id)) 
+                            button.delete-btn
+                                span 삭제
+                        
+
+                

@@ -27,23 +27,29 @@ header.header
                             i.fas.fa-plus-square.dropdownbtn
                         .uploadDropdown-content
                             .uploadVideo__wrapper
-                                a(href=routes.sdUpload(1))
+                                a(href=routes.login)
                                     i.fas.fa-video.headerIcon
                                     span.dropdownTitle 동영상 업로드
+                                a(href=routes.login)
+                                    i.fas.fa-compact-disc.headerIcon
+                                    span.dropdownTitle 동영상 녹화
+                                a(href=routes.home)
+                                    div.headerIcon •
+                                    span.dropdownTitle 동영상 라이브
 
                     .function__apps-dropdown
                         button(onclick="appsDropdownOne()" class="appsDropdownBtn dropdownbtn") 
                             i.fas.fa-th.dropdownbtn
                         .appsDropdown-content
                             .appsDropdown-row
-                                a(href="")
+                                a(href=routes.home)
                                     i.fas.fa-tv.headerIcon
                                     span.dropdownTitle JamesTube TV
                             .appsDropdown-row
-                                a(href="")
+                                a(href=routes.home)
                                     i.far.fa-play-circle.headerIcon#headerPlayIcon
                                     span.dropdownTitle JamesTube Music
-                                a(href="")
+                                a(href=routes.home)
                                     i.fas.fa-child.headerIcon#headerKidsIcon
                                     span.dropdownTitle JamesTube Kids
                                 
@@ -52,16 +58,16 @@ header.header
                             i.fas.fa-ellipsis-v.dropdownbtn
                         .settingsDropdown-content
                             .settings__wrapper
-                                a(href=routes.sdUpload(1))
+                                a(href=routes.home)
                                     i.fas.fa-adjust.headerUserIcon#themeAdjust
                                     span.dropdownTitle 디자인 : 기기 테마
-                                a(href=routes.sdUpload(1))
+                                a(href=routes.home)
                                     i.fas.fa-language.headerUserIcon#language
                                     span.dropdownTitle 언어 : 한국어
-                                a(href=routes.sdUpload(1))
+                                a(href=routes.home)
                                     i.fas.fa-globe.headerUserIcon#location
                                     span.dropdownTitle 위치 : 한국
-                                a(href=routes.sdUpload(1))
+                                a(href=routes.home)
                                     i.fas.fa-envelope-open-text.headerUserIcon#complains
                                     span.dropdownTitle 의견 보내기
 
@@ -78,23 +84,29 @@ header.header
                             i.fas.fa-plus-square.dropdownbtn
                         .uploadDropdown-content
                             .uploadVideo__wrapper
-                                a(href=`/${routes.sdUpload(1)}`)
+                                a(href=`${routes.sdUpload(user.channel.id)}`)
                                     i.fas.fa-video.headerIcon
                                     span.dropdownTitle 동영상 업로드
+                                a(href=`${routes.sdRecord(user.channel.id)}`)
+                                    i.fas.fa-compact-disc.headerIcon
+                                    span.dropdownTitle 동영상 녹화
+                                a(href=routes.home)
+                                    div.headerIcon •
+                                    span.dropdownTitle 동영상 라이브
 
                     .function__apps-dropdown
                         button(onclick="appsDropdownTwo()" class="appsDropdownBtn dropdownbtn") 
                             i.fas.fa-th.dropdownbtn
                         .appsDropdown-content
                             .appsDropdown-row
-                                a(href="")
+                                a(href=routes.home)
                                     i.fas.fa-tv.headerIcon
                                     span.dropdownTitle JamesTube TV
                             .appsDropdown-row
-                                a(href="")
+                                a(href=routes.home)
                                     i.far.fa-play-circle.headerIcon#headerPlayIcon
                                     span.dropdownTitle JamesTube Music
-                                a(href="")
+                                a(href=routes.home)
                                     i.fas.fa-child.headerIcon#headerKidsIcon
                                     span.dropdownTitle JamesTube Kids
                                 
@@ -119,48 +131,48 @@ header.header
                         
                     .function__user-dropdown
                         button(onclick="userDropdownTwo()" class="userDropdownBtn")
-                            .user__avatar#headerUserAvatar(style=`background-color:${userColor};`)
+                            .user__avatar#headerUserAvatar(style=`background-color:${user.userColor};`)
                                 if user.avatarUrl
                                     img(src=user.avatarUrl class="header__userAvatar-img")
                                 else
-                                    span(class="header__userAvatar-name") #{user.name.substr(0,1)}
+                                    span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)}
                         .userDropdown-content
                             .userProfile
                                 .userProfile-column
-                                    .user__avatar#userProfile__avatar(style=`background-color:${userColor};`)
+                                    .user__avatar#userProfile__avatar(style=`background-color:${user.userColor};`)
                                         if user.avatarUrl
                                             img(src=user.avatarUrl class="header__userAvatar-img")
                                         else
-                                            span(class="header__userAvatar-name") #{user.name.substr(0,1)} 
+                                            span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
                                 .userProfile-column
                                     span.userProfile__name=user.name
                                     span.userProfile__email=user.email
                                     a(href=`/users${routes.myPage}` class="userProfile__edit") 계정 관리
                             .user__function-wrapper
                                 .user__function-row
-                                    a(href=routes.cnDetail(channel.id))
+                                    a(href=routes.cnVideos(user.channel.id))
                                         i.fas.fa-user-circle.headerUserIcon#mychannelIcon
                                         span.dropdownTitle 내 채널
-                                    a(href=routes.sdUpload(channel.id))
+                                    a(href=routes.home)
                                         i.fas.fa-credit-card.headerUserIcon
                                         span.dropdownTitle 구매항목 및 멤버십
-                                    a(href=`${domain}/studio/channel/${channel.id}`)
+                                    a(href=`${domain}${routes.sdDash(user.channel._id)}`)
                                         i.fas.fa-file-video.headerUserIcon#jamesStudio
                                         span.dropdownTitle JamesTube 스튜디오
                                     a(href=routes.logout)
                                         i.fas.fa-sign-out-alt.headerUserIcon#logout
                                         span.dropdownTitle 로그아웃
                                 .user__function-row
-                                    a(href=routes.sdUpload(1))
+                                    a(href=routes.home)
                                         i.fas.fa-adjust.headerUserIcon#themeAdjust
                                         span.dropdownTitle 디자인 : 기기 테마
-                                    a(href=routes.sdUpload(1))
+                                    a(href=routes.home)
                                         i.fas.fa-language.headerUserIcon#language
                                         span.dropdownTitle 언어 : 한국어
-                                    a(href=routes.sdUpload(1))
+                                    a(href=routes.home)
                                         i.fas.fa-globe.headerUserIcon#location
                                         span.dropdownTitle 위치 : 한국
-                                    a(href=routes.sdUpload(1))
+                                    a(href=routes.home)
                                         i.fas.fa-envelope-open-text.headerUserIcon#complains
                                         span.dropdownTitle 의견 보내기
                                     

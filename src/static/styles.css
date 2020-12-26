@@ -170,8 +170,36 @@ main {
 #mainVideo {
   width: 90%; }
 
+button {
+  cursor: pointer; }
+
+.colorBlue {
+  color: blue !important;
+  opacity: 0.9; }
+
+.colorRed {
+  color: #ea232c !important; }
+
+.colorNo {
+  background-color: #ea232c !important;
+  color: white !important; }
+
+.colorSb {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  color: white !important; }
+
+.borderBlue {
+  border-bottom: 2px solid blue !important; }
+
 .showing {
   display: block !important; }
+
+.hide {
+  opacity: 0;
+  transition: opacity .2s; }
+
+.hidden {
+  display: none !important; }
 
 .dark {
   width: 100% !important; }
@@ -210,9 +238,7 @@ form {
   opacity: 0.8; }
 
 .roundAvatar {
-  border-radius: 50%;
-  width: 90px;
-  height: 90px; }
+  border-radius: 50%; }
 
 .subscribeBtn {
   color: white;
@@ -227,11 +253,6 @@ form {
   border-radius: 2px;
   background-color: white;
   cursor: pointer; }
-
-.videoPlayer {
-  width: 100%;
-  background-color: black;
-  padding-bottom: 56.25%; }
 
 .login-btn {
   border: 1px solid #437dca;
@@ -249,26 +270,78 @@ form {
     color: #437dca;
     font-size: 16px; }
 
-.video__player {
-  width: 100%;
-  height: 0;
-  background-color: transparent;
-  padding-bottom: 56.25%;
-  position: relative;
-  outline: none; }
-  .video__player video {
-    position: absolute;
-    top: 0;
-    height: 100%;
+.user__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 60% !important;
+  border: 0px;
+  font-size: 25px;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; }
+  .user__avatar img {
     width: 100%;
-    outline: none; }
+    height: 100%;
+    object-fit: cover; }
+
+.slidercontainer {
+  width: 100%; }
+  .slidercontainer .slider {
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    /* Full-width */
+    height: 5px;
+    background: #d3d3d3;
+    /* Grey background */
+    outline: none;
+    /* Remove outline */
+    opacity: 0.7;
+    /* Set transparency (for mouse-over effects on hover) */
+    overflow: hidden;
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
+    transition: opacity .2s; }
+  .slidercontainer .slider:hover {
+    opacity: 1;
+    /* Fully shown on mouse-over */ }
+  .slidercontainer .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    width: 5px;
+    /* Set a specific slider handle width */
+    height: 5px;
+    /* Slider handle height */
+    background: white;
+    /* Green background */
+    border-radius: 50%;
+    cursor: pointer;
+    /* Cursor on hover */
+    box-shadow: -20000px 0 0 20000px white; }
+  .slidercontainer .slider::-moz-range-thumb {
+    width: 15px;
+    /* Set a specific slider handle width */
+    height: 15px;
+    /* Slider handle height */
+    background: white;
+    /* Green background */
+    border-radius: 50%;
+    cursor: pointer;
+    /* Cursor on hover */ }
+
+.barWidth {
+  width: 80px !important; }
 
 .header {
   position: fixed;
   top: 0;
   background-color: white;
   width: 100%;
-  z-index: 10; }
+  z-index: 11; }
   .header.header__studio {
     box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1); }
   .header .header__wrapper-join {
@@ -1051,7 +1124,111 @@ form {
           .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .uploadDropdown-content,
           .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .uploadDropdown-content {
             top: 35px;
-            box-shadow: 1px 2px 10px -2px rgba(0, 0, 0, 0.75); }
+            box-shadow: 1px 2px 10px -2px rgba(0, 0, 0, 0.75);
+            padding-bottom: 7px; }
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(2) span {
+              margin-left: 3px; }
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3),
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) {
+              display: flex;
+              align-items: center; }
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) div {
+                width: 17px;
+                display: flex;
+                justify-content: center; }
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .uploadDropdown-content .uploadVideo__wrapper a:nth-child(3) span {
+                margin-left: 4px; }
           .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .appsDropdown-content,
           .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .appsDropdown-content,
           .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .appsDropdown-content,
@@ -2034,61 +2211,120 @@ form {
             right: 1px;
             box-shadow: 1px 2px 10px -2px rgba(0, 0, 0, 0.75);
             width: 220px; }
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUploadDropdown-content a i,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUploadDropdown-content a i {
-              font-size: 16px;
-              color: #ea232c;
-              padding-left: 15px;
-              padding-right: 17px;
-              opacity: 0.8; }
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUploadDropdown-content a span,
-            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUploadDropdown-content a span {
-              font-size: 16px;
-              opacity: 0.6; }
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUploadDropdown-content a,
+            .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUploadDropdown-content a {
+              display: flex;
+              align-items: center; }
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUploadDropdown-content a i,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUploadDropdown-content a i {
+                font-size: 16px;
+                color: #ea232c;
+                padding-left: 15px;
+                padding-right: 17px;
+                opacity: 0.8; }
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUploadDropdown-content a span,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUploadDropdown-content a span {
+                font-size: 16px;
+                opacity: 0.6; }
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__alarms-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__user-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__login-btn .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUpload-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .function__wrapper .sdUser-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__upload-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__apps-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__settings-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__alarms-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__user-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .function__login-btn .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUpload-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUpload__wrapper .sdUser-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__upload-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__apps-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__settings-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__alarms-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__user-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .function__login-btn .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUpload-dropdown .sdUploadDropdown-content a div,
+              .header .header__wrapper .header__column:nth-child(3) .sdUser__wrapper .sdUser-dropdown .sdUploadDropdown-content a div {
+                padding-left: 15px;
+                padding-right: 17px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 18px;
+                color: #ea232c;
+                margin-left: 9px;
+                margin-right: 7px; }
           .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__upload-dropdown .sdUserDropdown-content,
           .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__apps-dropdown .sdUserDropdown-content,
           .header .header__wrapper .header__column:nth-child(3) .function__wrapper .function__settings-dropdown .sdUserDropdown-content,
@@ -2370,6 +2606,7 @@ form {
         align-items: center; }
 
 .sidebar__wrapper-small {
+  z-index: 25;
   width: 80px;
   height: 9%; }
   .sidebar__wrapper-small .feed-list,
@@ -2469,7 +2706,16 @@ form {
             font-size: 14px;
             padding: 0px; }
 
+#studioSidebarSmall {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 25; }
+
+#studioSidebarBig {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 25; }
+
 .sidebar__wrapper-big {
+  z-index: 25;
   height: 100%;
   display: none;
   width: 250px;
@@ -2636,6 +2882,11 @@ form {
       opacity: 0.8;
       font-size: 11px; }
 
+.subscriptionList {
+  padding: 10px;
+  padding-left: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
 body {
   position: relative;
   width: 100%;
@@ -2687,7 +2938,7 @@ body {
           padding: 10px 0px 10px 20px;
           margin-right: 200px; }
           .channelHeader .cnHeader__wrapper .cnHeader__info .info__column:first-child .cnHeader__detail .cnHeader__cnName {
-            font-size: 33px;
+            font-size: 28px;
             font-weight: 400; }
           .channelHeader .cnHeader__wrapper .cnHeader__info .info__column:first-child .cnHeader__detail .info__column-cnSubscribers {
             display: flex;
@@ -2701,20 +2952,21 @@ body {
       .channelHeader .cnHeader__wrapper .cnHeader__info .info__column:nth-child(2) {
         margin-top: 30px; }
         .channelHeader .cnHeader__wrapper .cnHeader__info .info__column:nth-child(2) div {
+          text-align: center;
           color: white;
-          padding: 13px 22px;
           background-color: #ea232c;
-          cursor: pointer; }
+          cursor: pointer;
+          min-width: 84px; }
 
-.channelNav {
+.channelNav, .nav {
   z-index: 1;
-  width: 100%; }
-  .channelNav .channelNav__bar {
+  width: 100%;
+  background-color: white; }
+  .channelNav .channelNav__bar, .channelNav .nav__bar, .nav .channelNav__bar, .nav .nav__bar {
     width: 100%;
     display: flex;
-    background-color: white;
     padding: 20px 0px 20px 130px; }
-    .channelNav .channelNav__bar .channelNav__wrapper a {
+    .channelNav .channelNav__bar .channelNav__wrapper a, .channelNav .channelNav__bar .nav__wrapper a, .channelNav .nav__bar .channelNav__wrapper a, .channelNav .nav__bar .nav__wrapper a, .nav .channelNav__bar .channelNav__wrapper a, .nav .channelNav__bar .nav__wrapper a, .nav .nav__bar .channelNav__wrapper a, .nav .nav__bar .nav__wrapper a {
       padding: 10px 35px; }
 
 .nextVideo {
@@ -2724,6 +2976,42 @@ body {
   .nextVideo .nextVideo__title {
     font-size: 17px;
     margin-bottom: 10px; }
+
+.videoBlock {
+  width: 100%;
+  max-width: 320px; }
+  .videoBlock .videoBlock__info {
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start; }
+    .videoBlock .videoBlock__info .sdMyvideo__info-column:first-child {
+      width: 50px !important;
+      height: 40px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .videoBlock .videoBlock__info .sdMyvideo__info-column:first-child a {
+        width: 100%;
+        height: 100%; }
+        .videoBlock .videoBlock__info .sdMyvideo__info-column:first-child a button {
+          width: 100%;
+          height: 100%;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          cursor: pointer;
+          border-radius: 5px; }
+    .videoBlock .videoBlock__info .video__info-column:not(:last-child) {
+      margin-right: 10px; }
+    .videoBlock .videoBlock__info .video__info-column:first-child .user__avatar {
+      width: 33px;
+      height: 33px;
+      font-size: 18px; }
+    .videoBlock .videoBlock__info .video__info-column:nth-child(2) .video__info-main {
+      min-height: 25px;
+      font-size: 18px; }
+    .videoBlock .videoBlock__info .video__info-column:nth-child(2) .video__info-sub {
+      opacity: 0.7; }
+      .videoBlock .videoBlock__info .video__info-column:nth-child(2) .video__info-sub .video__creator-name {
+        margin-bottom: 3px; }
 
 .nextVideoBlock {
   max-width: 500px;
@@ -2765,12 +3053,296 @@ body {
         display: flex;
         opacity: 0.8; }
 
+.window__modal-btn {
+  width: 400px; }
+
+.deleteVideoBtn, .cancle-btn, .delete-btn {
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  border: none; }
+
+.deleteVideoBtn {
+  background-color: black;
+  color: white;
+  width: 400px; }
+
+.deleteVideo:hover {
+  opacity: 1; }
+
+.modal, #deleteVideoWrapper {
+  justify-content: center;
+  align-items: center;
+  display: none;
+  position: fixed;
+  z-index: 25;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7); }
+  .modal .modal-wrapper, #deleteVideoWrapper .modal-wrapper {
+    background-color: #f3f3f3;
+    border-radius: 7px;
+    height: 300px;
+    max-height: 300px;
+    width: 500px;
+    max-width: 500px; }
+    .modal .modal-wrapper .modal-container, #deleteVideoWrapper .modal-wrapper .modal-container {
+      padding: 20px;
+      text-align: center; }
+      .modal .modal-wrapper .modal-container .modal-title, #deleteVideoWrapper .modal-wrapper .modal-container .modal-title {
+        margin-bottom: 30px; }
+        .modal .modal-wrapper .modal-container .modal-title h1, #deleteVideoWrapper .modal-wrapper .modal-container .modal-title h1 {
+          font-size: 25px;
+          font-weight: 600;
+          margin-bottom: 15px; }
+        .modal .modal-wrapper .modal-container .modal-title p, #deleteVideoWrapper .modal-wrapper .modal-container .modal-title p {
+          margin-bottom: 5px; }
+      .modal .modal-wrapper .modal-container .modal-select, #deleteVideoWrapper .modal-wrapper .modal-container .modal-select {
+        width: 100%;
+        height: 100%;
+        height: 40px; }
+        .modal .modal-wrapper .modal-container .modal-select .cancle-btn, #deleteVideoWrapper .modal-wrapper .modal-container .modal-select .cancle-btn {
+          border: 1px solid rgba(0, 0, 0, 0.3);
+          background-color: white;
+          color: black;
+          float: left;
+          width: 100%;
+          height: 100%;
+          opacity: 0.8; }
+          .modal .modal-wrapper .modal-container .modal-select .cancle-btn:active, #deleteVideoWrapper .modal-wrapper .modal-container .modal-select .cancle-btn:active {
+            border: 1px solid black; }
+          .modal .modal-wrapper .modal-container .modal-select .cancle-btn:hover, #deleteVideoWrapper .modal-wrapper .modal-container .modal-select .cancle-btn:hover {
+            opacity: 1; }
+        .modal .modal-wrapper .modal-container .modal-select a, #deleteVideoWrapper .modal-wrapper .modal-container .modal-select a {
+          width: 100%;
+          background-color: #ea232c; }
+        .modal .modal-wrapper .modal-container .modal-select button, #deleteVideoWrapper .modal-wrapper .modal-container .modal-select button {
+          width: 100%;
+          height: 100%;
+          border: none;
+          opacity: 0.8; }
+        .modal .modal-wrapper .modal-container .modal-select button:active, #deleteVideoWrapper .modal-wrapper .modal-container .modal-select button:active {
+          border: 1px solid black; }
+        .modal .modal-wrapper .modal-container .modal-select button:hover, #deleteVideoWrapper .modal-wrapper .modal-container .modal-select button:hover {
+          opacity: 1; }
+        .modal .modal-wrapper .modal-container .modal-select .delete-btn, #deleteVideoWrapper .modal-wrapper .modal-container .modal-select .delete-btn {
+          background-color: #ea232c;
+          color: white;
+          float: left; }
+
+.sdEditNav {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .sdEditNav .sdEdit__title {
+    padding: 25px 0px 20px 30px;
+    font-size: 22px;
+    font-weight: 500; }
+  .sdEditNav .sdEdit__bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px 15px 0px;
+    opacity: 0.5; }
+    .sdEditNav .sdEdit__bar .sdEditNav__submit-btn {
+      display: flex;
+      width: 170px;
+      height: 35px; }
+      .sdEditNav .sdEdit__bar .sdEditNav__submit-btn button {
+        width: 70px;
+        margin-right: 10px;
+        font-size: 14px; }
+      .sdEditNav .sdEdit__bar .sdEditNav__submit-btn input {
+        font-size: 14px;
+        width: 70px;
+        padding: 0px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white; }
+
+.videoPlayer {
+  width: 100%;
+  height: 0;
+  background-color: black;
+  padding-bottom: 56.25%;
+  position: relative;
+  outline: none; }
+  .videoPlayer video {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    cursor: pointer; }
+  .videoPlayer .videoPlayer__controls {
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    width: 100%; }
+    .videoPlayer .videoPlayer__controls i {
+      font-size: 23px;
+      cursor: pointer; }
+    .videoPlayer .videoPlayer__controls .videoPlayer__controls-row {
+      width: 100%; }
+      .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:first-child {
+        margin-bottom: 5px;
+        width: 100%;
+        display: flex;
+        justify-content: center; }
+        .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:first-child .videoPlayer__time {
+          width: 98%; }
+        .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:first-child .slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          /* Override default look */
+          appearance: none;
+          width: 5px;
+          /* Set a specific slider handle width */
+          height: 5px;
+          /* Slider handle height */
+          background: #ea232c;
+          /* Green background */
+          border-radius: 50%;
+          cursor: pointer;
+          /* Cursor on hover */
+          box-shadow: -20000px 0 0 20000px #ea232c; }
+        .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:first-child .slider::-moz-range-thumb {
+          width: 15px;
+          /* Set a specific slider handle width */
+          height: 15px;
+          /* Slider handle height */
+          background: #ea232c;
+          /* Green background */
+          border-radius: 50%;
+          cursor: pointer;
+          /* Cursor on hover */
+          box-shadow: -20000px 0 0 20000px #ea232c; }
+      .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); }
+        .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) .videoPlayer__controls-column {
+          display: flex;
+          align-items: center; }
+          .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) .videoPlayer__controls-column:first-child .controls__btn-column:first-child {
+            padding: 5px 10px 10px 10px;
+            padding-top: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center; }
+            .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) .videoPlayer__controls-column:first-child .controls__btn-column:first-child i {
+              font-size: 18px; }
+          .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) .videoPlayer__controls-column:first-child .controls__btn-column:nth-child(2) {
+            padding: 5px 10px 10px 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px; }
+          .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) .videoPlayer__controls-column:first-child .controls__btn-column:nth-child(3) {
+            width: 0px;
+            transition: width .2s linear;
+            display: flex;
+            align-items: center; }
+            .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) .videoPlayer__controls-column:first-child .controls__btn-column:nth-child(3) .slider::-webkit-slider-thumb {
+              -webkit-appearance: none;
+              /* Override default look */
+              appearance: none;
+              width: 2px;
+              /* Set a specific slider handle width */
+              height: 2px;
+              /* Slider handle height */
+              background: white;
+              /* Green background */
+              border-radius: 50%;
+              cursor: pointer;
+              /* Cursor on hover */
+              box-shadow: -20000px 0 0 20000px white; }
+            .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) .videoPlayer__controls-column:first-child .controls__btn-column:nth-child(3) .slider::-moz-range-thumb {
+              width: 2px;
+              /* Set a specific slider handle width */
+              height: 2px;
+              /* Slider handle height */
+              background: white;
+              /* Green background */
+              border-radius: 50%;
+              cursor: pointer;
+              /* Cursor on hover */ }
+          .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) .videoPlayer__controls-column:last-child {
+            justify-self: end; }
+            .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) .videoPlayer__controls-column:last-child .functions__btn-column:first-child {
+              display: flex;
+              align-items: center;
+              width: 0px;
+              transition: width .2s linear; }
+            .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) .videoPlayer__controls-column:last-child .functions__btn-column:nth-child(2) {
+              padding: 5px 10px 10px 5px;
+              display: flex;
+              justify-content: center;
+              align-items: center; }
+            .videoPlayer .videoPlayer__controls .videoPlayer__controls-row:nth-child(2) .videoPlayer__controls-column:last-child .functions__btn-column:nth-child(3) {
+              padding: 5px 10px 10px 5px;
+              display: flex;
+              justify-content: center;
+              align-items: center; }
+  .videoPlayer .videoPlayer__playBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    .videoPlayer .videoPlayer__playBtn span {
+      font-size: 70px;
+      color: white; }
+      .videoPlayer .videoPlayer__playBtn span i {
+        cursor: pointer; }
+
+.record-container {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1; }
+  .record-container .preview-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 960px;
+    height: 540px;
+    margin-bottom: 30px; }
+    .record-container .preview-container video {
+      width: 100%;
+      height: 100%;
+      min-width: 640px;
+      min-height: 360px;
+      background-color: rgba(0, 0, 0, 0.9); }
+    .record-container .preview-container .preview-function {
+      position: absolute;
+      bottom: -53px;
+      right: 0px; }
+      .record-container .preview-container .preview-function button {
+        padding: 10px; }
+      .record-container .preview-container .preview-function span {
+        margin-right: 10px; }
+  .record-container button {
+    color: white;
+    background-color: #ea232c;
+    padding: 15px 30px 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.85;
+    margin-bottom: 15px; }
+  .record-container button:hover {
+    opacity: 1; }
+
 .videos__wrapper {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  padding-top: 30px;
+  padding-left: 25px;
+  padding-right: 25px; }
   .videos__wrapper .videos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    grid-gap: 25px; }
 
 .login__form-container {
   width: 100%;
@@ -2923,7 +3495,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; }
-  .join__form-container .join__form-title, .join__form-container .form-title, .form-container .join__form-title, .form-container .form-title {
+  .join__form-container .join__form-title, .join__form-container .form-title, .join__form-container .sdEditVideo__form-title, .join__form-container .sdUpload__form-title, .form-container .join__form-title, .form-container .form-title, .form-container .sdEditVideo__form-title, .form-container .sdUpload__form-title {
     margin-top: 30px;
     font-size: 30px;
     font-weight: 600;
@@ -2941,6 +3513,12 @@ body {
     .join__form-container form label, .form-container form label {
       font-size: 16px;
       font-weight: 600; }
+    .join__form-container form textarea, .form-container form textarea {
+      width: 400px;
+      min-height: 100px;
+      resize: none;
+      overflow-y: scroll;
+      outline: none; }
     .join__form-container form input, .form-container form input {
       padding: 20px;
       margin-top: 5px; }
@@ -2951,6 +3529,16 @@ body {
         margin-bottom: 30px; }
       .join__form-container form input:nth-of-type(3), .form-container form input:nth-of-type(3) {
         margin-bottom: 5px; }
+    .join__form-container form input[type="submit"], .form-container form input[type="submit"] {
+      cursor: pointer; }
+  .join__form-container a button, .form-container a button {
+    width: 400px;
+    height: 60px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer; }
 
 #mainVideo {
   display: flex; }
@@ -2980,6 +3568,11 @@ body {
       display: flex;
       align-items: center;
       justify-content: center; }
+      .video-detail__container .video__info .video__info-row .video__info-column:nth-child(2) button {
+        cursor: pointer; }
+      .video-detail__container .video__info .video__info-row .video__info-column:nth-child(2) a {
+        width: 100%;
+        display: flex; }
       .video-detail__container .video__info .video__info-row .video__info-column:nth-child(2) .video__like-wrapper {
         margin-right: 10px;
         padding-bottom: 8px;
@@ -2996,7 +3589,7 @@ body {
           justify-content: center; }
           .video-detail__container .video__info .video__info-row .video__info-column:nth-child(2) button .video-btn__wrapper i {
             font-size: 25px;
-            opacity: 0.5;
+            opacity: 0.4;
             margin-right: 10px; }
           .video-detail__container .video__info .video__info-row .video__info-column:nth-child(2) button .video-btn__wrapper span {
             font-size: 15px;
@@ -3015,18 +3608,49 @@ body {
         display: flex;
         justify-content: center;
         align-items: center; }
-        .video-detail__container .video__creator .channel-creator .creator__column:first-child img {
+        .video-detail__container .video__creator .channel-creator .creator__column:first-child .creator__avatar {
           width: 50px;
           height: 50px;
-          margin-right: 15px; }
+          overflow: hidden;
+          display: flex;
+          border: 0px;
+          border-radius: 60%;
+          font-size: 20px;
+          color: white;
+          margin-right: 15px;
+          justify-content: center;
+          align-items: center; }
+          .video-detail__container .video__creator .channel-creator .creator__column:first-child .creator__avatar a {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center; }
+            .video-detail__container .video__creator .channel-creator .creator__column:first-child .creator__avatar a img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover; }
         .video-detail__container .video__creator .channel-creator .creator__column:first-child .creator__info .creator__name {
-          font-size: 18px;
+          font-size: 17px;
           margin-bottom: 5px; }
         .video-detail__container .video__creator .channel-creator .creator__column:first-child .creator__info .creator__subscribeNum {
-          opacity: 0.8; }
+          opacity: 0.7; }
+      .video-detail__container .video__creator .channel-creator .creator__column:nth-child(2) .video__editBtn-wrapper button {
+        width: 200px !important;
+        margin-right: 20px; }
+      .video-detail__container .video__creator .channel-creator .creator__column:nth-child(2) .video__editBtn-wrapper button:hover {
+        opacity: 0.8; }
+      .video-detail__container .video__creator .channel-creator .creator__column:nth-child(2) .creator__subscribeBtn {
+        text-align: center;
+        background-color: #ea232c;
+        min-width: 84px; }
     .video-detail__container .video__creator .video__description {
       padding-left: 65px; }
+      .video-detail__container .video__creator .video__description p {
+        max-width: 650px;
+        word-break: break-all; }
   .video-detail__container .video__comments {
+    padding-bottom: 50px;
     width: 100%;
     margin-bottom: 50px; }
     .video-detail__container .video__comments .video__comments-row:first-child {
@@ -3036,29 +3660,151 @@ body {
     .video-detail__container .video__comments .video__comments-row:nth-child(2) {
       display: flex;
       align-items: flex-start; }
-      .video-detail__container .video__comments .video__comments-row:nth-child(2) .comment-write__column:first-child {
-        margin-right: 15px; }
-        .video-detail__container .video__comments .video__comments-row:nth-child(2) .comment-write__column:first-child img {
-          width: 50px;
-          height: 50px; }
-      .video-detail__container .video__comments .video__comments-row:nth-child(2) .comment-write__column:nth-child(2) {
-        width: 100%; }
-        .video-detail__container .video__comments .video__comments-row:nth-child(2) .comment-write__column:nth-child(2) form {
-          width: 100%;
-          margin-bottom: 10px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-          padding: 5px; }
-          .video-detail__container .video__comments .video__comments-row:nth-child(2) .comment-write__column:nth-child(2) form input::placeholder {
-            font-size: 14px; }
-        .video-detail__container .video__comments .video__comments-row:nth-child(2) .comment-write__column:nth-child(2) .comment-write__btns {
+
+.reply-write__wrapper {
+  display: none; }
+
+.comment-write__wrapper {
+  display: flex;
+  align-items: flex-start; }
+
+.comment-write__wrapper, .reply-write__wrapper {
+  width: 100%;
+  height: 100%; }
+  .comment-write__wrapper .replyWrapper, .reply-write__wrapper .replyWrapper {
+    display: flex;
+    width: 100%; }
+  .comment-write__wrapper .comment-writer, .comment-write__wrapper .reply-writer, .reply-write__wrapper .comment-writer, .reply-write__wrapper .reply-writer {
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+    color: white;
+    font-size: 20px;
+    border: 0px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .comment-write__wrapper .comment-writer img, .comment-write__wrapper .reply-writer img, .reply-write__wrapper .comment-writer img, .reply-write__wrapper .reply-writer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .comment-write__wrapper .reply-writer, .reply-write__wrapper .reply-writer {
+    margin-top: 3px;
+    width: 30px;
+    height: 30px;
+    font-size: 13px; }
+  .comment-write__wrapper .comment-write, .comment-write__wrapper .reply-write, .comment-write__wrapper .noneUser-reply, .reply-write__wrapper .comment-write, .reply-write__wrapper .reply-write, .reply-write__wrapper .noneUser-reply {
+    margin-left: 15px;
+    margin-top: 5px;
+    width: 100%; }
+    .comment-write__wrapper .comment-write .noneUser-write__form, .comment-write__wrapper .reply-write .noneUser-write__form, .comment-write__wrapper .noneUser-reply .noneUser-write__form, .reply-write__wrapper .comment-write .noneUser-write__form, .reply-write__wrapper .reply-write .noneUser-write__form, .reply-write__wrapper .noneUser-reply .noneUser-write__form {
+      min-height: 100px; }
+    .comment-write__wrapper .comment-write form, .comment-write__wrapper .reply-write form, .comment-write__wrapper .noneUser-reply form, .reply-write__wrapper .comment-write form, .reply-write__wrapper .reply-write form, .reply-write__wrapper .noneUser-reply form {
+      width: 100%;
+      padding: 5px;
+      background: transparent; }
+      .comment-write__wrapper .comment-write form input, .comment-write__wrapper .reply-write form input, .comment-write__wrapper .noneUser-reply form input, .reply-write__wrapper .comment-write form input, .reply-write__wrapper .reply-write form input, .reply-write__wrapper .noneUser-reply form input {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+        padding: 5px;
+        background: transparent; }
+      .comment-write__wrapper .comment-write form input::placeholder, .comment-write__wrapper .reply-write form input::placeholder, .comment-write__wrapper .noneUser-reply form input::placeholder, .reply-write__wrapper .comment-write form input::placeholder, .reply-write__wrapper .reply-write form input::placeholder, .reply-write__wrapper .noneUser-reply form input::placeholder {
+        font-size: 14px; }
+      .comment-write__wrapper .comment-write form .comment-write__btns, .comment-write__wrapper .comment-write form .reply-write__btns, .comment-write__wrapper .reply-write form .comment-write__btns, .comment-write__wrapper .reply-write form .reply-write__btns, .comment-write__wrapper .noneUser-reply form .comment-write__btns, .comment-write__wrapper .noneUser-reply form .reply-write__btns, .reply-write__wrapper .comment-write form .comment-write__btns, .reply-write__wrapper .comment-write form .reply-write__btns, .reply-write__wrapper .reply-write form .comment-write__btns, .reply-write__wrapper .reply-write form .reply-write__btns, .reply-write__wrapper .noneUser-reply form .comment-write__btns, .reply-write__wrapper .noneUser-reply form .reply-write__btns {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center; }
+        .comment-write__wrapper .comment-write form .comment-write__btns .comment-cancel__btn, .comment-write__wrapper .comment-write form .comment-write__btns .reply-cancel__btn, .comment-write__wrapper .comment-write form .reply-write__btns .comment-cancel__btn, .comment-write__wrapper .comment-write form .reply-write__btns .reply-cancel__btn, .comment-write__wrapper .reply-write form .comment-write__btns .comment-cancel__btn, .comment-write__wrapper .reply-write form .comment-write__btns .reply-cancel__btn, .comment-write__wrapper .reply-write form .reply-write__btns .comment-cancel__btn, .comment-write__wrapper .reply-write form .reply-write__btns .reply-cancel__btn, .comment-write__wrapper .noneUser-reply form .comment-write__btns .comment-cancel__btn, .comment-write__wrapper .noneUser-reply form .comment-write__btns .reply-cancel__btn, .comment-write__wrapper .noneUser-reply form .reply-write__btns .comment-cancel__btn, .comment-write__wrapper .noneUser-reply form .reply-write__btns .reply-cancel__btn, .reply-write__wrapper .comment-write form .comment-write__btns .comment-cancel__btn, .reply-write__wrapper .comment-write form .comment-write__btns .reply-cancel__btn, .reply-write__wrapper .comment-write form .reply-write__btns .comment-cancel__btn, .reply-write__wrapper .comment-write form .reply-write__btns .reply-cancel__btn, .reply-write__wrapper .reply-write form .comment-write__btns .comment-cancel__btn, .reply-write__wrapper .reply-write form .comment-write__btns .reply-cancel__btn, .reply-write__wrapper .reply-write form .reply-write__btns .comment-cancel__btn, .reply-write__wrapper .reply-write form .reply-write__btns .reply-cancel__btn, .reply-write__wrapper .noneUser-reply form .comment-write__btns .comment-cancel__btn, .reply-write__wrapper .noneUser-reply form .comment-write__btns .reply-cancel__btn, .reply-write__wrapper .noneUser-reply form .reply-write__btns .comment-cancel__btn, .reply-write__wrapper .noneUser-reply form .reply-write__btns .reply-cancel__btn {
+          margin-right: 7px; }
+        .comment-write__wrapper .comment-write form .comment-write__btns .comment-up__btn, .comment-write__wrapper .comment-write form .comment-write__btns .reply-up__btn, .comment-write__wrapper .comment-write form .reply-write__btns .comment-up__btn, .comment-write__wrapper .comment-write form .reply-write__btns .reply-up__btn, .comment-write__wrapper .reply-write form .comment-write__btns .comment-up__btn, .comment-write__wrapper .reply-write form .comment-write__btns .reply-up__btn, .comment-write__wrapper .reply-write form .reply-write__btns .comment-up__btn, .comment-write__wrapper .reply-write form .reply-write__btns .reply-up__btn, .comment-write__wrapper .noneUser-reply form .comment-write__btns .comment-up__btn, .comment-write__wrapper .noneUser-reply form .comment-write__btns .reply-up__btn, .comment-write__wrapper .noneUser-reply form .reply-write__btns .comment-up__btn, .comment-write__wrapper .noneUser-reply form .reply-write__btns .reply-up__btn, .reply-write__wrapper .comment-write form .comment-write__btns .comment-up__btn, .reply-write__wrapper .comment-write form .comment-write__btns .reply-up__btn, .reply-write__wrapper .comment-write form .reply-write__btns .comment-up__btn, .reply-write__wrapper .comment-write form .reply-write__btns .reply-up__btn, .reply-write__wrapper .reply-write form .comment-write__btns .comment-up__btn, .reply-write__wrapper .reply-write form .comment-write__btns .reply-up__btn, .reply-write__wrapper .reply-write form .reply-write__btns .comment-up__btn, .reply-write__wrapper .reply-write form .reply-write__btns .reply-up__btn, .reply-write__wrapper .noneUser-reply form .comment-write__btns .comment-up__btn, .reply-write__wrapper .noneUser-reply form .comment-write__btns .reply-up__btn, .reply-write__wrapper .noneUser-reply form .reply-write__btns .comment-up__btn, .reply-write__wrapper .noneUser-reply form .reply-write__btns .reply-up__btn {
+          background-color: rgba(0, 0, 0, 0.3);
+          color: white; }
+        .comment-write__wrapper .comment-write form .comment-write__btns input, .comment-write__wrapper .comment-write form .reply-write__btns input, .comment-write__wrapper .reply-write form .comment-write__btns input, .comment-write__wrapper .reply-write form .reply-write__btns input, .comment-write__wrapper .noneUser-reply form .comment-write__btns input, .comment-write__wrapper .noneUser-reply form .reply-write__btns input, .reply-write__wrapper .comment-write form .comment-write__btns input, .reply-write__wrapper .comment-write form .reply-write__btns input, .reply-write__wrapper .reply-write form .comment-write__btns input, .reply-write__wrapper .reply-write form .reply-write__btns input, .reply-write__wrapper .noneUser-reply form .comment-write__btns input, .reply-write__wrapper .noneUser-reply form .reply-write__btns input {
+          width: 72px !important;
+          padding: 10px; }
+  .comment-write__wrapper .reply-write, .reply-write__wrapper .reply-write {
+    margin-top: 0px;
+    margin-left: 8px; }
+  .comment-write__wrapper .noneUser-comment, .reply-write__wrapper .noneUser-comment {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    cursor: default; }
+  .comment-write__wrapper .comment-info, .reply-write__wrapper .comment-info {
+    width: 100%;
+    margin-left: 15px; }
+    .comment-write__wrapper .comment-info .comment-info__row:first-child, .reply-write__wrapper .comment-info .comment-info__row:first-child {
+      display: flex;
+      margin-bottom: 6px; }
+      .comment-write__wrapper .comment-info .comment-info__row:first-child .comment-writer-name, .reply-write__wrapper .comment-info .comment-info__row:first-child .comment-writer-name {
+        font-size: 17px;
+        margin-right: 7px; }
+      .comment-write__wrapper .comment-info .comment-info__row:first-child .comment-createdAt, .reply-write__wrapper .comment-info .comment-info__row:first-child .comment-createdAt {
+        opacity: 0.6; }
+    .comment-write__wrapper .comment-info .comment-info__row:nth-child(2), .reply-write__wrapper .comment-info .comment-info__row:nth-child(2) {
+      margin-bottom: 13px; }
+      .comment-write__wrapper .comment-info .comment-info__row:nth-child(2) p, .reply-write__wrapper .comment-info .comment-info__row:nth-child(2) p {
+        min-height: 25px;
+        max-width: 700px;
+        word-break: break-all; }
+    .comment-write__wrapper .comment-info .comment-info__row:nth-child(3), .reply-write__wrapper .comment-info .comment-info__row:nth-child(3) {
+      display: flex;
+      margin-bottom: 10px; }
+      .comment-write__wrapper .comment-info .comment-info__row:nth-child(3) .comment-like__wrapper, .reply-write__wrapper .comment-info .comment-info__row:nth-child(3) .comment-like__wrapper {
+        margin-right: 20px; }
+        .comment-write__wrapper .comment-info .comment-info__row:nth-child(3) .comment-like__wrapper .comment__like-btn, .reply-write__wrapper .comment-info .comment-info__row:nth-child(3) .comment-like__wrapper .comment__like-btn {
+          margin-right: 10px; }
+        .comment-write__wrapper .comment-info .comment-info__row:nth-child(3) .comment-like__wrapper .comment-btn__wrapper, .reply-write__wrapper .comment-info .comment-info__row:nth-child(3) .comment-like__wrapper .comment-btn__wrapper {
           display: flex;
-          justify-content: flex-end;
-          align-items: center; }
-          .video-detail__container .video__comments .video__comments-row:nth-child(2) .comment-write__column:nth-child(2) .comment-write__btns .comment-cancel__btn {
-            margin-right: 5px; }
-          .video-detail__container .video__comments .video__comments-row:nth-child(2) .comment-write__column:nth-child(2) .comment-write__btns .comment-up__btn {
-            background-color: rgba(0, 0, 0, 0.3);
-            color: white; }
+          align-items: center;
+          justify-content: center; }
+          .comment-write__wrapper .comment-info .comment-info__row:nth-child(3) .comment-like__wrapper .comment-btn__wrapper i, .reply-write__wrapper .comment-info .comment-info__row:nth-child(3) .comment-like__wrapper .comment-btn__wrapper i {
+            font-size: 16px;
+            opacity: 0.5;
+            padding-right: 7px; }
+          .comment-write__wrapper .comment-info .comment-info__row:nth-child(3) .comment-like__wrapper .comment-btn__wrapper span, .reply-write__wrapper .comment-info .comment-info__row:nth-child(3) .comment-like__wrapper .comment-btn__wrapper span {
+            font-size: 15px;
+            opacity: 0.8; }
+      .comment-write__wrapper .comment-info .comment-info__row:nth-child(3) .deleteCommentBtn, .reply-write__wrapper .comment-info .comment-info__row:nth-child(3) .deleteCommentBtn {
+        width: 100px !important; }
+    .comment-write__wrapper .comment-info .comment-info__row:nth-child(4) .noneUser-reply, .reply-write__wrapper .comment-info .comment-info__row:nth-child(4) .noneUser-reply {
+      display: flex; }
+    .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .reply__show-btn, .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .reply__show-btn {
+      margin-bottom: 15px;
+      color: blue;
+      font-size: 14px; }
+      .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .reply__show-btn i, .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .reply__show-btn i {
+        margin-right: 7px; }
+    .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment__replies, .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment__replies {
+      display: none; }
+    .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper, .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper {
+      padding-left: 20px;
+      margin-bottom: 15px; }
+      .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:first-child, .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:first-child {
+        display: flex;
+        margin-bottom: 10px; }
+        .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:first-child .reply-column:first-child, .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:first-child .reply-column:first-child {
+          margin-right: 10px; }
+        .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:first-child .reply-column:nth-child(2), .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:first-child .reply-column:nth-child(2) {
+          opacity: 0.7; }
+      .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:nth-child(2) p, .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:nth-child(2) p {
+        word-break: break-all;
+        max-width: 600px;
+        min-height: 30px; }
+      .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:nth-child(3) .reply-like__wrapper, .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:nth-child(3) .reply-like__wrapper {
+        margin-right: 20px; }
+        .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:nth-child(3) .reply-like__wrapper .reply-btn__wrapper, .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:nth-child(3) .reply-like__wrapper .reply-btn__wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center; }
+          .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:nth-child(3) .reply-like__wrapper .reply-btn__wrapper i, .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:nth-child(3) .reply-like__wrapper .reply-btn__wrapper i {
+            font-size: 16px;
+            opacity: 0.5;
+            margin-right: 7px; }
+          .comment-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:nth-child(3) .reply-like__wrapper .reply-btn__wrapper span, .reply-write__wrapper .comment-info .comment-info__row:nth-child(5) .comment-reply__wrapper .reply-row:nth-child(3) .reply-like__wrapper .reply-btn__wrapper span {
+            font-size: 15px;
+            opacity: 0.8; }
 
 .profile__wrapper {
   width: 100%;
@@ -3121,4 +3867,208 @@ body {
         font-size: 20px; }
         .profile__wrapper .profile__footer .profile__channel-info span:not(:last-child) {
           margin-bottom: 15px; }
+
+.sdEdit__images-wrapper {
+  background-color: white;
+  height: 100%;
+  padding-top: 20px;
+  padding-left: 20px; }
+  .sdEdit__images-wrapper .sdEdit__image-row {
+    margin-bottom: 30px; }
+    .sdEdit__images-wrapper .sdEdit__image-row h4.sdEdit__image-title {
+      font-size: 17px;
+      margin-bottom: 10px; }
+    .sdEdit__images-wrapper .sdEdit__image-row h5.sdEdit__image-subtitle {
+      font-size: 12px;
+      opacity: 0.5;
+      margin-bottom: 10px; }
+    .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview {
+      display: flex; }
+      .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:first-child .sdEdit__image-wrapper {
+        margin-right: 20px;
+        width: 270px;
+        height: 150px;
+        background-color: #f5f5f5;
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:first-child .sdEdit__image-wrapper .sdEdit__roundProfile {
+          top: 0;
+          height: 120px;
+          width: 120px;
+          outline: none;
+          border-radius: 50%; }
+        .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:first-child .sdEdit__image-wrapper .sdEdit__channel-device {
+          width: 180px;
+          height: 135px;
+          background-color: white;
+          border: 5px solid black; }
+          .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:first-child .sdEdit__image-wrapper .sdEdit__channel-device .sdEdit__channel-cover {
+            width: 100%;
+            height: 55px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center; }
+            .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:first-child .sdEdit__image-wrapper .sdEdit__channel-device .sdEdit__channel-cover .red-box {
+              width: 100%;
+              height: 100%;
+              background-color: #ea232c; }
+            .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:first-child .sdEdit__image-wrapper .sdEdit__channel-device .sdEdit__channel-cover .sdEdit__cover {
+              width: 100%;
+              height: 100%;
+              object-fit: cover; }
+      .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:first-child .watermark__wrapper {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding-right: 15px;
+        padding-bottom: 30px; }
+        .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:first-child .watermark__wrapper .sdEdit__watermark {
+          width: 35px;
+          height: 35px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden; }
+          .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:first-child .watermark__wrapper .sdEdit__watermark img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; }
+          .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:first-child .watermark__wrapper .sdEdit__watermark span {
+            font-size: 35px;
+            color: #ea232c; }
+      .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:nth-child(2) p {
+        font-size: 13px;
+        opacity: 0.5;
+        line-height: 17px;
+        margin-bottom: 11px;
+        margin-left: 10px; }
+      .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:nth-child(2) .fileUploadBox label {
+        display: inline-block;
+        padding: .5em .75em;
+        color: #6464f3;
+        font-size: inherit;
+        line-height: normal;
+        vertical-align: middle;
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+        border-radius: .25em;
+        transition: background-color 0.2s; }
+      .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:nth-child(2) .fileUploadBox label:active {
+        background-color: #e9eef6; }
+      .sdEdit__images-wrapper .sdEdit__image-row .sdEdit__image-preview .sdEdit__image-column:nth-child(2) .fileUploadBox input[type="file"] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0; }
+
+.sdEdit__details-wrapper {
+  background-color: white;
+  height: 100%;
+  padding-top: 20px;
+  padding-left: 20px; }
+  .sdEdit__details-wrapper .sdEdit__cnName h4.sdEdit__cnName-title {
+    font-size: 16px;
+    opacity: 0.6;
+    margin-bottom: 11px; }
+  .sdEdit__details-wrapper .sdEdit__cnName h2.sdEdit__cnName-name {
+    font-size: 20px;
+    padding-left: 5px;
+    margin-bottom: 10px; }
+  .sdEdit__details-wrapper .sdEdit__cnName input {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 30px; }
+  .sdEdit__details-wrapper .sdEdit__cnName label[for="cnName"] {
+    margin-right: 10px; }
+  .sdEdit__details-wrapper .sdEdit__cnName .cnDescription-box {
+    position: relative;
+    height: 200px;
+    width: 90%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px; }
+    .sdEdit__details-wrapper .sdEdit__cnName .cnDescription-box label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      opacity: 0.5; }
+    .sdEdit__details-wrapper .sdEdit__cnName .cnDescription-box textarea {
+      padding: 10px;
+      top: 30px;
+      position: absolute;
+      width: 80%;
+      height: 100%;
+      outline: none;
+      resize: none;
+      overflow: hidden;
+      border: none; }
+    .sdEdit__details-wrapper .sdEdit__cnName .cnDescription-box textarea::placeholder {
+      opacity: 0.5; }
+
+.user__comments-wrapper {
+  padding: 40px; }
+  .user__comments-wrapper .user__comments-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600; }
+  .user__comments-wrapper .comments-table {
+    margin-top: 30px;
+    width: 90%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-collapse: collapse;
+    border-radius: 7px; }
+    .user__comments-wrapper .comments-table thead {
+      font-size: 20px;
+      font-weight: 600;
+      background-color: rgba(0, 0, 0, 0.1); }
+    .user__comments-wrapper .comments-table tbody .comment__delete {
+      width: 200px !important; }
+      .user__comments-wrapper .comments-table tbody .comment__delete .deleteCommentBtn {
+        max-width: 200px; }
+    .user__comments-wrapper .comments-table th, .user__comments-wrapper .comments-table td {
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 10px; }
+
+.cnAbout__wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 40px; }
+  .cnAbout__wrapper h3 {
+    font-size: 16px;
+    margin-bottom: 10px; }
+  .cnAbout__wrapper .description__wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 20px;
+    min-height: 100px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    .cnAbout__wrapper .description__wrapper h1 {
+      font-size: 25px;
+      margin-bottom: 20px; }
+    .cnAbout__wrapper .description__wrapper p {
+      width: 90%;
+      word-break: break-all;
+      font-size: 16px; }
+
+.cnCommunity__wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .cnCommunity__wrapper h1 {
+    font-size: 40px; }
 

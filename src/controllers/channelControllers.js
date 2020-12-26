@@ -1,64 +1,90 @@
 import routes from "../routes"
 import Video from "../models/Video"
+import User from "../models/User"
 import Channel from "../models/Channel"
 import Comment from "../models/Comment"
 import Trending from "../models/Trending"
 
-export const cnDetail = async (req,res)=>{
-    try{
-        const videos = await Video.find({}).sort({id:-1})
-        const channels = await Channel.find({})
-        res.render("channel/cnDetail",{videos,channels})
-    }catch(error){
-        console.log(error)
-        res.render("channel/cnDetail",{videos,channels})
-    }
-}
-export const cnFeature = async(req,res)=>{
-    try{
-        const videos = await Video.find({}).sort({id:-1})
-        const channels = await Channel.find({})
-        res.render("channel/cnFeature",{videos,channels})
-       
-    }catch(error){
-        console.log(error)
-        res.render("channel/cnFeature",{videos,channels})
-       
-    }
-}
+
 export const cnVideos = async(req,res)=>{
+    const {params:{id}}=req;
     try{
-        const videos = await Video.find({}).sort({id:-1})
-        const channels = await Channel.find({})
-        res.render("channel/cnVideos",{videos,channels})
+        const cnVideos = await Video.find({channel:id}).populate('channel')
+        const channel = await Channel.findOne({_id:id})
+        let channelId = channel.id
+        let channels
+        let subscribeToken="no"
+        if (req.user){
+            const {user:{subscribeChannels,id:userId}}=req;
+            channels = await Channel.find({'_id':{$in:subscribeChannels}})
+            let subscribe = channel.subscribers.includes(userId)
+            if(subscribe){
+                subscribeToken="yes"
+            }else{
+                subscribeToken="no"
+            }
+
+        }
+        res.render("channel/cnVideos",{pageTitle:channel.name,channel,cnVideos,channels,subscribeToken,channelId})
         
     }catch(error){
         console.log(error)
-        res.render("channel/cnVideos",{videos,channels})
+        res.render("channel/cnVideos",{pageTitle:channel.name,channel,videos,channels,subscribeToken,channelId})
         
     }
 }
 export const cnCommunity = async(req,res)=>{
+    const {params:{id}}=req;
     try{
         const videos = await Video.find({}).sort({id:-1})
-        const channels = await Channel.find({})
-        res.render("channel/cnCommunity",{videos,channels})
+        const channel = await Channel.findOne({_id:id})
+        let channelId = channel.id
+        let channels
+        let subscribeToken="no"
+        if (req.user){
+            const {user:{subscribeChannels,id:userId}}=req;
+            channels = await Channel.find({'_id':{$in:subscribeChannels}})
+            let subscribe = channel.subscribers.includes(userId)
+            if(subscribe){
+                subscribeToken="yes"
+            }else{
+                subscribeToken="no"
+            }
+
+        }
+        res.render("channel/cnCommunity",{pageTitle:channel.name,channel,videos,channels,subscribeToken,channelId})
         
     }catch(error){
         console.log(error)
-        res.render("channel/cnCommunity",{videos,channels})
+        res.render("channel/cnCommunity",{pageTitle:channel.name,channel,videos,channels,subscribeToken,channelId})
         
     }
 }
 export const cnAbout = async(req,res)=>{
+    const {params:{id}}=req;
     try{
         const videos = await Video.find({}).sort({id:-1})
-        const channels = await Channel.find({})
-        res.render("channel/cnAbout",{videos,channels})
+        const channel = await Channel.findOne({_id:id})
+        let channelId = channel.id
+        let channels
+        let subscribeToken="no"
+        if (req.user){
+            const {user:{subscribeChannels,id:userId}}=req;
+            channels = await Channel.find({'_id':{$in:subscribeChannels}})
+            const user = await  User.findById(id)
+            let subscribe = channel.subscribers.includes(userId)
+            if(subscribe){
+                subscribeToken="yes"
+            }else{
+                subscribeToken="no"
+            }
+
+        }
+        res.render("channel/cnAbout",{pageTitle:channel.name,channel,videos,channels,subscribeToken,channelId})
         
     }catch(error){
         console.log(error)
-        res.render("channel/cnAbout",{videos,channels})
+        res.render("channel/cnAbout",{pageTitle:channel.name,channel,videos,channels,subscribeToken,channelId})
         
     }
 }

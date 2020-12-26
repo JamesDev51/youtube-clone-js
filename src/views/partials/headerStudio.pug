@@ -4,7 +4,7 @@ header.header.header__studio
             .sidebar__button
                 button(onclick="sidebarBtn()")
                     i.fas.fa-bars
-            a(href=`${domain}/studio/channel/${channel.id}`)
+            a(href=`${domain}/studio/channel/${user.channel.id}`)
                 span.jamesTube-logo
                     i.fab.fa-youtube
                 span.jamesTube-Title#studioTitle Studio
@@ -25,32 +25,39 @@ header.header.header__studio
                             span.video-plus__title 만들기
                     .sdUploadDropdown-content
                         .uploadDropdown__wrapper
-                            a(href=`/${routes.sdUpload(1)}`)
+                            a(href=`${routes.sdUpload(user.channel.id)}`)
                                 i.fas.fa-upload.sdUploadIcon
                                 span.sdDropdownTitle 동영상 업로드
+                            a(href=`${routes.sdRecord(user.channel.id)}`)
+                                i.fas.fa-compact-disc.sdUploadIcon
+                                span.dropdownTitle 동영상 녹화
+                            a(href=`${routes.sdStreaming(user.channel.id)}`)
+                                div.sdUploadIcon •
+                                span.dropdownTitle 동영상 라이브
+
             .sdUser__wrapper
                 .sdUser-dropdown
                     .sdUserDropdown-button
                         button(onclick="sdUserDropdown()", class="userDropdownBtn")
-                            .user__avatar#headerUserAvatarSd(style=`background-color:${userColor};`)
+                            .user__avatar#headerUserAvatarSd(style=`background-color:${user.userColor};`)
                                 if user.avatarUrl
                                     img(src=user.avatarUrl class="header__userAvatar-img")
                                 else
-                                    span(class="header__userAvatar-name") #{user.name.substr(0,1)} 
+                                    span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
                     .sdUserDropdown-content
                         .sdUserProfile
                             .userProfile-column
-                                .user__avatar(style=`background-color:${userColor};`) 
+                                .user__avatar(style=`background-color:${user.userColor};`) 
                                     if user.avatarUrl
                                         img(src=user.avatarUrl class="header__userAvatar-img")
                                     else
-                                        span(class="header__userAvatar-name") #{user.name.substr(0,1)} 
+                                        span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
                             .userProfile-column
                                 span.channel__name=user.name
                                 span.channel__name=user.channel.name
                         .user__function-wrapper
                             .user__function-row
-                                a(href=routes.cnDetail(1))
+                                a(href=routes.cnVideos(user.channel.id))
                                     i.fas.fa-user-circle.headerUserIcon#mychannelIcon
                                     span.dropdownTitle 내 채널
                                 a(href=routes.home)

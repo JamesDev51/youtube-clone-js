@@ -2,7 +2,8 @@ extends ../layouts/studio
 
 block content
     .form-container
-        form(action=`/${routes.sdUpload(1)}`,method="post",enctype="multipart/form-data")
+        span.sdUpload__form-title 동영상 업로드
+        form(action=`${routes.sdUpload(user.channel.id)}`,method="post",enctype="multipart/form-data")
             label(for="file") 파일선택
             input(type="file",id="file",name="videoFile",required=true, accept="video/*")
             input(type="text",placeholder="제목",name="title",required=true)

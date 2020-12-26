@@ -1,5 +1,23 @@
-mixin likelistVideoBlock(likelistVideo = {})
-    .likelistVideoBlock
-        a(href=routes.videoDetail) 
-            h4.video__title=likelistVideo.title
-            h6.video__views=likelistVideo.views
+mixin likelistVideoBlock(video = {})
+    .likelistVideoBlock.videoBlock
+        a(href=routes.videoDetail(video.id))
+            .likelistVideoBlock__player.videoPlayer
+                video.likelistVideoBlock__thumbnail(src=video.videoFile)
+            //-재생시간 추가하기
+        .likelistVideoBlock__info.videoBlock__info
+            .likelistVideo__info-column.video__info-column
+                a(href=routes.cnVideos(video.channel._id))
+                    .likelistVideo__creator-avatar.user__avatar(style=`background-color:${video.channel.userColor};`)
+                        if video.channel.avatarUrl
+                            img(src=video.channel.avatarUrl class="likelistVideo__creator-img")
+                        else
+                            span(class="likelistVideo__creator-name")=video.channel.name.substr(0,1)
+            .likelistVideo__info-column.video__info-column
+                .likelistVideo__info-main.video__info-main
+                    a(href=routes.videoDetail(video.id))
+                        h4.likelistVideo__title=video.title
+                .likelistVideo__info-sub.video__info-sub
+                    a(href=routes.cnVideos(video.channel))
+                        h6.likelistVideo__creator-name.video__creator-name=video.channel.name
+                    a(href=routes.videoDetail(video.id))
+                        h6.likelistVideo__views 조회수 #{video.views}회 • #{video.createdAt}

@@ -1,22 +1,26 @@
-mixin trendingVideoBlock(trendingVideo = {})
-    .trendingVideoBlock
-        .trendingVideoBlock__column
-            a(href=routes.videoDetail(trendingVideo.id))
-                video.videoBlock__thumbnail(src=trendingVideo.videoFile)
-                                //-재생시간 추가하기
-        .trendingVideoBlock__column
-            a.trendingVideoBlock__title(href=routes.videoDetail(trendingVideo.id))
-                h4.video__title=trendingVideo.title
-            .trendingVideoBlock__info
-                a(href=routes.cnDetail(trendingVideo.channelId))
-                    h6.channel__name=trendingVideo.channelName
-                a(href=routes.videoDetail(trendingVideo.id))
-                    h6.video__views 조회수 #{trendingVideo.views}
-                    //- n시간 전 만들기
-            .trendingVideoBlock__description
-                h6.video__description=trendingVideo.description
-
-
+mixin trendingVideoBlock(video = {})
+    .trendingVideoBlock.videoBlock
+        a(href=routes.videoDetail(video.id))
+            .trendingVideoBlock__player.videoPlayer
+                video.trendingVideoBlock__thumbnail(src=video.videoFile)
+            //-재생시간 추가하기
+        .trendingVideoBlock__info.videoBlock__info
+            .trendingVideo__info-column.video__info-column
+                a(href=routes.cnVideos(video.channel._id))
+                    .trendingVideo__creator-avatar.user__avatar(style=`background-color:${video.channel.userColor};`)
+                        if video.channel.avatarUrl
+                            img(src=video.channel.avatarUrl class="trendingVideo__creator-img")
+                        else
+                            span(class="trendingVideo__creator-name")=video.channel.name.substr(0,1)
+            .trendingVideo__info-column.video__info-column
+                .trendingVideo__info-main.video__info-main
+                    a(href=routes.videoDetail(video.id))
+                        h4.trendingVideo__title=video.title
+                .trendingVideo__info-sub.video__info-sub
+                    a(href=routes.cnVideos(video.channel))
+                        h6.trendingVideo__creator-name.video__creator-name=video.channel.name
+                    a(href=routes.videoDetail(video.id))
+                        h6.trendingVideo__views 조회수 #{video.views}회 • #{video.createdAt}
 
 
 

@@ -86,8 +86,8 @@ include ../mixins/subscriptionList
                 ul.subscriptions-list
                     each channel in channels
                         +subscriptionList({
-                            channelName : channel.name,
-                            subscriber:channel.subscriber
+                            channelId : channel.id,
+                            channelName : channel.name
                         })
                 
 

@@ -1,0 +1,13 @@
+extends ../layouts/studio
+include ../mixins/videoPlayer
+
+block content
+    .form-container#jsRecordForm
+        .record-container#jsRecordContainer
+            span.sdUpload__form-title 동영상 녹화
+            .preview-container
+                video#jsRecordPreview
+                .preview-function
+                    span#jsTime 00:00:00
+                    button#jsRecordBtnSize 축소하기
+            button#jsRecordBtn 녹화 시작하기

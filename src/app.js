@@ -13,7 +13,7 @@ import mongoose from "mongoose"
 import session from "express-session"
 import MongoStore from "connect-mongo"
 import passport from "passport";
-import "../passport"
+import "./passport"
 
 import dotenv from "dotenv"
 dotenv.config()

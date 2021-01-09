@@ -3,9 +3,9 @@ import GoogleStrategy from "passport-google-oauth20"
 import KakaoStrategy from "passport-kakao"
 import NaverStrategy from "passport-naver"
 import GithubStrategy from "passport-github"
-import User from "./src/models/User";
+import User from "./models/User";
 import dotenv from "dotenv"
-import { googleLoginCallback, kakaoLoginCallback, naverLoginCallback } from "./src/controllers/userControllers";
+import { googleLoginCallback, kakaoLoginCallback, naverLoginCallback } from "./controllers/userControllers";
 dotenv.config();
 
 passport.use(User.createStrategy());

@@ -41,9 +41,9 @@ export const sdPostCnEditImages = async(req,res)=>{
     const {user,files:{avatar,cover,watermark}}=req;
     try{
         const channel = await Channel.findById(user.channel)
-        const avatarUrl = avatar ? `${domain}/${avatar[0].path}` : null
-        const coverUrl = cover ? `${domain}/${cover[0].path}` : null
-        const watermarkUrl = watermark ? `${domain}/${watermark[0].path}` : null
+        const avatarUrl = avatar ? `${avatar[0].location}` : null
+        const coverUrl = cover ? `${cover[0].location}` : null
+        const watermarkUrl = watermark ? `${watermark[0].location}` : null
         await User.findByIdAndUpdate(user._id,{
             avatarUrl : avatar ? avatarUrl : user.avatarUrl
         })
@@ -87,11 +87,11 @@ export const sdGetUpload = (req,res)=>{
     res.render("studio/sdUpload",{pageTitle:"동영상 업로드"})
 }
 export const sdPostUpload = async(req,res)=>{
-    const {body:{title,description},file:{path},user:{channel}}=req;
+    const {body:{title,description},file:{location},user:{channel}}=req;
     
     try{
         const newVideo = await Video.create({
-            videoFile:`${domain}/${path}`,
+            videoFile:location,
             title,
             description,
             channel

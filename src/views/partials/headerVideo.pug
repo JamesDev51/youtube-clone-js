@@ -11,14 +11,15 @@ header.header#videoHeader
                 span.jamesTube-language KR
         .header__column#headerTwoVideo
             .search__wrapper
-                .search__wrapper-column
-                    form(action=routes.search, method="get")
+                form(action=`/search${routes.result}`, method="get")
+                    .search__wrapper-column
                         input(type="text", placeholder="검색", name="term")
-                    span.search-keyboard-logo
-                        i.fas.fa-keyboard
-                .search__wrapper-column
-                    span.search-button-logo
-                        i.fas.fa-search
+                        span.search-keyboard-logo
+                            i.fas.fa-keyboard
+                    .search__wrapper-column
+                        button
+                            span.search-button-logo
+                                i.fas.fa-search
         if !user
             .header__column
                 .function__wrapper
@@ -132,18 +133,13 @@ header.header#videoHeader
                     .function__user-dropdown
                         button(onclick="userDropdownTwo()" class="userDropdownBtn")  
                             .user__avatar#headerUserAvatar(style=`background-color:${user.userColor};`)
-                                if user.avatarUrl
-                                    img(src=user.avatarUrl class="header__userAvatar-img")
-                                else
-                                    span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)}
+                                img(src=user.avatarUrl ? user.avatarUrl : img.noneUser class="header__userAvatar-img")
+
                         .userDropdown-content
                             .userProfile
                                 .userProfile-column
                                     .user__avatar(style=`background-color:${user.userColor};`)
-                                        if user.avatarUrl
-                                            img(src=user.avatarUrl class="header__userAvatar-img")
-                                        else
-                                            span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
+                                        img(src=user.avatarUrl ? user.avatarUrl : img.noneUser class="header__userAvatar-img") 
                                 .userProfile-column
                                     span.userProfile__name=user.name
                                     span.userProfile__email=user.email

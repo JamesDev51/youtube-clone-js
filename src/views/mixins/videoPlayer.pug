@@ -4,6 +4,8 @@ mixin videoPlayer(video={})
         .videoPlayer__controls
             .videoPlayer__controls-row.slidercontainer
                 input.videoPlayer__time.slider#jsTime(type="range",min="0", value="0",step="1")
+                .videoPlayer__watermark
+                    img(src=video.watermarkUrl)    
             .videoPlayer__controls-row
                 .videoPlayer__controls-column
                     .controls__btn-column

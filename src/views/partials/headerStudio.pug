@@ -10,10 +10,10 @@ header.header.header__studio
                 span.jamesTube-Title#studioTitle Studio
         .header__column#sdHeaderTwo
             .search__wrapper#studioSearchWrapper
-                .search__wrapper-column#studioSearchWrapperColumn
-                    span.search-button-logo
-                        i.fas.fa-search
-                    form(action=routes.search, method="get")
+                form(action=routes.search, method="get")
+                    .search__wrapper-column#studioSearchWrapperColumn
+                        span.search-button-logo
+                            i.fas.fa-search
                         input(type="text", placeholder="채널에서 검색하기", name="term")
         .header__column
             .sdUpload__wrapper
@@ -40,18 +40,14 @@ header.header.header__studio
                     .sdUserDropdown-button
                         button(onclick="sdUserDropdown()", class="userDropdownBtn")
                             .user__avatar#headerUserAvatarSd(style=`background-color:${user.userColor};`)
-                                if user.avatarUrl
-                                    img(src=user.avatarUrl class="header__userAvatar-img")
-                                else
-                                    span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
+                                img(src=user.avatarUrl ? user.avatarUrl : img.noneUser class="header__userAvatar-img")
+
                     .sdUserDropdown-content
                         .sdUserProfile
                             .userProfile-column
                                 .user__avatar(style=`background-color:${user.userColor};`) 
-                                    if user.avatarUrl
-                                        img(src=user.avatarUrl class="header__userAvatar-img")
-                                    else
-                                        span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
+                                    img(src=user.avatarUrl ? user.avatarUrl : img.noneUser class="header__userAvatar-img")
+ 
                             .userProfile-column
                                 span.channel__name=user.name
                                 span.channel__name=user.channel.name

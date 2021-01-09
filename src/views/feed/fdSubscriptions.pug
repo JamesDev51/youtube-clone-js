@@ -3,7 +3,8 @@ include ../mixins/subscriptionVideoBlock
 
 block content
     if !user
-        span 새로운 동영상을 놓치지 마세요.
+        .noneUser__wrapper
+            span.noneUser__sentence 새로운 동영상을 놓치지 마세요.
     else
         .subscriptionVideos__wrapper.videos__wrapper
             .subscriptionVideo.videos

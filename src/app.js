@@ -24,6 +24,7 @@ import routes from "./routes"
 import globalRouter from "./routers/globalRouter"
 import videoRouter from "./routers/videoRouter";
 import playlistRouter from "./routers/playlistRouter";
+import searchRouter from "./routers/searchRouter";
 import feedRouter from "./routers/feedRouter";
 import channelRouter from "./routers/channelRouter";
 import userRouter from "./routers/userRouter"
@@ -36,8 +37,7 @@ const app = express();
 const CookieStore = MongoStore(session)
 
 app.set("view engine","pug");
-app.set("views", "src/views");
-app.use("/uploads",express.static("uploads"))
+app.set("views", path.join(__dirname,"views"));
 app.use("/static",express.static(__dirname+"/static"))
 app.use("/img",express.static(path.join(__dirname,'/img')))
 app.use(cookieParser());
@@ -64,6 +64,7 @@ app.use(routes.videos, videoRouter);
 app.use(routes.studio,sdChannelRouter);
 app.use(routes.playlist,playlistRouter);
 app.use(routes.feed, feedRouter);
+app.use(routes.search, searchRouter);
 app.use(routes.channel,channelRouter);
 app.use(routes.api,apiRouter);
 

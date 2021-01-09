@@ -13,7 +13,7 @@ const SOCIALJOIN= "/socialjoin"
 
 //RESULT - SEARCH  
 const RESULT = "/result"
-const SEARCH = "/SEARCH";
+const SEARCH = "/search";
 
 //VIDEO  
 const VIDEOS = "/videos";

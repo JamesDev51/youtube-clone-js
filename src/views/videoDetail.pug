@@ -4,7 +4,8 @@ include mixins/videoPlayer
 block content
     .video-detail__container
         +videoPlayer({
-            videoFile:video.videoFile
+            videoFile:video.videoFile,
+            watermarkUrl:video.channel.watermarkUrl
         })
         .video__info
             .video__info-row
@@ -56,10 +57,7 @@ block content
                 .creator__column
                     .creator__avatar(style=`background-color:${video.channel.userColor}`)
                         a(href=routes.cnVideos(video.channel.id))
-                            if video.channel.avatarUrl
-                                img(src=video.channel.avatarUrl class="creator__avatar-img.roundAvatar")
-                            else
-                                span(class="creator__avatar-name.roundAvatar") #{video.channel.name.substr(0,1)}
+                            img(src=video.channel.avatarUrl ? video.channel.avatarUrl : img.noneUser class="creator__avatar-img.roundAvatar")
                     .creator__info
                         .creator__name
                             a(href=routes.cnVideos(video.channel.id))
@@ -101,15 +99,15 @@ block content
                 p=video.description
         .video__comments
             .video__comments-row
-                span.comments__number 댓글 #{video.comments.length} 개
+                span 댓글 
+                span#jsCommentNumber.comments__number=video.comments.length 
+                span 개  
             .video__comments-row
                 .comment-write__wrapper
                     if user
                         .comment-writer.roundAvatar(style=`background-color:${user.userColor};`)
-                            if user.avatarUrl
-                                img(src=user.avatarUrl class="comment-writer-img")
-                            else
-                                span(class="comment-writer-name") #{user.channel.name.substr(0,1)} 
+                                img(src=user.avatarUrl ? user.avatarUrl : img.noneUser  class="comment-writer-img")
+
                         .comment-write
                             form.comment-write__form#jsCommentForm
                                 input#jsCommentInput(type="text" ,placeholder="공개 댓글 추가..." ,name="comment")
@@ -130,10 +128,8 @@ block content
                         if user
                             input#jsUserId(type="hidden" value=user._id name="userId")
                             .comment-writer.roundAvatar(style=`background-color:${comment.writer.userColor};`)
-                                if comment.writer.avatarUrl
-                                    img(src=comment.writer.avatarUrl class="comment-writer-img")
-                                else
-                                    span(class="comment-writer-name") #{comment.writer.name.substr(0,1)} 
+                                a(href=routes.cnVideos(comment.writer.channel)).roundAvatar.comment-writer
+                                    img(src=comment.writer.avatarUrl ? comment.writer.avatarUrl : img.noneUser class="comment-writer-img")
                             .comment-info
                                 .comment-info__row
                                         span.comment-writer-name=comment.writer.name
@@ -164,7 +160,7 @@ block content
                                     button.reply__write-btn#jsReplyBtn
                                         span 답글
                                     if comment.writer.id == user.id
-                                        button.deleteCommentBtn.window__modal-btn(onclick="openCommentModal()") 댓글 삭제
+                                        button.deleteCommentBtn.window__modal-btn(onclick="openCommentModal()") ❌ 삭제
                                         .deleteCommentModal#deleteCommentWrapper.modal.modalComment
                                             .deleteComment__modal-wrapper.modal-wrapper
                                                 .deleteComment__modal-container.modal-container
@@ -181,10 +177,7 @@ block content
                                     .reply-write__wrapper#jsReplyWrapper
                                         .replyWrapper
                                             .reply-writer.roundAvatar(style=`background-color:${user.userColor};`)
-                                                if user.avatarUrl
-                                                    img(src=user.avatarUrl class="reply-writer-img")
-                                                else
-                                                    span(class="reply-writer-name") #{user.channel.name.substr(0,1)} 
+                                                img(src=user.avatarUrl ? user.avatarUrl : img.noneUser  class="reply-writer-img")
                                             .reply-write
                                                 form.reply-write__form#jsReplyForm
                                                     input#jsReplyInput(type="text" ,placeholder="공개 답글 추가..." ,name="reply")
@@ -202,17 +195,14 @@ block content
                                             .comment-reply__wrapper
                                                 .reply-row
                                                     .reply-column
-                                                        a(href=routes.cnDetail(reply.channelId)).reply-writer-name=reply.writer
+                                                        a(href=routes.cnVideos(reply.channelId)).reply-writer-name=reply.writer
                                                     .reply-column
                                                         span.reply-createdAt=reply.createdAt
                                                 .reply-row
                                                     p.reply-text=reply.text
                         else
                             .comment-writer.roundAvatar(style=`background-color:${comment.writer.userColor};`)
-                                if comment.writer.avatarUrl
-                                    img(src=comment.writer.avatarUrl class="comment-writer-img")
-                                else
-                                    span(class="comment-writer-name") #{user.channel.name.substr(0,1)} 
+                                    img(src=comment.writer.avatarUrl ? comment.writer.avatarUrl : img.noneUser class="comment-writer-img")
                             .comment-info
                                 .comment-info__row
                                         span.comment-writer-name=comment.writer.name

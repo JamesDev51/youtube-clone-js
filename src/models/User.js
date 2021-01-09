@@ -3,7 +3,7 @@ import passportLocalMongoose from "passport-local-mongoose"
 import moment from "moment-timezone"
 
 moment.tz.setDefault("Asia/Seoul");
-const date = moment().format('YYYY-MM-DD')
+const currentDateKorea = moment().tz(`Asia/Seoul`).format("YYYY-MM-DD HH:mm")
 
 const UserSchema = new mongoose.Schema({
     name:String,
@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
     },
     createdAt:{
         type:String,
-        default:date
+        default:currentDateKorea
     },
     comments:[{
         type:mongoose.Schema.Types.ObjectId,

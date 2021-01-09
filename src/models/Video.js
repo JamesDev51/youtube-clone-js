@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const moment = require('moment-timezone')
 
-const currentDateKorea = moment().tz(`Asia/Seoul`).format("YYYY.MM.DD.")
+const currentDateKorea = moment().tz(`Asia/Seoul`).format("YYYY-MM-DD HH:mm")
 
 const VideoSchema = new mongoose.Schema({
     videoFile:{

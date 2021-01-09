@@ -4,10 +4,8 @@
         .cnHeader__info
             .info__column
                 .user__avatar(style=`background-color:${channel.userColor};`)
-                    if channel.avatarUrl
-                        img(src=channel.avatarUrl class="header__userAvatar-img")
-                    else
-                        span(class="header__userAvatar-name") #{channel.name.substr(0,1)}
+                    img(src=channel.avatarUrl ? channel.avatarUrl : img.noneUser class="header__userAvatar-img")
+
                 .cnHeader__detail    
                     .cnHeader__cnName=channel.name
                     .info__column-cnSubscribers

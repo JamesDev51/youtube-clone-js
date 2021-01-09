@@ -4,6 +4,6 @@ import routes from "../routes"
 
 const searchRouter = express.Router()
 
-searchRouter.get(routes.search, search)
+searchRouter.get(routes.result, search)
 
 export default searchRouter

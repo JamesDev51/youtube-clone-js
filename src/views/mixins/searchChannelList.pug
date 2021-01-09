@@ -1,0 +1,16 @@
+mixin searchChannelList(channel={})
+    .searchChannelList
+        .search__column
+            a(href=routes.cnVideos(channel.id))
+                .search__avatar-wrapper
+                    img.channel__avatar.user__avatar(src=channel.avatarUrl)
+    
+        .search__column
+            a(href=routes.cnVideos(channel.id))
+                .channel__name-wrapper
+                    h4.channel__name=channel.name
+                .channel__info-wrapper
+                    h6.channel__info 구독자 #{channel.subNum}명 • 동영상 #{channel.videoNum}개
+                .channel__description-wrapper
+                    h6.channel__description=channel.description
+            

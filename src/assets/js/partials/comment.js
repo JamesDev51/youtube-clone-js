@@ -2,6 +2,8 @@ const replyBtns = document.querySelectorAll(".reply__write-btn")
 const replyShowBtns = document.querySelectorAll(".reply__show-btn")
 
 
+
+
 const SW_CN="showing"
 
 function handleBtnClick(event){
@@ -26,6 +28,8 @@ function handleShowBtnClilck(event){
 }
 
 
+
+
 function init(){
     replyBtns.forEach(function(replyBtn){
         replyBtn.addEventListener("click",handleBtnClick)
@@ -33,7 +37,6 @@ function init(){
     replyShowBtns.forEach(function(replyShowBtn){
         replyShowBtn.addEventListener("click",handleShowBtnClilck)
     })
-    
 }
 
 if(replyBtns){

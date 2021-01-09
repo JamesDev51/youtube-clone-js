@@ -9,10 +9,7 @@ block content
                 span.edit-btn-title 비밀번호변경
         .profile__body
             .profile__user-avatar(style=`background-color:${user.userColor};`)
-                if user.avatarUrl
-                    img(src=user.avatarUrl class="header__userAvatar-img")
-                else
-                    span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
+                img(src=user.avatarUrl ? user.avatarUrl : img.noneUser class="header__userAvatar-img")
             .profile__user-info
                 span.user-name=user.name
                 span.user-email=user.email

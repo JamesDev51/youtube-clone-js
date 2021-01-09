@@ -15,16 +15,17 @@
             display:flex;
             width:170px;
             height:35px;
-            button{
-                width:70px;
-                margin-right:10px;
-                font-size:14px;
-            }
             input{
                 font-size:14px;
                 width:70px;
                 padding:0px;
-                background-color: rgba(0,0,0,0.7);
+                &:first-child{
+                    margin-right:10px;
+                    background-color: white;
+                    border: 1px solid rgba(0,0,0,0.1);
+                    color:black;
+                }
+                background-color: rgba(0,0,0,0.6);
                 color:white;
             }
 

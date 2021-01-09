@@ -5,6 +5,30 @@ const resetBtn = document.getElementById("jsResetBtn")
 const submitBtn = document.getElementById("jsSubmitBtn")
 
 
+function disableBtn(){
+    submitBtn.disabled=true
+    resetBtn.disabled=true
+}
+
+function changeBtn(){
+    submitBtn.disabled=false
+    submitBtn.style.backgroundColor="#80bfff"
+    submitBtn.style.cursor="pointer"
+    submitBtn.style.opacity="1"
+    resetBtn.disabled=false
+    resetBtn.style.cursor="pointer"
+    resetBtn.style.opacity="1"
+}
+function returnBtn(){
+    submitBtn.style.backgroundColor="rgba(0,0,0,0.5)"
+    submitBtn.style.cursor="default"
+    submitBtn.disabled=true
+    resetBtn.style.cursor="default"
+    resetBtn.disabled=true
+    
+}
+
+
 
 const sendComment = async(video,text) => {
     const response = await axios({
@@ -15,6 +39,7 @@ const sendComment = async(video,text) => {
           text
         }
       });
+
 }
 
 
@@ -24,16 +49,31 @@ function handelSubmit(event){
     const text = commentInput.value
     sendComment(video,text)
     commentInput.value=""
+    returnBtn()
+    setTimeout(function(){location.reload()},150)
 }
 
 function handleReset(){
     commentInput.value=""
+    disableBtn()
+    returnBtn()
+}
+
+function handleBtn(event){
+    if(event.srcElement.value == ""){
+        disableBtn()
+        returnBtn()
+    }else{
+        changeBtn()
+    }
 }
 
 
 function init(){
+    disableBtn()
     commentForm.addEventListener("reset",handleReset)
     commentForm.addEventListener("submit",handelSubmit)
+    commentInput.addEventListener("input",handleBtn)
 }
 
 if(commentForm){

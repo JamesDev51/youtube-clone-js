@@ -3,7 +3,8 @@ include ../mixins/libraryVideoBlock
 
 block content
     if !user
-        span 좋아하는 동영상을 감상해보세요.
+        .library__wrapper.noneUser__wrapper
+            span.noneUser__sentence 좋아하는 동영상을 감상해보세요.
     else
         .libraryVideos__wrapper.videos__wrapper
             .libraryVideo.videos  

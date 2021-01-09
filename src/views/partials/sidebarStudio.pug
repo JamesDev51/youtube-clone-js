@@ -8,10 +8,8 @@
                     .channel__wrapper
                         .channel__avatar-wrapper
                             .channel__avatar(style=`background-color:${user.userColor};`) 
-                                if user.avatarUrl
-                                    img(src=user.avatarUrl class="header__userAvatar-img")
-                                else
-                                    span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
+                                    img(src=user.avatarUrl ? user.avatarUrl : img.noneUser class="header__userAvatar-img")
+
                         .channel__avatar-hover    
                             a(href=`${domain}${routes.cnVideos(user.channel.id)}` class="sdSide__channel")      
                                 i.fas.fa-external-link-alt
@@ -30,10 +28,7 @@
                 .channel__wrapper
                     .channel__avatar-wrapper
                         .channel__avatarBig(style=`background-color:${user.userColor};`) 
-                            if user.avatarUrl
-                                img(src=user.avatarUrl class="header__userAvatar-img")
-                            else
-                                span(class="header__userAvatar-name") #{user.channel.name.substr(0,1)} 
+                            img(src=user.avatarUrl ? user.avatarUrl : img.noneUser class="header__userAvatar-img")
                     .channel__avatar-hoverBig                  
                         a(href=`${domain}${routes.cnVideos(user.channel.id)}` class="sdSide__channel")
                             i.fas.fa-external-link-alt

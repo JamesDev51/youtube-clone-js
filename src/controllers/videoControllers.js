@@ -28,15 +28,23 @@ export const home = async (req,res) => {
 }
 
 export const search = async(req,res) => {
+    const {query:{term}}=req
+    let videos = []
+    let channelFounds=[]
+    let channels=null
     try{
-        const videos = await Video.find({}).sort({_id:-1})
-        const channels = await Channel.find({'_id':{$in:subscribeChannels}})
+        if(req.user){
+            const {user:{subscribeChannels}}=req;
+             channels = await Channel.find({'_id':{$in:subscribeChannels}})
+        }
+        videos= await Video.find({title:{$regex:term, $options:"i"}}).populate('channel')
+        channelFounds= await Channel.find({name:{$regex:term, $options:"i"}})
 
-        res.render("search",{channels,videos})
+        res.render("search",{pageTitle:"검색",channels,videos,channelFounds,term})
     }
     catch(error){
         console.log(error)
-        res.render("search",{channels,videos})
+        res.render("search",{pageTitle:"검색",channels,videos,channelFounds,term})
 
     }
 }

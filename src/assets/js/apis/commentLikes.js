@@ -11,6 +11,44 @@ let likeList,dislikeList
 let userValue
 
 
+function likeNumUp(like){
+    let num
+    if (like.innerHTML==""){
+        num=0
+    }else{
+        num=parseInt(like.innerHTML)
+    }
+    num+=1
+    like.innerHTML=num
+}
+function dislikeNumUp(dislike){
+    let num
+    if (dislike.innerHTML==""){
+        num=0
+    }else{
+        num=parseInt(dislike.innerHTML)
+    }
+    num+=1
+    dislike.innerHTML=num
+}
+function likeNumDown(like){
+    if(like.innerHTML == 1){
+        like.innerHTML=""
+    }
+    else if (like.innerHTML != 0){
+        like.innerHTML-=1
+    }
+}
+function dislikeNumDown(dislike){
+    if(dislike.innerHTML == 1){
+        dislike.innerHTML=""
+    }
+    else if (dislike.innerHTML != 0){
+        dislike.innerHTML-=1
+    }
+}
+
+
 function switchDislikeLike(commentId){
     try{
         axios({
@@ -29,7 +67,6 @@ function switchDislikeLike(commentId){
         console.log(error)
     }
 }
-
 
 
 function cancelLike(commentId){
@@ -55,14 +92,16 @@ function handleLikeClick(event){
     btn=event.path[1]
     token=event.path[3].children[0]
     tokenValue=token.value
-    
-    
+    console.log(tokenValue)
     if (likeList.includes(userValue) || tokenValue =="like"){
         token.value="none"
         cancelLike(commentId)
+        likeNumDown(event.path[1].childNodes[1])
     }else if(dislikeList.includes(userValue) || tokenValue =="dislike"){
         token.value="like"
         switchDislikeLike(commentId)
+        dislikeNumDown(event.path[3].children[4].children[0].children[1])
+        likeNumUp(event.path[1].childNodes[1])
     }else{
         try{
             token.value="like"
@@ -71,6 +110,7 @@ function handleLikeClick(event){
                 url:`/api/${commentId}/comment_like`,
                 data:{commentId}
                 })
+            likeNumUp(event.path[1].childNodes[1])
         }catch(error){
             console.log(error)
         }
@@ -117,13 +157,16 @@ function handleDislikeClick(event){
     btn=event.path[1]
     token=event.path[3].children[0]
     tokenValue=token.value
-    
+    console.log(tokenValue)
     if (dislikeList.includes(userValue) || tokenValue =="dislike"){
         token.value="none"
         cancelDislike(commentId)
+        dislikeNumDown(event.path[1].childNodes[1])
     }else if(likeList.includes(userValue) || tokenValue =="like"){
         token.value="dislike"
         switchlikeDislike(commentId)
+        likeNumDown(event.path[3].children[2].children[0].children[1])
+        dislikeNumUp(event.path[1].childNodes[1])
     }else{
         try{
             token.value="dislike"
@@ -132,6 +175,7 @@ function handleDislikeClick(event){
                 url:`/api/${commentId}/comment_dislike`,
                 data:{commentId}
                 })
+            dislikeNumUp(event.path[1].childNodes[1])
         }catch(error){
             console.log(error)
         }

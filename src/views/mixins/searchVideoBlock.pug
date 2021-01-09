@@ -1,21 +1,21 @@
 mixin searchVideoBlock(video = {})
     .searchVideoBlock
-        .searchVideoBlock__column
+        .search__column
+            a(href=routes.videoDetail(video.id))
+                .videoBlock__player.videoPlayer
+                    video.videoBlock__thumbnail#jsVideoThumbnail(src=video.videoFile)
+        .search__column
             a(href=routes.videoDetail(video.id)) 
-                video.videoBlock__thumbnail(src=video.videoFile)
-                //-재생시간 추가하기
-        .searchVideoBlock__column
-            a.searchVideoBlock__title(href=routes.videoDetail(video.id))    
-                h4.video__title=video.title
+                .videoInfo
+                    h4.video__title=video.title
+                    h6.video__views 조회수 #{video.views} • #{video.createdAt}
+            a(href=routes.cnVideos(video.channelId))
+                .videoCnInfo
+                    img.channel__avatar.user__avatar(src=video.channelAvatar)
+                    h6.channel__name=video.channelName
+            a(href=routes.videoDetail(video.id))
+                h6.video__description=video.description
 
-        a(href=routes.videoDetail(video.id)) 
-            h4.video__title=video.title
-            h6.video__views 조회수 #{video.views}
-                //- n시간 전 만들기
-        a(href=routes.cnVideos(video.channel.id))
-            img.channel__avatar(src=video.channel.avatarUrl)
-            h6.channel__name=video.channel.name
-        a(href=routes.videoDetail(video.id))
-            h6.video__description=video.description
+
 
 

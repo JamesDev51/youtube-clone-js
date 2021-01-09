@@ -12,7 +12,7 @@
     "tunnel": "lt --port 4000",
     "build": "npm run build:server && npm run build:assets && npm run copyAll ",
     "prebuild": "rm -rf build",
-    "start": "PRODUCTION=true node build/init.js",
+    "start": "PRODUCTION=true node build/init.js -port $PORT",
     "prestart": "npm run build"
   },
   "author": "James/Minseok Jeong",

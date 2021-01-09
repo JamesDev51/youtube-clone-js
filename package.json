@@ -11,9 +11,7 @@
     "copyAll": "cp -R src/static build && cp -R src/views build",
     "tunnel": "lt --port 4000",
     "build": "npm run build:server && npm run build:assets && npm run copyAll ",
-
-    "start": "PRODUCTION=true node build/init.js -port $PORT",
-  
+    "start": "PRODUCTION=true node build/init.js -port $PORT"
   },
   "author": "James/Minseok Jeong",
   "license": "ISC",

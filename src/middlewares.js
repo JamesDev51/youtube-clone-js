@@ -44,7 +44,7 @@ export const localMiddleware = async(req,res,next) => {
         noneUser:"/img/noneUser.png"
     }
 
-    res.locals.domain=`http://localhost:2000`
+    res.locals.domain=`https://evening-journey-26910.herokuapp.com/`
     
     next();
 } 

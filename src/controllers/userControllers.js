@@ -8,7 +8,7 @@ import Trending from "../models/Trending"
 import { TRUE } from "node-sass"
 
 //global function or variable
-const domain = "http://localhost:2000"
+const domain = "https://evening-journey-26910.herokuapp.com/"
 
 function colorSelector(userColor) {
 if(userColor==0){

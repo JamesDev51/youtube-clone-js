@@ -6,7 +6,7 @@ import Comment from "../models/Comment"
 import Trending from "../models/Trending"
 
 //global function or variable
-const domain = "http://localhost:2000"
+const domain = "https://evening-journey-26910.herokuapp.com/"
 
 export const sdDash = (req,res)=>{
     res.render("studio/sdDash")

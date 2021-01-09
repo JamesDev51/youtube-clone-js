@@ -10,8 +10,10 @@
     "build:server": "babel src --out-dir build --ignore src/static --ignore src/assets --ignore src/webpack.config.js",
     "copyAll": "cp -R src/static build && cp -R src/views build",
     "tunnel": "lt --port 4000",
-    "build": "npm run build:server && npm run build:assets && npm run copyAll",
-    "start": "PRODUCTION=true node build/init.js"
+    "build": "npm run build:server && npm run build:assets && npm run copyAll ",
+    "prebuild": "rm -rf build",
+    "start": "PRODUCTION=true node build/init.js",
+    "prestart": "npm run build"
   },
   "author": "James/Minseok Jeong",
   "license": "ISC",
@@ -68,7 +70,7 @@
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.1.4",
-    "nodemon": "^2.0.5",
+    "nodemon": "^2.0.7",
     "prettier": "^2.1.2"
   }
 }

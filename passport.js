@@ -1,4 +1,4 @@
-import passport from "passport";
+import passport from "passport"
 import GoogleStrategy from "passport-google-oauth20"
 import KakaoStrategy from "passport-kakao"
 import NaverStrategy from "passport-naver"

@@ -57,6 +57,7 @@ export const getNewJoin = (req,res)=> {
 export const postNewJoin = async(req,res,next) => {
     const {body:{name,email,password,password2}}=req;
     if(password !== password2){
+        req.flash('error',"비밀번호가 일치하지 않습니다.")
         res.status(400);
         res.render("join/newJoin",{pageTitle:"일반"})
     }else{
@@ -97,11 +98,17 @@ export const getLogin = async(req,res) => {
 
 export const postLogin = passport.authenticate('local',{
     successRedirect:routes.home,
-    failureRedirect:routes.login
+    failureRedirect:routes.login,
+    successFlash:"반갑습니다!",
+    failureFlash:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
 })
 
 //social login & join
-export const googleLogin = passport.authenticate("google",{scope:['profile','email']});
+export const googleLogin = passport.authenticate("google",{
+    scope:['profile','email'],    
+    successFlash:"반갑습니다!",
+    failureFlashL:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
+});
 
 export const googleLoginCallback = async(accessToken, refreshToken, profile, cb) => {
     const {_json:{sub:googleId,name:displayName,picture:avatarUrl,email}}=profile;
@@ -152,7 +159,11 @@ export const postGoogleLogin =  (req,res)=>{
    res.redirect(routes.home)
 }
 
-export const kakaoLogin = passport.authenticate('kakao',{scope:['profile','account_email']});
+export const kakaoLogin = passport.authenticate('kakao',{
+    scope:['profile','account_email'],
+    successFlash:"반갑습니다!",
+    failureFlashL:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
+});
 
 export const kakaoLoginCallback = async(accessToken, refreshToken, profile, cb)=>{
     
@@ -203,7 +214,11 @@ export const kakaoLoginCallback = async(accessToken, refreshToken, profile, cb)=
 export const postKakaoLogin = (req,res)=>{
    res.redirect(routes.home)
 }
-export const naverLogin = passport.authenticate('naver',{scope:['profile']});
+export const naverLogin = passport.authenticate('naver',{
+    scope:['profile'],
+    successFlash:"반갑습니다!",
+    failureFlashL:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
+});
 
 export const naverLoginCallback = async(accessToken, refreshToken, profile, cb)=>{
     const {displayName,_json:{
@@ -254,7 +269,10 @@ export const naverLoginCallback = async(accessToken, refreshToken, profile, cb)=
 export const postNaverLogin = (req,res)=>{
     res.redirect(routes.home)
 }
-export const githubLogin = passport.authenticate('github',{scope:['profile']});
+export const githubLogin = passport.authenticate('github',{
+    scope:['profile'],
+    successFlash:"반갑습니다!",
+    failureFlashL:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."});
 
 export const githubLoginCallback = async(accessToken, refreshToken, profile, cb)=>{
     const {_json:{id:githubId,avatar_url:avatarUrl,name:displayName,email}}=profile;
@@ -306,6 +324,7 @@ export const postGithubLogin = (req,res)=>{
 
 //logout
 export const logout = (req,res)=> {
+    req.flash('info',"로그아웃 하였습니다. see ya")
     req.logout();
     res.redirect(routes.home);
 }
@@ -349,10 +368,12 @@ export const postEditProfile = async(req,res)=>{
             name:channelName,
             avatarUrl: file ? avatarUrl : req.user.avatarUrl
         })
+        req.flash('success','회원정보가 변경되었습니다.')
         res.redirect(`/users${routes.myPage}`)
     }
     catch(error){
         console.log(error)
+        req.flash('error','회원정보 변경에 실패했습니다.')
         res.redirect(`/users${routes.myPage}`)
     }
 }
@@ -380,10 +401,12 @@ export const postSetPassword = async(req,res)=>{
         await req.user.setPassword(newPassword);
         req.user.passwordToken = true;
         req.user.save();
+        req.flash('success','신규 비밀번호가 설정되었습니다.')
         res.redirect(`/users${routes.myPage}`)
     }
     catch(error){
         res.status(400)
+        req.flash('error','신규 비밀번호 설정에 실패했습니다.')
         res.redirect(`/users${routes.setPassword}`)
     }
 }
@@ -416,16 +439,19 @@ export const postChangePassword = async(req,res)=>{
     
     try{
         if(newPassword !== newPassword1){
+            req.flash('error','비밀번호가 일치하지 않습니다.')
             res.status(400)
             res.redirect(`/users${routes.changePassword}`)
             return;
         }
         await req.user.changePassword(oldPassword,newPassword)
         req.user.save();
+        req.flash('success','비밀번호가 변경되었습니다.')
         res.redirect(`/users${routes.myPage}`)
     }
     catch(error){
         res.status(400)
+        req.flash('error','비밀번호가 변경되지 않았습니다.')
         res.redirect(`/users${routes.changePassword}`)
     }
 }

@@ -1,4 +1,19 @@
 header.header
+    if messages.error
+        +message({
+            type:error,
+            text:messages.error
+        })
+    else if messages.info
+        +message({
+            type:info,
+            text:messages.info
+        })
+    else if messages.success
+        +message({
+            type:success,
+            text:messages.success
+        })
     .header__wrapper
         .header__column#headerOne
             .sidebar__button

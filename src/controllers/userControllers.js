@@ -107,7 +107,7 @@ export const postLogin = passport.authenticate('local',{
 export const googleLogin = passport.authenticate("google",{
     scope:['profile','email'],    
     successFlash:"반갑습니다!",
-    failureFlashL:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
+    failureFlash:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
 });
 
 export const googleLoginCallback = async(accessToken, refreshToken, profile, cb) => {
@@ -162,7 +162,7 @@ export const postGoogleLogin =  (req,res)=>{
 export const kakaoLogin = passport.authenticate('kakao',{
     scope:['profile','account_email'],
     successFlash:"반갑습니다!",
-    failureFlashL:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
+    failureFlash:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
 });
 
 export const kakaoLoginCallback = async(accessToken, refreshToken, profile, cb)=>{
@@ -217,7 +217,7 @@ export const postKakaoLogin = (req,res)=>{
 export const naverLogin = passport.authenticate('naver',{
     scope:['profile'],
     successFlash:"반갑습니다!",
-    failureFlashL:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
+    failureFlash:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
 });
 
 export const naverLoginCallback = async(accessToken, refreshToken, profile, cb)=>{
@@ -272,7 +272,7 @@ export const postNaverLogin = (req,res)=>{
 export const githubLogin = passport.authenticate('github',{
     scope:['profile'],
     successFlash:"반갑습니다!",
-    failureFlashL:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."});
+    failureFlash:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."});
 
 export const githubLoginCallback = async(accessToken, refreshToken, profile, cb)=>{
     const {_json:{id:githubId,avatar_url:avatarUrl,name:displayName,email}}=profile;

@@ -332,18 +332,12 @@ export const getEditProfile = async(req,res) => {
 }
 
 export const postEditProfile = async(req,res)=>{
-    const {body:{name,email},file}=req;
+    const {body:{name,email}}=req;
+    
     try{
-
-        const avatarUrl = `${domain}/${file.path}`
         await User.findByIdAndUpdate(req.user._id,{
             name
             ,email
-            ,avatarUrl: file ? avatarUrl : req.user.avatarUrl
-        })
-        await Channel.findByIdAndUpdate(req.user.channel,{
-            name:channelName,
-            avatarUrl: file ? avatarUrl : req.user.avatarUrl
         })
         req.flash('success','회원정보가 변경되었습니다.')
         res.redirect(`/users${routes.myPage}`)

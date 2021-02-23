@@ -35,6 +35,7 @@ export const postRegisterView = async(req,res)=>{
     catch(error){
         console.log(error)
         res.status(400)
+
     }finally{
         res.end()
     }
@@ -161,6 +162,7 @@ export const postCancelVideo = async(req,res)=>{
 export const postAddComment = async(req,res) => {
     const {user:{id:writer},body:{video:video,text}}=req
     try{
+
         const newComment = await Comment.create({
             writer,text,video
         })

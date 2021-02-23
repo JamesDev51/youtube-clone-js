@@ -96,7 +96,9 @@ block content
                                 button.subscribe-btn.subscribeBtn 구독 
 
             .video__description
-                p=video.description
+                .textarea
+                    #{video.description}
+                
         .video__comments
             .video__comments-row
                 span 댓글 

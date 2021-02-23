@@ -5,7 +5,7 @@ block content
         span.sdEditVideo__form-title 비디오 수정하기
         form(action=`${domain}${routes.sdEditVideo(user.channel.id,video.id)}`,method="post")
             input(type="text",placeholder="제목",name="title",value=video.title)
-            textarea(name="description",placeholder="설명")=video.description
+            textarea(name="description",placeholder="설명",wrap="hard",cols="20")=video.description
             input(type="submit",value="업데이트")
         button.deleteVideoBtn.window__modal-btn(onclick="openModal()") 동영상 삭제
         .deleteVideoModal#deleteVideoWrapper.modal.modalVideo

@@ -1,6 +1,6 @@
 import express from "express"
-import { join, getNewJoin, postNewJoin, getSocialJoin, postSocialJoin, postLogin } from "../controllers/userControllers"
-import { onlyPublic, socialLoginToken } from "../middlewares"
+import { join, getNewJoin, postNewJoin, postLogin } from "../controllers/userControllers"
+import { onlyPublic } from "../middlewares"
 import routes from "../routes"
 
 const joinRouter = express.Router()

@@ -80,9 +80,10 @@ export const sdPostCnEditDetails = async(req,res) => {
     const {user, body:{cnName,cnDescription}}=req
     try{
         const channel = await Channel.findById(user.channel)
+        let newDescription = cnDescription.replace(/\r\n/gi,"<br>")
         await Channel.findByIdAndUpdate(channel._id,{
             name: cnName ? cnName : channel.name,
-            description: cnDescription ? cnDescription : channel.description
+            description: cnDescription ? newDescription : channel.description
         })
         res.redirect(`${routes.sdEditDetails(user.channel)}`)
     }catch(error){
@@ -98,10 +99,13 @@ export const sdGetUpload = (req,res)=>{
 export const sdPostUpload = async(req,res)=>{
     const {body:{title,description},file:{location},user:{channel}}=req;
     try{
+        console.log(description)
+        const newDescription = description.replace(/\r\n/gi,"<br>")
+        console.log(newDescription  ,typeof(newDescription))
         const newVideo = await Video.create({
             videoFile:location,
             title,
-            description,
+            description:description? newDescription : description,
             channel
         })
         req.user.videos.push(newVideo._id)
@@ -147,7 +151,8 @@ export const sdGetEditVideo = async(req,res)=>{
 export const sdPostEditVideo = async(req,res)=>{
     const {params:{id},body:{title,description}}=req;
     try{
-        await Video.findOneAndUpdate({_id:id},{title,description})
+        let newDescription = description.replace(/\r\n/gi,"<br>")
+        await Video.findOneAndUpdate({_id:id},{title,newDescription})
         res.redirect(routes.videoDetail(id))
     }catch(error){
         console.log(error)

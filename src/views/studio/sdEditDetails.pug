@@ -11,4 +11,4 @@ block content
                 input(type="text", name="cnName", placeholder="새로운 채널명을 입력하세요" id="jsCnName", value=user.channel.name,required=true)
                 .cnDescription-box
                     label(for="jsCnDescription") 채널 설명
-                    textarea(name="cnDescription",id="jsCnDescription" placeholder="시청자에게 채널에 대해 설명하세요. 이 설명은 채널의 정보 섹션 및 검색결과 등에 표시됩니다.", )=user.channel.description
+                    textarea(name="cnDescription",id="jsCnDescription" placeholder="시청자에게 채널에 대해 설명하세요. 이 설명은 채널의 정보 섹션 및 검색결과 등에 표시됩니다.",wrap="hard",cols="20")=user.channel.description

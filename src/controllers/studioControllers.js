@@ -5,7 +5,7 @@ import Channel from "../models/Channel"
 import Comment from "../models/Comment"
 
 //global function or variable
-const domain = "https://evening-journey-26910.herokuapp.com"
+const domain = "https://jamestube.herokuapp.com"
 // const domain = "http://localhost:4000"
 
 //studio home

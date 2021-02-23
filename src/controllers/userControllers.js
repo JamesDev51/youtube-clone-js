@@ -8,7 +8,7 @@ import Trending from "../models/Trending"
 import { TRUE } from "node-sass"
 
 //global function or variable
-const domain = "https://evening-journey-26910.herokuapp.com"
+const domain = "https://jamestube.herokuapp.com"
 // const domain = "http://localhost:4000"
 
 //user random color generator 
@@ -60,11 +60,11 @@ export const postNewJoin = async(req,res,next) => {
 export const getLogin = async(req,res) => {
     const channels = await Channel.find({})
     try{
-        res.render("login", {channels})
+        res.render("login", {pageTitle:"로그인",channels})
         
     }catch(error){
         console.log(error)
-        res.render("login", {channels})
+        res.render("login", {pageTitle:"로그인",channels})
     }
 }
 

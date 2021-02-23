@@ -44,11 +44,7 @@ export const localMiddleware = async(req,res,next) => {
         join:"https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTR8fGxhcHRvcHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
         noneUser:"https://648869380.r.worldcdn.net/app/views/client/lutfi-cloud-avatar/lutfi-file/images/avatar.png"
     }
-    if (process.env.PRODUCTION){
         res.locals.domain=`https://evening-journey-26910.herokuapp.com`
-    }else{
-        res.locals.domain=`http://localhost:4000`
-    }
     
     next();
 } 

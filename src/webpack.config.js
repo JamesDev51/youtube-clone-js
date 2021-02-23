@@ -1,7 +1,7 @@
 
 const path = require("path")
 const autoprefixer = require("autoprefixer")
-const cssCompressor = require("optimize-css-assets-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 require("@babel/polyfill");
 
 const MODE = process.env.NODE_ENV;

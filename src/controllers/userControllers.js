@@ -311,11 +311,11 @@ export const logout = (req,res)=> {
 export const myPage = async(req,res)=>{
     const channels = await Channel.find({})
     try{
-        res.render("myPage", {channels})
+        res.render("myPage", {channels,pageTitle:"마이페이지"})
     }
     catch(error){
         console.log(error)
-        res.render("myPage", {channels})
+        res.render("myPage", {channels,pageTitle:"마이페이지"})
     }
 }
 
@@ -323,11 +323,11 @@ export const myPage = async(req,res)=>{
 export const getEditProfile = async(req,res) => { 
     const channels = await Channel.find({})
     try{
-        res.render("editProfile", {channels})
+        res.render("editProfile", {channels,pageTitle:"회원정보 변경"})
         
     }catch(error){
         console.log(error)
-        res.render("editProfile", {channels})
+        res.render("editProfile", {channels,pageTitle:"회원정보 변경"})
     }
 }
 
@@ -359,11 +359,11 @@ export const postEditProfile = async(req,res)=>{
 export const getSetPassword = async(req,res)=>{
     const channels = await Channel.find({})
     try{
-        res.render("setPassword", {channels})
+        res.render("setPassword", {channels,pageTitle:"신규 비밀번호 설정"})
         
     }catch(error){
         console.log(error)
-        res.render("setPassword", {channels})
+        res.render("setPassword", {channels,pageTitle:"신규 비밀번호 설정"})
     }
 }
 
@@ -398,7 +398,7 @@ export const getChangePassword = async(req,res)=> {
             res.redirect(`/users${routes.setPassword}`)
             return;
         }
-        res.render("changePassword", {channels})
+        res.render("changePassword", {channels,pageTitle:"비밀번호 변경"})
         
     }catch(error){
         console.log(error)
@@ -406,7 +406,7 @@ export const getChangePassword = async(req,res)=> {
             res.redirect(`/users${routes.setPassword}`)
             return;
         }
-        res.render("changePassword", {channels})
+        res.render("changePassword", {channels,pageTitle:"비밀번호 변경"})
     }
 }
 

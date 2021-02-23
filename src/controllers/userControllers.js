@@ -111,7 +111,7 @@ export const googleLoginCallback = async(accessToken, refreshToken, profile, cb)
                 name=displayName
             }
             const userColor = Math.floor(Math.random()*10)
-            const selectedColor = colorSelector(userColor)
+            const selectedColor = randomColorGenerator(userColor)
             const channel = await Channel.create({
                 name,userColor:selectedColor,avatarUrl
             })
@@ -166,7 +166,7 @@ export const kakaoLoginCallback = async(accessToken, refreshToken, profile, cb)=
             name=displayName
         }
         const userColor = Math.floor(Math.random()*10)
-        const selectedColor = colorSelector(userColor)
+        const selectedColor = randomColorGenerator(userColor)
         const channel = await Channel.create({
             name,userColor:selectedColor,avatarUrl
         })
@@ -224,7 +224,7 @@ export const naverLoginCallback = async(accessToken, refreshToken, profile, cb)=
             name=displayName
         }
         const userColor = Math.floor(Math.random()*10)
-        const selectedColor = colorSelector(userColor)
+        const selectedColor = randomColorGenerator(userColor)
         const channel = await Channel.create({
             name,userColor:selectedColor,avatarUrl
         })
@@ -278,7 +278,7 @@ export const githubLoginCallback = async(accessToken, refreshToken, profile, cb)
             name=displayName
         }
         const userColor = Math.floor(Math.random()*10)
-        const selectedColor = colorSelector(userColor)
+        const selectedColor = randomColorGenerator(userColor)
         const channel = await Channel.create({
             name,userColor:selectedColor,avatarUrl
         })

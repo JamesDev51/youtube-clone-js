@@ -6,6 +6,7 @@ import studioRouter from "./studioRouter"
 
 const sdChannelRouter = express.Router()
 
+//studio middle router
 sdChannelRouter.use(routes.sdChannel, onlyPrivate,studioRouter)
 
 export default sdChannelRouter

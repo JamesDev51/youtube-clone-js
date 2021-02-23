@@ -11,7 +11,7 @@ mixin searchVideoBlock(video = {})
                     h6.video__views 조회수 #{video.views} • #{video.createdAt}
             a(href=routes.cnVideos(video.channelId))
                 .videoCnInfo
-                    img.channel__avatar.user__avatar(src=video.channelAvatar)
+                    img.channel__avatar.user__avatar(src=video.channelAvatar? video.channelAvatar  : img.noneUser)
                     h6.channel__name=video.channelName
             a(href=routes.videoDetail(video.id))
                 h6.video__description=video.description

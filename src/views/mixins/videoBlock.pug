@@ -8,10 +8,7 @@ mixin videoBlock(video = {})
             .video__info-column
                 a(href=routes.cnVideos(video.channel._id))
                     .video__creator-avatar.user__avatar(style=`background-color:${video.channel.userColor};`)
-                        if video.channel.avatarUrl
-                            img(src=video.channel.avatarUrl class="video__creator-img")
-                        else
-                            span(class="video__creator-name")=video.channel.name.substr(0,1)
+                        img(src=video.channel.avatarUrl?video.channel.avatarUrl:img.noneUser  class="video__creator-img")
             .video__info-column
                 .video__info-main
                     a(href=routes.videoDetail(video.id))

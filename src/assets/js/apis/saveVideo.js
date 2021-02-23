@@ -3,10 +3,11 @@ const saveVideoToken = document.getElementById("jsVideoSaveToken")
 
 const CR = "colorRed"
 let token
+
+//click save video btn
 function handleSaveBtn(){
     const videoId= window.location.href.split("videos/")[1]
     try{
-        console.log("saved")
         saveVideoBtn.removeEventListener("click",handleSaveBtn)
         saveVideoBtn.addEventListener("click",handleCancelBtn)
         saveVideoToken.value="yes"
@@ -18,10 +19,10 @@ function handleSaveBtn(){
     }
 }
 
+//cancel save video btn
 function handleCancelBtn(){
     const videoId= window.location.href.split("videos/")[1]
     try{
-        console.log("cancel")
         saveVideoBtn.removeEventListener("click",handleCancelBtn)
         saveVideoBtn.addEventListener("click",handleSaveBtn)
         saveVideoToken.value="no"
@@ -42,8 +43,6 @@ function init(){
     }else{
         saveVideoBtn.addEventListener("click",handleSaveBtn)
     }
-    
-
 }
 
 if(saveVideoBtn){

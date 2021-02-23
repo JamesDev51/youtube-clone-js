@@ -6,35 +6,34 @@ import routes from "../routes"
 
 const studioRouter = express.Router()
 
-//STUDIO CHANNEL HOMES
+//studio home
 studioRouter.get(routes.sdDash(),onlyPrivate, sdDash)
 
-//STUDIO CHANNEL COMMENTS
+//studio comments
 studioRouter.get(routes.sdComments(),onlyPrivate, sdComments)
 
-//STUDIO CHANNEL EDIT VIDEO
+//studio edit video (edit or delete)
 studioRouter.get(routes.sdEditVideo(),onlyPrivate, sdGetEditVideo)
 studioRouter.post(routes.sdEditVideo(),onlyPrivate, sdPostEditVideo)
 
-
-//STUDIO CHANNEL MYVIDEOS
+//studio my videos
 studioRouter.get(routes.sdMyVideos(),onlyPrivate, sdMyvideos)
 
-//STUDIO CHANNEL UPLOAD VIDEO
+//studio upload videos
 studioRouter.get(routes.sdUpload(),onlyPrivate, sdGetUpload)
 studioRouter.post(routes.sdUpload(),onlyPrivate,uploadVideo, sdPostUpload)
 
+//studio record videos
 studioRouter.get(routes.sdRecord(),onlyPrivate,sdRecord)
 
-
+//studio streaming videos - not prepared
 studioRouter.get(routes.sdStreaming(),onlyPrivate,sdRecord)
 
-//STUDIO CHANNEL EDIT
+//studio channel edit (branding)
 studioRouter.get(routes.sdEditImages(),onlyPrivate, sdGetCnEditImages)
 studioRouter.post(routes.sdEditImages(),onlyPrivate, uploadBranding,sdPostCnEditImages)
 
 studioRouter.get(routes.sdEditDetails(),onlyPrivate, sdGetCnEditDetails)
 studioRouter.post(routes.sdEditDetails(),onlyPrivate, sdPostCnEditDetails)
-
 
 export default studioRouter

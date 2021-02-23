@@ -3,7 +3,7 @@ mixin searchChannelList(channel={})
         .search__column
             a(href=routes.cnVideos(channel.id))
                 .search__avatar-wrapper
-                    img.channel__avatar.user__avatar(src=channel.avatarUrl)
+                    img.channel__avatar.user__avatar(src=channel.avatarUrl ? channel.avatarUrl : img.noneUser)
     
         .search__column
             a(href=routes.cnVideos(channel.id))

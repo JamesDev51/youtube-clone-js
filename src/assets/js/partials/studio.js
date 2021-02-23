@@ -21,7 +21,6 @@ function disableBtn(){
     submitBtn.disabled=true
     resetBtn.disabled=true
 }
-
 function changeBtn(){
     submitBtn.disabled=false
     submitBtn.style.backgroundColor="#80bfff"
@@ -46,6 +45,7 @@ let watermarkHave
 let currentCnName
 let currentCnDescription
 
+//prepare to upload branding imgs 
 function handleAvatarLabel(event){
     console.log(event)
     avatarLabel.innerHTML=" ✔ 준비됨"
@@ -69,6 +69,7 @@ function handleWatermarkLabel(event){
     changeBtn()
 }
 
+//reset upload image
 function handleImgReset(){
     imgForm.reset()
     returnBtn()
@@ -96,6 +97,7 @@ if(avatarInput){
     cnImgInit()
 }
 
+//change channel name
 function handleCnName(){
     
     if(cnName.value==currentCnName || cnName.value==""){
@@ -105,6 +107,7 @@ function handleCnName(){
     }
 }
 
+//
 function handleCnDescription(event){
     let typed= event.srcElement.value
     if(typed==currentCnDescription || typed==""){
@@ -114,14 +117,11 @@ function handleCnDescription(event){
     }
 }
 
+//reset change detail btn
 function handleDetailReset(){
     cnDetailForm.reset()
-    // cnName.value=currentCnName
-    // cnDescription.value=currentCnDescription
     returnBtn()
 }
-
-
 
 function cnDetailInit(){
     disableBtn()

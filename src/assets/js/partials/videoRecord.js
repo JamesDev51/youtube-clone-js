@@ -9,6 +9,7 @@ let videoRecorder
 let intervalTime
 let finishToken=false
 
+//change sec to form date 
 const formatDate = seconds => {
     const secondsNumber = parseInt(seconds, 10);
     let hours = Math.floor(secondsNumber/3600);
@@ -27,6 +28,7 @@ const formatDate = seconds => {
     return `${hours}:${minutes}:${totalSeconds}`
 };
 
+//handle data when recording is done => make link and download
 const handleData = (event) =>{
     const {data:blobObject}=event;
     const link = document.createElement("a")
@@ -36,6 +38,7 @@ const handleData = (event) =>{
     link.click()
 }
 
+//stop recording 
 const stopRecording =()=>{
     videoRecorder.stop()
     clearInterval(intervalTime)
@@ -44,6 +47,7 @@ const stopRecording =()=>{
     recordBtn.addEventListener("click",getRecording)
 }
 
+//refresh recording time for every sec
 let i=0
 function refreshRecordTime(){
     i+=1
@@ -51,6 +55,7 @@ function refreshRecordTime(){
     recordTime.innerHTML=timeStr
 }
 
+//start recording : make new mediarecorder and saving streams(blobs)
 const startRecording = () =>{
     videoRecorder = new MediaRecorder(streamObject)
     videoRecorder.start()
@@ -60,6 +65,7 @@ const startRecording = () =>{
 
 }
 
+//start recording with activate getusermedia for making new stream
 const getRecording = async()=>{
     try{
         recordTime.innerHTML="00:00:00"

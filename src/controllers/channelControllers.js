@@ -5,7 +5,7 @@ import Channel from "../models/Channel"
 import Comment from "../models/Comment"
 import Trending from "../models/Trending"
 
-
+//channel videos
 export const cnVideos = async(req,res)=>{
     const {params:{id}}=req;
     try{
@@ -33,6 +33,8 @@ export const cnVideos = async(req,res)=>{
         
     }
 }
+
+//channel community - not prepared
 export const cnCommunity = async(req,res)=>{
     const {params:{id}}=req;
     try{
@@ -50,7 +52,6 @@ export const cnCommunity = async(req,res)=>{
             }else{
                 subscribeToken="no"
             }
-
         }
         res.render("channel/cnCommunity",{pageTitle:channel.name,channel,videos,channels,subscribeToken,channelId})
         
@@ -60,6 +61,8 @@ export const cnCommunity = async(req,res)=>{
         
     }
 }
+
+//channel about (description)
 export const cnAbout = async(req,res)=>{
     const {params:{id}}=req;
     try{
@@ -71,14 +74,12 @@ export const cnAbout = async(req,res)=>{
         if (req.user){
             const {user:{subscribeChannels,id:userId}}=req;
             channels = await Channel.find({'_id':{$in:subscribeChannels}})
-            const user = await  User.findById(id)
             let subscribe = channel.subscribers.includes(userId)
             if(subscribe){
                 subscribeToken="yes"
             }else{
                 subscribeToken="no"
             }
-
         }
         res.render("channel/cnAbout",{pageTitle:channel.name,channel,videos,channels,subscribeToken,channelId})
         

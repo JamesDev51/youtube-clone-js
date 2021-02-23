@@ -5,13 +5,12 @@ const channelId = document.getElementById("jsChannelId")
 const CSB = "colorSb"
 const CN = "colorNo"
 
-
 let channelIdValue
 let token
 
+//click subscribe btn
 function handleSubscribeBtn(){
     try{
-        console.log("subscribe")
         subscribeBtn.removeEventListener("click",handleSubscribeBtn)
         subscribeBtn.addEventListener("click",handleCancelBtn)
         subscribeToken.value="yes"
@@ -25,9 +24,9 @@ function handleSubscribeBtn(){
     }
 }
 
+//cancel subscribe btn
 function handleCancelBtn(){
     try{
-        console.log("cancel")
         subscribeBtn.removeEventListener("click",handleCancelBtn)
         subscribeBtn.addEventListener("click",handleSubscribeBtn)
         subscribeToken.value="no"
@@ -38,7 +37,6 @@ function handleCancelBtn(){
     }catch(error){
         console.log(error)
     }
-    
 }
 
 
@@ -54,8 +52,6 @@ function init(){
         subscribeBtn.innerHTML="구독"
         subscribeBtn.addEventListener("click",handleSubscribeBtn)
     }
-    
-    
 }
 
 if(subscribeBtn){

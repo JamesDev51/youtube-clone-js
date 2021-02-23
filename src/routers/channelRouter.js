@@ -4,9 +4,13 @@ import routes from "../routes"
 
 const channelRouter = express.Router()
 
+//channel videos
 channelRouter.get(routes.cnVideos(), cnVideos)
-channelRouter.get(routes.cnCommunity(),cnCommunity)
-channelRouter.get(routes.cnAbout(),cnAbout)
 
+//channel community - not prepared
+channelRouter.get(routes.cnCommunity(),cnCommunity)
+
+//channel about (description)
+channelRouter.get(routes.cnAbout(),cnAbout)
 
 export default channelRouter

@@ -20,6 +20,7 @@ const barWidth = "barWidth"
 const HIDE="hide"
 let savedVolume
 
+//play / pause btn
 function handlePlayBtnClick(){
     if(video.paused){
         video.play()
@@ -33,6 +34,7 @@ function handlePlayBtnClick(){
     }
 }
 
+//volume mute btn
 function handleVolumeBtnClick(){
     if(video.muted){
         volumeBar.value=savedVolume
@@ -48,14 +50,18 @@ function handleVolumeBtnClick(){
         volumeBtn.innerHTML='<i class="fas fa-volume-mute"></i>'
     }
 }
+
+//volume btn hover
 function handleVolumeBtnHover(){
     volumeBarCont.classList.toggle(barWidth)
 }
 
+//speed cog btn hover
 function handleSpeedBtnHover(){
     speedBarCont.classList.toggle(barWidth)
 }
 
+//remove full screen
 function removeFullScreen(){
     document.exitFullscreen()
     fullScrnBtn.innerHTML = '<i class="fas fa-expand"></i>'
@@ -65,6 +71,7 @@ function removeFullScreen(){
     
 }
 
+//request video full screen
 function handleClickFullScrn(){
     videoContainer.requestFullscreen()
     fullScrnBtn.innerHTML = '<i class="fas fa-compress"></i>'
@@ -72,6 +79,7 @@ function handleClickFullScrn(){
     fullScrnBtn.addEventListener("click",removeFullScreen)
 }
 
+//function : change sec to form date time for video
 const formatDate = seconds => {
     const secondsNumber = parseInt(seconds, 10);
     let hours = Math.floor(secondsNumber/3600);
@@ -90,21 +98,20 @@ const formatDate = seconds => {
     return `${hours}:${minutes}:${totalSeconds} `
 };
 
-
-
+//set total time for video
 function setTotalTime(){
     timeBar.max = video.duration
     const totalTimeStr = formatDate(video.duration)
     totalTime.innerHTML=totalTimeStr
 }
 
+//set current time for video
 function getCurrentTime(){
     const currentTimeStr = formatDate(video.currentTime)
     currentTime.innerHTML=currentTimeStr
 }
 
-
-
+//handle when video is ended
 function handleVideoEnded(){
     setTimeout(function(){
         video.currentTime=0
@@ -115,6 +122,7 @@ function handleVideoEnded(){
     
 }
 
+//drag volume bar
 function dragVolumeBar(event){
     const {target:{value:volumeValue}}=event
     video.volume=volumeValue
@@ -137,38 +145,43 @@ function dragVolumeBar(event){
     }
 }
 
+//drag speed bar
 function dragSpeedBar(event){
     const {target:{value:speedValue}}=event
     video.playbackRate=speedValue
 }
 
+//drag time bar
 function dragTimeBar(event){
     const {target:{value:currentTimeValue}}=event
     video.currentTime=currentTimeValue
     const currentTimeStr = formatDate(currentTimeValue)
     currentTime.innerHTML = currentTimeStr
-
 }
 
+//update current time for timebar 
 function updateTimeBar(){
     timeBar.value = Math.floor(video.currentTime)
 }
 
+//set default on 0.5 for volume and volume bar
 function setDefault(){
     video.volume=0.5 
     timeBar.max = video.duration
 }
 
+//hide big play btn
 function hidePlayBtnBig(){
     playBtnBig.classList.toggle(HIDE)
 }
 
+//get big play btn
 function getPlayBtnBig(){
     playBtnBig.classList.toggle(HIDE)
     
 }
 
-
+//click video to play and pause
 function handleClickVideo(){
     if(video.paused){
         video.play()
@@ -208,8 +221,7 @@ if(videoContainer){
     init()
 }
 
-
-
+//video thumbnail for preview at home page
 if(videoThumbnail){
     const vTLength = videoThumbnail.length
     for(let i=0 ; i<vTLength; i++){

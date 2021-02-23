@@ -9,8 +9,7 @@ const sdCnTitleHover = document.querySelector(".channel__title-hover")
 const SHOWING_CN="showing";
 const SIDEBARBIG_LS = "sdSidebarbig"
 
-
-
+//load sidebar option (small || big ) from localStorage
 function loadSidebarOption() {
     let loadedSidebar = localStorage.getItem(SIDEBARBIG_LS);
     if(loadedSidebar ==="showing"){
@@ -18,6 +17,7 @@ function loadSidebarOption() {
     }
 }
 
+//save sidebar option(small || big) to localStorage
 function saveSidebarBig () {
     let hasClass = sidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
@@ -26,6 +26,8 @@ function saveSidebarBig () {
         localStorage.removeItem(SIDEBARBIG_LS)
     }
 }
+
+//window size depending on sidebar option
 function setChannelSize(){
     let hasClass = sidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
@@ -46,7 +48,6 @@ function setMainSize(){
         if(cnHeaderCover || cnHeaderWrapper){
             setChannelSize();
         }
-       
     }else{
         main.style.marginLeft="80px"
         if(cnHeaderCover || cnHeaderWrapper){
@@ -55,13 +56,13 @@ function setMainSize(){
     }
 }
 
+//sidebar toggle btn
 function sidebarBtn() {
     sidebarBig.classList.toggle("showing")
     saveSidebarBig();
     setMainSize();
     
 }
-
 
 
 function handleSdCnTitleEnter(){

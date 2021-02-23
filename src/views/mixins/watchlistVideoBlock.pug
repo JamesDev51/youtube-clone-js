@@ -8,10 +8,7 @@ mixin watchlistVideoBlock(video = {})
             .watchlistVideo__info-column.video__info-column
                 a(href=routes.cnVideos(video.channel._id))
                     .watchlistVideo__creator-avatar.user__avatar(style=`background-color:${video.channel.userColor};`)
-                        if video.channel.avatarUrl
-                            img(src=video.channel.avatarUrl class="watchlistVideo__creator-img")
-                        else
-                            span(class="watchlistVideo__creator-name")=video.channel.name.substr(0,1)
+                        img(src=video.channel.avatarUrl ? video.channel.avatarUrl : img.noneUser class="watchlistVideo__creator-img")
             .watchlistVideo__info-column.video__info-column
                 .watchlistVideo__info-main.video__info-main
                     a(href=routes.videoDetail(video.id))

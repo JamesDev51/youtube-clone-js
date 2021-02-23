@@ -1,7 +1,26 @@
 # JamesTube_project
  Cloning youtube with using vanilla JS and Node JS.
  
-## Pages:
+# Files
+- init.js
+- app.js
+- routes.js
+- passport.js
+- middlewares.js
+- db.js
+- .env
+- routers 
+- controllers 
+- models 
+- assets
+  - js
+    - api
+    - partials
+  - scss
+- static
+
+
+### Pages:
 
 - [x] Home
 - [x] Join

@@ -27,7 +27,7 @@ const headerTwoVideo = document.querySelector("#headerTwoVideo")
 const SW__CN="showing"
 const bd_CN="border"
 
-//Btn Dropdown Function
+//Main header dropdown btns functions
 function uploadDropdownOne() {
     switchDropdownUploadOne()
     uploadDropList.classList.toggle(SW__CN)
@@ -41,7 +41,6 @@ function settingsDropdownOne() {
     switchDropdownSettingsOne()
     settingsDropList.classList.toggle(SW__CN)
 }
-
 function uploadDropdownTwo() {
     switchDropdownUploadTwo()
     uploadDropList.classList.toggle(SW__CN)
@@ -61,7 +60,7 @@ function userDropdownTwo() {
     
 }
 
-//Studio Btn Function
+//Studio dropdown btns functions
 function sdUploadDropdown(){
     switchDropdownSdUpload()
     sdUploadDropdownList.classList.toggle(SW__CN)
@@ -72,9 +71,7 @@ function sdUserDropdown(){
     headerUserSd.classList.toggle(bd_CN)
 }
 
-
-//Header User Border 
-
+//Header user border 
 function handleUserBorder(){
     const haveCnUser = userDropList.classList.contains(SW__CN)
     if(haveCnUser){
@@ -92,8 +89,7 @@ function handleUserSdBorder(){
     }
 }
 
-
-//Btn Switch Function
+//btn switch functions
 function switchDropdownUploadOne(){
     const haveCnApps = appsDropList.classList.contains(SW__CN)
     const haveCnSettings = settingsDropList.classList.contains(SW__CN)
@@ -190,10 +186,7 @@ function switchDropdownSdUser(){
     }
 }
 
-
-
-//Window Click Btn finish for standard
-
+//Window click btn finish for standard
 function handleStandardClickOne(){
     const haveCnUplaod = uploadDropList.classList.contains(SW__CN)
     const haveCnApps = appsDropList.classList.contains(SW__CN)
@@ -235,7 +228,6 @@ if(mainStandard && sidebarStandard && headerOne && headerTwo )
 }
 
 //Window Click Btn finish for studio
-
 function handleStudioClick(){
 const haveCnSdUpload = sdUploadDropdownList.classList.contains(SW__CN)
 const haveCnSdUser = sdUserDropdownList.classList.contains(SW__CN)
@@ -244,8 +236,7 @@ if(haveCnSdUpload || haveCnSdUser){
     sdUploadDropdownList.classList.remove(SW__CN)
     sdUserDropdownList.classList.remove(SW__CN)
     handleUserSdBorder()
-    
-}
+    }
 }
 
 function windowStudioClick(){
@@ -261,7 +252,6 @@ if(mainStudio || sidebarStudio || headerOneStudio || headerTwoStudio)
 }
 
 //Window Click Btn finish for video
-
 function handleVideoClickOne(){
     const haveCnUplaod = uploadDropList.classList.contains(SW__CN)
     const haveCnApps = appsDropList.classList.contains(SW__CN)
@@ -273,7 +263,6 @@ function handleVideoClickOne(){
         settingsDropList.classList.remove(SW__CN)
     }
 }
-
 function handleVideoClickTwo(){
     const haveCnUplaod = uploadDropList.classList.contains(SW__CN)
     const haveCnApps = appsDropList.classList.contains(SW__CN)
@@ -290,7 +279,6 @@ function handleVideoClickTwo(){
     }
 }
 
-
 function windowVideoClick (){
     headerOneVideo.addEventListener("click",settingsDropList ? handleVideoClickOne : handleVideoClickTwo )
     headerTwoVideo.addEventListener("click",settingsDropList ? handleVideoClickOne : handleVideoClickTwo)
@@ -301,6 +289,9 @@ function windowVideoClick (){
 if(mainVideo || sidebarVideo || headerOneVideo || headerTwoVideo){
     windowVideoClick()
 }
+
+
+
 
 
 window.uploadDropdownOne = uploadDropdownOne;

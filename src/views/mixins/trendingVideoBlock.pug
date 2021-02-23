@@ -8,10 +8,7 @@ mixin trendingVideoBlock(video = {})
             .trendingVideo__info-column.video__info-column
                 a(href=routes.cnVideos(video.channel._id))
                     .trendingVideo__creator-avatar.user__avatar(style=`background-color:${video.channel.userColor};`)
-                        if video.channel.avatarUrl
-                            img(src=video.channel.avatarUrl class="trendingVideo__creator-img")
-                        else
-                            span(class="trendingVideo__creator-name")=video.channel.name.substr(0,1)
+                        img(src=video.channel.avatarUrl?video.channel.avatarUrl:img.noneUser  class="trendingVideo__creator-img")
             .trendingVideo__info-column.video__info-column
                 .trendingVideo__info-main.video__info-main
                     a(href=routes.videoDetail(video.id))

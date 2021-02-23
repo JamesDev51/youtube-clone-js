@@ -2,9 +2,11 @@
 const path = require("path")
 const autoprefixer = require("autoprefixer")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const jsCompressor = require("terser-webpack-plugin")
+const cssCompressor = require("optimize-css-assets-webpack-plugin")
 require("@babel/polyfill");
 
-const MODE = process.env.WEBPACK_ENV;
+const MODE = process.env.NODE_ENV;
 const ENTRY_FILE = path.resolve(__dirname,"./assets/js/main.js");
 const OUTPUT_DIR = path.join(__dirname,"./static")
 
@@ -46,6 +48,11 @@ const config = {
         output:{
             path:OUTPUT_DIR,
             filename:"[name].js"
+        },
+        optimization: {
+            minimizer: [new cssCompressor(),
+            new jsCompressor(),
+            ],
         },
         plugins:[new MiniCssExtractPlugin({
             filename:"styles.css"

@@ -10,7 +10,7 @@ block content
                 .image-profile__preview.sdEdit__image-preview
                     .sdEdit__image-column
                         .sdEdit__image-wrapper
-                            img.sdEdit__roundProfile(src=user.avatarUrl)
+                            img.sdEdit__roundProfile(src=user.avatarUrl?user.avatarUrl:img.noneUser)
                     .sdEdit__image-column        
                         p 98x98픽셀 이상, 4MB 이하의 사진이 권장됩니다. PNG 또</br>는 GIF(애니메이션 GIF 제외)파일을 사용하세요. 사진이</br>JamesTube 커뮤니티 가이드를 준수해야 합니다.
                             .fileUploadBox

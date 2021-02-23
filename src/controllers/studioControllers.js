@@ -3,31 +3,36 @@ import User from "../models/User"
 import Video from "../models/Video"
 import Channel from "../models/Channel"
 import Comment from "../models/Comment"
-import Trending from "../models/Trending"
 
 //global function or variable
 const domain = "https://evening-journey-26910.herokuapp.com"
+// const domain = "http://localhost:4000"
 
+//studio home
 export const sdDash = (req,res)=>{
     res.render("studio/sdDash")
 }
+
+//studio channel videos
 export const sdMyvideos = async(req,res) =>{
     const {user:{channel}}=req;
     const videos = await Video.find({channel}).sort({_id:-1})
     res.render("studio/sdMyvideos",{videos})
 }
 
+//studio user comments
 export const sdComments = async(req,res) => {
     const {user:{id:userId}}=req
     try{
         const comments = await Comment.find({'writer':{$in:userId}}).populate('video')
-        
         res.render("studio/sdComments", {comments})
     }catch(error){
         console.log(error)
         res.render("studio/sdComments",{comments})
     }
 }
+
+//studio channel branding - edit images
 export const sdGetCnEditImages = (req,res)=>{
     try{
         res.render("studio/sdEditImages")
@@ -37,6 +42,7 @@ export const sdGetCnEditImages = (req,res)=>{
         res.render("studio/sdEditImages")
     }
 }
+
 export const sdPostCnEditImages = async(req,res)=>{
     const {user,files:{avatar,cover,watermark}}=req;
     try{
@@ -58,6 +64,8 @@ export const sdPostCnEditImages = async(req,res)=>{
         res.redirect(`${routes.sdEditImages(user.channel)}`)
     }
 }
+
+//studio channel branding - edit details
 export const sdGetCnEditDetails = (req,res)=>{
     try{
         res.render("studio/sdEditDetails")
@@ -83,12 +91,12 @@ export const sdPostCnEditDetails = async(req,res) => {
     }
 }
 
+//studio upload video
 export const sdGetUpload = (req,res)=>{
     res.render("studio/sdUpload",{pageTitle:"동영상 업로드"})
 }
 export const sdPostUpload = async(req,res)=>{
     const {body:{title,description},file:{location},user:{channel}}=req;
-    
     try{
         const newVideo = await Video.create({
             videoFile:location,
@@ -107,21 +115,23 @@ export const sdPostUpload = async(req,res)=>{
     }
 }
 
+//studio record video
 export const sdRecord = (req,res) => {
-    const {user}=req
     try{
         res.render("studio/sdRecord")
     }catch(error){
         console.log(error)
-        res.red
+        res.render("studio/sdRecord")
+
     }
 }
+
+//studio streaming  - not prepared
 export const sdStreaming = (req,res) => {
-    
     console.log("hi")
 }
 
-
+//studio edit video
 export const sdGetEditVideo = async(req,res)=>{
     const {params:{id}}=req;
     try{
@@ -133,6 +143,7 @@ export const sdGetEditVideo = async(req,res)=>{
         res.render("studio/sdEditVideo",{video})
     }
 }
+
 export const sdPostEditVideo = async(req,res)=>{
     const {params:{id},body:{title,description}}=req;
     try{

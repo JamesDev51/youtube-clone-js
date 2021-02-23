@@ -26,7 +26,7 @@ const DARK_CN = "dark"
 const SIDEBARBIG_LS = "sidebarbig"
 const SIDEBARBIGVD_LS = "sidebarbigvd"
 
-
+//load sidebar option (small || big ) from localStorage
 function loadSidebarOption() {
     let loadedSidebar = localStorage.getItem(SIDEBARBIG_LS);
     if(loadedSidebar === SHOWING_CN){
@@ -35,7 +35,6 @@ function loadSidebarOption() {
         
     }
 }
-
 function loadVideoSidebarOption() {
     let loadedSidebarVd = localStorage.getItem(SIDEBARBIGVD_LS);
     if(loadedSidebarVd === SHOWING_CN){
@@ -48,7 +47,7 @@ function loadVideoSidebarOption() {
     }
 }
 
-//save 
+//save sidebar option(small || big) to localStorage
 function saveSidebarBig () {
     let hasClass = sidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
@@ -58,7 +57,6 @@ function saveSidebarBig () {
         localStorage.removeItem(SIDEBARBIG_LS)
     }
 }
-
 function saveSidebarBigVd () {
     let hasClass = sidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
@@ -69,6 +67,7 @@ function saveSidebarBigVd () {
     }
 }
 
+//window size depending on sidebar option
 function setChannelSize(){
     let hasClass = sidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
@@ -81,7 +80,6 @@ function setChannelSize(){
         cnHeaderWrapper.style.paddingRight="200px"
     }
 }
-
 function setMainSize(){
     let hasClass = sidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
@@ -109,6 +107,7 @@ function setMainSize(){
     }
 }
 
+//set body dark when sidebar is big only for video
 function setBodyDark(){
     let hasClass = videoSidebarBig.classList.contains(SHOWING_CN);
     if(hasClass){
@@ -122,14 +121,26 @@ function setBodyDark(){
     }
 
 }
+//remove dark and make sidebar small
+function handleVideoDarkClick(){
+    videoSidebarBig.classList.remove(SHOWING_CN);
+    videoMain.style.marginLeft="0px"
+    videoSideDark.classList.remove(DARK_CN)
+    videoBody.style.overflow = "visible";
+    localStorage.removeItem(SIDEBARBIGVD_LS)
+}
 
+if(videoSideDark){
+    videoSideDark.addEventListener("click",handleVideoDarkClick)
+}
+
+//sidebar toggle btn
 function sidebarBtn() {
     sidebarBig.classList.toggle(SHOWING_CN)
     saveSidebarBig();
     setMainSize();
     
 }
-
 function sidebarVideoBtn() {
     videoSidebarBig.classList.toggle(SHOWING_CN)
     setBodyDark();
@@ -152,21 +163,8 @@ if(sidebarBig){
     init();
 }
 
-function handleVideoDarkClick(){
-    videoSidebarBig.classList.remove(SHOWING_CN);
-    videoMain.style.marginLeft="0px"
-    videoSideDark.classList.remove(DARK_CN)
-    videoBody.style.overflow = "visible";
-    localStorage.removeItem(SIDEBARBIGVD_LS)
-}
 
-if(videoSideDark){
-    videoSideDark.addEventListener("click",handleVideoDarkClick)
-}
-
-
-
-
+//studio sidebar small avatar hover
 function handleSdCnAvatarEnter(){
     sdCnAvatarHover.style.display="block";
 }
@@ -179,6 +177,7 @@ if(sdCnAvatar && sdCnAvatarHover){
     sdCnAvatarHover.addEventListener("mouseleave",handleSdCnAvatarLeave)
 }
 
+//studio sidebar big avatar hover
 function handleSdCnAvatarBigEnter(){
     sdCnAvatarHoverBig.style.display="block";
 }
@@ -190,8 +189,6 @@ if(sdCnAvatarBig && sdCnAvatarHoverBig){
     sdCnAvatarBig.addEventListener("mouseover",handleSdCnAvatarBigEnter)
     sdCnAvatarHoverBig.addEventListener("mouseleave",handleSdCnAvatarBigLeave)
 }
-
-
 
 window.sidebarBtn = sidebarBtn;
 window.sidebarVideoBtn = sidebarVideoBtn;

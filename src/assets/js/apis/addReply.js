@@ -5,7 +5,6 @@ const idHidden = document.getElementById("jsReplyCommentId")
 const resetBtn = document.getElementById("jsReplyResetBtn")
 const submitBtn = document.getElementById("jsReplySubmitBtn")
 
-
 function disableBtn(){
     submitBtn.disabled=true
     resetBtn.disabled=true
@@ -28,20 +27,20 @@ function returnBtn(){
     
 }
 
-
+//reply ajax
 const sendReply = async(video,text,commentId) => {
-    const response = await axios({
+    await axios({
         method: 'post',
         url: `/api/${video}/reply`,
         data: {
-          video,
-          text,
-          commentId
+        video,
+        text,
+        commentId
         }
-      });
+    });
 }
 
-
+//submit reply
 function handelSubmit(event){
     event.preventDefault()
     const video = window.location.href.split("videos/")[1]
@@ -53,12 +52,14 @@ function handelSubmit(event){
     setTimeout(function(){location.reload()},150)
 }
 
+//reset btn
 function handleReset(){
     replyInput.value=""
     disableBtn()
     returnBtn()
 }
 
+//empty btn disabled 
 function handleBtn(event){
     if(event.srcElement.value == ""){
         disableBtn()
@@ -67,8 +68,6 @@ function handleBtn(event){
         changeBtn()
     }
 }
-
-
 
 function init(){
     replyForm.addEventListener("reset",handleReset)

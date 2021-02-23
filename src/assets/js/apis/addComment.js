@@ -9,7 +9,6 @@ function disableBtn(){
     submitBtn.disabled=true
     resetBtn.disabled=true
 }
-
 function changeBtn(){
     submitBtn.disabled=false
     submitBtn.style.backgroundColor="#80bfff"
@@ -28,21 +27,20 @@ function returnBtn(){
     
 }
 
-
-
+//comment ajax
 const sendComment = async(video,text) => {
-    const response = await axios({
+    await axios({
         method: 'post',
         url: `/api/${video}/comment`,
         data: {
-          video,
-          text
+        video,
+        text
         }
-      });
+    });
 
 }
 
-
+//submit comment
 function handelSubmit(event){
     event.preventDefault()
     const video = window.location.href.split("videos/")[1]
@@ -53,12 +51,14 @@ function handelSubmit(event){
     setTimeout(function(){location.reload()},150)
 }
 
+//reset btn
 function handleReset(){
     commentInput.value=""
     disableBtn()
     returnBtn()
 }
 
+//empty btn disabled 
 function handleBtn(event){
     if(event.srcElement.value == ""){
         disableBtn()
@@ -67,7 +67,6 @@ function handleBtn(event){
         changeBtn()
     }
 }
-
 
 function init(){
     disableBtn()

@@ -10,10 +10,11 @@ let value
 const CB="colorBlue"
 const BB="borderBlue"
 
+//switch dislike to like
 function switchDislikeLike(){
     let videoId= window.location.href.split("videos/")[1]
         if (videoId.includes('?')){
-           videoId=videoId.split("?")[0] 
+        videoId=videoId.split("?")[0] 
         }
         try{
             fetch(`/api/${videoId}/video_dislike/cancle`,{method:"POST"})
@@ -35,11 +36,11 @@ function switchDislikeLike(){
         }
 }
 
-
+//cancel like 
 function cancleLike(){
         let videoId= window.location.href.split("videos/")[1]
         if (videoId.includes('?')){
-           videoId=videoId.split("?")[0] 
+        videoId=videoId.split("?")[0] 
         }
         try{
             fetch(`/api/${videoId}/video_like/cancle`,{method:"POST"})
@@ -55,15 +56,14 @@ function cancleLike(){
         }
 } 
 
-
+//handle click video like btn
 function handleLikeClick(){
     value = videoToken.value
-    console.log(value)
     if(value=="no"){
         let videoId= window.location.href.split("videos/")[1]
         if (videoId.includes('?')){
             videoId=videoId.split("?")[0] 
-         }
+        }
         try{
             fetch(`/api/${videoId}/video_like`,{method:"POST"})
             let likeNum = parseInt(like.innerText)
@@ -85,6 +85,7 @@ function handleLikeClick(){
     }
 }
 
+//switch like to dislike 
 function switchLikeDislike(){
     let videoId= window.location.href.split("videos/")[1]
     if (videoId.includes('?')){
@@ -109,7 +110,7 @@ function switchLikeDislike(){
     }
 }
 
-
+//cancel dislike
 function cancleDislike(){
         let videoId= window.location.href.split("videos/")[1]
         if (videoId.includes('?')){
@@ -129,7 +130,7 @@ function cancleDislike(){
         }
 }
 
-
+//handle click dislike btn
 function handleDislikeClick(){
     value = videoToken.value
     if(value=="no" ){
@@ -156,6 +157,7 @@ function handleDislikeClick(){
     }
 }
 
+//btn color depending on like or dislike
 function likeColor(){
     value=videoToken.value
     if(value=="like"){
@@ -167,14 +169,12 @@ function likeColor(){
         videoLikeWrapper.classList.add(BB)
     }
 }
- 
 
 function init(){
 likeColor()
 likeBtn.addEventListener("click",handleLikeClick)
 dislikeBtn.addEventListener("click",handleDislikeClick)
 }
-
 
 if(videoLikeWrapper){
     init()

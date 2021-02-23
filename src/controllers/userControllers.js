@@ -9,51 +9,24 @@ import { TRUE } from "node-sass"
 
 //global function or variable
 const domain = "https://evening-journey-26910.herokuapp.com"
+// const domain = "http://localhost:4000"
 
-function colorSelector(userColor) {
-if(userColor==0){
-        const selectedColor = "#ff99cc"
-        return selectedColor
-}
-if(userColor==1){
-    const selectedColor = "#cccc00"
-    return selectedColor
-}
-if(userColor==2){    
-    const selectedColor = "#0066cc"
-return selectedColor}
-if(userColor==3){    
-    const selectedColor = "#009933"
-return selectedColor}
-if(userColor==4){    
-    const selectedColor = "#6600cc"
-    return selectedColor}
-if(userColor==5){    
-    const selectedColor = "#660033"
-    return selectedColor}
-if(userColor==6){    
-    const selectedColor = "#66ff99"
-    return selectedColor}
-if(userColor==7){    
-    const selectedColor = "#ff99cc"
-    return selectedColor}
-if(userColor==8){    
-    const selectedColor = "#009999"
-    return selectedColor}
-if(userColor==9){    
-    const selectedColor = "#cc3300"
-    return selectedColor}
+//user random color generator 
+const randomColorGenerator = (userColor) => {
+    const colors=["#ff99cc","#cccc00","#0066cc","#009933","#6600cc","#660033","#66ff99","#ff99cc","#009999","#cc3300"]
+    return colors[userColor]
 }
 
-
-//join
+//join main page
 export const join = (req,res)=>{
     res.render("join/join");
 }
 
+//new local join
 export const getNewJoin = (req,res)=> {
     res.render("join/newJoin",{pageTitle:"일반"});
 }
+
 export const postNewJoin = async(req,res,next) => {
     const {body:{name,email,password,password2}}=req;
     if(password !== password2){
@@ -63,7 +36,7 @@ export const postNewJoin = async(req,res,next) => {
     }else{
         try{
             const userColor = Math.floor(Math.random()*10)
-            const selectedColor = colorSelector(userColor)
+            const selectedColor = randomColorGenerator(userColor)
             const channel = await Channel.create({
                 name,userColor:selectedColor
             })
@@ -83,7 +56,6 @@ export const postNewJoin = async(req,res,next) => {
     }
 }
 
-
 //login
 export const getLogin = async(req,res) => {
     const channels = await Channel.find({})
@@ -99,14 +71,15 @@ export const getLogin = async(req,res) => {
 export const postLogin = passport.authenticate('local',{
     successRedirect:routes.home,
     failureRedirect:routes.login,
-    successFlash:"반갑습니다!",
+    successFlash:"welcome!",
     failureFlash:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
 })
 
 //social login & join
+//google
 export const googleLogin = passport.authenticate("google",{
     scope:['profile','email'],    
-    successFlash:"반갑습니다!",
+    successFlash:"welcome!",
     failureFlash:"로그인이 불가능합니다. 이메일이나 비밀번호를 확인해주세요."
 });
 
@@ -159,6 +132,7 @@ export const postGoogleLogin =  (req,res)=>{
    res.redirect(routes.home)
 }
 
+//kakao
 export const kakaoLogin = passport.authenticate('kakao',{
     scope:['profile','account_email'],
     successFlash:"반갑습니다!",
@@ -214,6 +188,8 @@ export const kakaoLoginCallback = async(accessToken, refreshToken, profile, cb)=
 export const postKakaoLogin = (req,res)=>{
    res.redirect(routes.home)
 }
+
+//naver
 export const naverLogin = passport.authenticate('naver',{
     scope:['profile'],
     successFlash:"반갑습니다!",
@@ -269,6 +245,8 @@ export const naverLoginCallback = async(accessToken, refreshToken, profile, cb)=
 export const postNaverLogin = (req,res)=>{
     res.redirect(routes.home)
 }
+
+//github
 export const githubLogin = passport.authenticate('github',{
     scope:['profile'],
     successFlash:"반갑습니다!",
@@ -322,27 +300,26 @@ export const postGithubLogin = (req,res)=>{
     res.redirect(routes.home)
 }
 
-//logout
+//log out
 export const logout = (req,res)=> {
     req.flash('info',"로그아웃 하였습니다. see ya")
     req.logout();
     res.redirect(routes.home);
 }
 
-//mypage
+//my page
 export const myPage = async(req,res)=>{
     const channels = await Channel.find({})
     try{
         res.render("myPage", {channels})
     }
     catch(error){
-
         console.log(error)
         res.render("myPage", {channels})
     }
 }
 
-//editProfile
+//edit profile
 export const getEditProfile = async(req,res) => { 
     const channels = await Channel.find({})
     try{
@@ -378,6 +355,7 @@ export const postEditProfile = async(req,res)=>{
     }
 }
 
+//set password
 export const getSetPassword = async(req,res)=>{
     const channels = await Channel.find({})
     try{
@@ -411,9 +389,7 @@ export const postSetPassword = async(req,res)=>{
     }
 }
 
-
-
-//changePassword
+//change password
 export const getChangePassword = async(req,res)=> {
     const channels = await Channel.find({})
     const {user}=req

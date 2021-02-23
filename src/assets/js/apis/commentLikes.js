@@ -4,13 +4,14 @@ const likeBtns = document.querySelectorAll("#jsCommentLikeBtn")
 const dislikeBtns = document.querySelectorAll("#jsCommentDislikeBtn")
 const userId = document.getElementById("jsUserId")
 
-let token, tokenValue
 let btn
+let token, tokenValue
 let commentId
 let likeList,dislikeList
 let userValue
 
-
+//COMMENT LIKE DISLIKE NUMBER
+//like number up
 function likeNumUp(like){
     let num
     if (like.innerHTML==""){
@@ -21,6 +22,8 @@ function likeNumUp(like){
     num+=1
     like.innerHTML=num
 }
+
+//dislike number up
 function dislikeNumUp(dislike){
     let num
     if (dislike.innerHTML==""){
@@ -31,6 +34,8 @@ function dislikeNumUp(dislike){
     num+=1
     dislike.innerHTML=num
 }
+
+//like number down
 function likeNumDown(like){
     if(like.innerHTML == 1){
         like.innerHTML=""
@@ -39,6 +44,8 @@ function likeNumDown(like){
         like.innerHTML-=1
     }
 }
+
+//dislike number down
 function dislikeNumDown(dislike){
     if(dislike.innerHTML == 1){
         dislike.innerHTML=""
@@ -48,7 +55,7 @@ function dislikeNumDown(dislike){
     }
 }
 
-
+//switch dislike to like
 function switchDislikeLike(commentId){
     try{
         axios({
@@ -68,7 +75,7 @@ function switchDislikeLike(commentId){
     }
 }
 
-
+//cancel like
 function cancelLike(commentId){
     try{
         axios({
@@ -83,8 +90,8 @@ function cancelLike(commentId){
     }
 }
 
+//handle click like btn
 function handleLikeClick(event){
-    console.log(event)
     commentId=event.path[3].previousElementSibling.value
     likeList=event.path[2].previousElementSibling.value
     dislikeList=event.path[2].nextElementSibling.value
@@ -92,7 +99,6 @@ function handleLikeClick(event){
     btn=event.path[1]
     token=event.path[3].children[0]
     tokenValue=token.value
-    console.log(tokenValue)
     if (likeList.includes(userValue) || tokenValue =="like"){
         token.value="none"
         cancelLike(commentId)
@@ -117,6 +123,7 @@ function handleLikeClick(event){
     }
 }
 
+//cancel dislike
 function cancelDislike(commentId){
     try{
         axios({
@@ -131,6 +138,7 @@ function cancelDislike(commentId){
     }
 }
 
+//switch like to dislike
 function switchlikeDislike(commentId){
     try{
         axios({
@@ -148,8 +156,8 @@ function switchlikeDislike(commentId){
     }
 }
 
+//handle click dislike btn 
 function handleDislikeClick(event){
-    console.log(event)
     commentId=event.path[3].previousElementSibling.value
     likeList=event.path[3].children[1].value
     dislikeList=event.path[3].children[3].value
@@ -157,7 +165,6 @@ function handleDislikeClick(event){
     btn=event.path[1]
     token=event.path[3].children[0]
     tokenValue=token.value
-    console.log(tokenValue)
     if (dislikeList.includes(userValue) || tokenValue =="dislike"){
         token.value="none"
         cancelDislike(commentId)

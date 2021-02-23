@@ -8,10 +8,7 @@ mixin libraryVideoBlock(video = {})
             .libraryVideo__info-column.video__info-column
                 a(href=routes.cnVideos(video.channel._id))
                     .libraryVideo__creator-avatar.user__avatar(style=`background-color:${video.channel.userColor};`)
-                        if video.channel.avatarUrl
-                            img(src=video.channel.avatarUrl class="libraryVideo__creator-img")
-                        else
-                            span(class="libraryVideo__creator-name")=video.channel.name.substr(0,1)
+                        img(src=video.channel.avatarUrl?video.channel.avatarUrl:img.noneUser  class="libraryVideo__creator-img")
             .libraryVideo__info-column.video__info-column
                 .libraryVideo__info-main.video__info-main
                     a(href=routes.videoDetail(video.id))

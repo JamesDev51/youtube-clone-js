@@ -3,12 +3,8 @@ import Video from "../models/Video"
 import User from "../models/User"
 import Channel from "../models/Channel"
 import Comment from "../models/Comment"
-import Reply from "../models/Reply"
-import Trending from "../models/Trending"
 
-
-
-
+//home
 export const home = async (req,res) => {
     try{
         let channels=null
@@ -27,6 +23,7 @@ export const home = async (req,res) => {
     }
 }
 
+//search
 export const search = async(req,res) => {
     const {query:{term}}=req
     let videos = []
@@ -35,7 +32,7 @@ export const search = async(req,res) => {
     try{
         if(req.user){
             const {user:{subscribeChannels}}=req;
-             channels = await Channel.find({'_id':{$in:subscribeChannels}})
+            channels = await Channel.find({'_id':{$in:subscribeChannels}})
         }
         videos= await Video.find({title:{$regex:term, $options:"i"}}).populate('channel')
         channelFounds= await Channel.find({name:{$regex:term, $options:"i"}})
@@ -49,7 +46,7 @@ export const search = async(req,res) => {
     }
 }
 
-
+//video detail page
 export const videoDetail = async(req,res) => {
     const{params:{id}}=req;
     try{
@@ -107,6 +104,7 @@ export const videoDetail = async(req,res) => {
     }
 }
 
+//my videos
 export const myVideos = async(req,res) => {
     try{
         let channels=null
@@ -123,6 +121,7 @@ export const myVideos = async(req,res) => {
     }
 }
 
+//trend videos
 export const trending = async(req,res) => {
     
     try{
@@ -140,6 +139,7 @@ export const trending = async(req,res) => {
     }
 }
 
+//subscribing channels'video
 export const subscriptions = async(req,res) => {
     try{
         let channels=null
@@ -156,6 +156,7 @@ export const subscriptions = async(req,res) => {
     }
 }
 
+//saved videos list => library
 export const library = async(req,res) => {
     try{
         let channels=null
@@ -174,6 +175,7 @@ export const library = async(req,res) => {
     }
 }
 
+//like videos list
 export const likelist = async(req,res) => {
     try{
         let channels=null
@@ -188,10 +190,10 @@ export const likelist = async(req,res) => {
         console.log(error)
         res.render("playlist/plLikelist",{pageTitle:"좋아요",channels, videos})
         
-        
     }
 }
 
+//watch list
 export const watchlist = async(req,res) => {
     try{
         let channels=null
@@ -205,7 +207,6 @@ export const watchlist = async(req,res) => {
     }catch(error){
         console.log(error)
         res.render("playlist/plWatchlist",{pageTitle:"다시보기",channels, videos})
-       
         
     }
 }

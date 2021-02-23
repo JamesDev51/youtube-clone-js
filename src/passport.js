@@ -10,24 +10,28 @@ dotenv.config();
 
 passport.use(User.createStrategy());
 
+//google 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_ID,
     clientSecret: process.env.GOOGLE_SEC,
     callbackURL: "https://evening-journey-26910.herokuapp.com/auth/google/callback"
 },googleLoginCallback))
 
+//kakao
 passport.use(new KakaoStrategy({
     clientID: process.env.KAKAO_ID,
     clientSecret: process.env.KAKAO_SEC,
     callbackURL: "https://evening-journey-26910.herokuapp.com/auth/kakao/callback"
 },kakaoLoginCallback))
 
+//naver
 passport.use(new NaverStrategy({
     clientID: process.env.NAVER_ID,
     clientSecret: process.env.NAVER_SEC,
     callbackURL: "https://evening-journey-26910.herokuapp.com/auth/naver/callback"
 },naverLoginCallback))
 
+//github
 passport.use(new GithubStrategy({
     clientID: process.env.GITHUB_ID,
     clientSecret: process.env.GITHUB_SEC,

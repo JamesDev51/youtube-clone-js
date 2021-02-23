@@ -2,23 +2,23 @@ console.clear();
 import express from "express";
 
 //middlewares
-import morgan from "morgan";
-import flash from "express-flash"
-import helmet from "helmet";
-import compression from "compression";
-import bodyParser from "body-parser"
-import cookieParser from "cookie-parser"
-import path from "path"
-import { localMiddleware } from "./middlewares";
-import mongoose from "mongoose"
+import morgan from "morgan"; //logger
+import helmet from "helmet"; //security
+import compression from "compression"; //compression
+import bodyParser from "body-parser" //body-pareser
+import cookieParser from "cookie-parser" //cookie-parser
+import path from "path" //path
+import mongoose from "mongoose" 
 import session from "express-session"
 import MongoStore from "connect-mongo"
 import passport from "passport";
+import flash from "express-flash" 
 import "./passport"
+import { localMiddleware } from "./middlewares";
 
+//dotenv
 import dotenv from "dotenv"
 dotenv.config()
-
 
 //routers
 import routes from "./routes"
@@ -34,7 +34,6 @@ import sdChannelRouter from "./routers/sdChannelRouter";
 import apiRouter from "./routers/apiRouter"
 
 const app = express();
-
 const CookieStore = MongoStore(session)
 
 app.set("view engine","pug");
@@ -51,7 +50,7 @@ app.use(session({
     secret:process.env.COOKIE_SECRET,
     resave:false,
     saveUninitialized:false,
-    store : new CookieStore({mongooseConnection:mongoose.connection})
+    store : new CookieStore({mongooseConnection:mongoose.connection}),
 }))
 app.use(flash())
 app.use(passport.initialize())
@@ -69,7 +68,5 @@ app.use(routes.feed, feedRouter);
 app.use(routes.search, searchRouter);
 app.use(routes.channel,channelRouter);
 app.use(routes.api,apiRouter);
-
-
 
 export default app;

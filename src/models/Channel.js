@@ -17,6 +17,10 @@ const ChannelSchema = new mongoose.Schema({
     description:{
         type:String,
         default:"안녕하세요 반갑습니다."
+    },
+    newDescription:{
+        type:String,
+        default:"안녕하세요 반갑습니다."
     }
 })
 

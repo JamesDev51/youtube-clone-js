@@ -83,7 +83,8 @@ export const sdPostCnEditDetails = async(req,res) => {
         let newDescription = cnDescription.replace(/\r\n/gi,"<br>")
         await Channel.findByIdAndUpdate(channel._id,{
             name: cnName ? cnName : channel.name,
-            description: cnDescription ? newDescription : channel.description
+            description:cnDescription?cnDescription:channel.description,
+            newDescription:cnDescription?newDescription:channel.newDescription 
         })
         res.redirect(`${routes.sdEditDetails(user.channel)}`)
     }catch(error){
@@ -99,13 +100,12 @@ export const sdGetUpload = (req,res)=>{
 export const sdPostUpload = async(req,res)=>{
     const {body:{title,description},file:{location},user:{channel}}=req;
     try{
-        console.log(description)
         const newDescription = description.replace(/\r\n/gi,"<br>")
-        console.log(newDescription  ,typeof(newDescription))
         const newVideo = await Video.create({
             videoFile:location,
             title,
-            description:description? newDescription : description,
+            description,
+            newDescription,
             channel
         })
         req.user.videos.push(newVideo._id)
@@ -122,10 +122,10 @@ export const sdPostUpload = async(req,res)=>{
 //studio record video
 export const sdRecord = (req,res) => {
     try{
-        res.render("studio/sdRecord")
+        res.render("studio/sdRecord",{pageTitle:"영상녹화"})
     }catch(error){
         console.log(error)
-        res.render("studio/sdRecord")
+        res.render("studio/sdRecord",{pageTitle:"영상녹화"})
 
     }
 }
@@ -152,7 +152,7 @@ export const sdPostEditVideo = async(req,res)=>{
     const {params:{id},body:{title,description}}=req;
     try{
         let newDescription = description.replace(/\r\n/gi,"<br>")
-        await Video.findOneAndUpdate({_id:id},{title,newDescription})
+        await Video.findOneAndUpdate({_id:id},{title,description,newDescription})
         res.redirect(routes.videoDetail(id))
     }catch(error){
         console.log(error)
